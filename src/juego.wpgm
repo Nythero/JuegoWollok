@@ -12,4 +12,5 @@ program abc {
 	procesamiento.detectarTeclas()
 	
 	game.start()
+	
 }
