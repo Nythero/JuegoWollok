@@ -1,16 +1,15 @@
 import wollok.game.*
 import personaje.*
-import teclado.*
+import procesamiento.*
+import configuracion.*
 
 program abc {
 
-	game.title("Objetos Racing")
-	game.height(10)
-	game.width(10)
+	configuracion.configuracionInicial()
 	
 	game.addVisual(personaje)
 	
-	teclado.detectarTeclas()
+	procesamiento.detectarTeclas()
 	
 	game.start()
 }
