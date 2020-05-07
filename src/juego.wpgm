@@ -1,0 +1,16 @@
+import wollok.game.*
+import personaje.*
+import teclado.*
+
+program abc {
+
+	game.title("Objetos Racing")
+	game.height(10)
+	game.width(10)
+	
+	game.addVisual(personaje)
+	
+	teclado.detectarTeclas()
+	
+	game.start()
+}
