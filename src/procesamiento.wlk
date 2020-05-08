@@ -1,7 +1,7 @@
 import wollok.game.*
 import personaje.*
 
-object teclado {
+object procesamiento {
 	//Metodos
 	
 	method detectarTeclas(){
