@@ -11,6 +11,8 @@ program abc {
 	
 	procesamiento.detectarTeclas()
 	
+	procesamiento.detectarAvance()
+	
 	game.start()
 	
 }

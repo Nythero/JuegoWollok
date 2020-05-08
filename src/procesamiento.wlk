@@ -3,6 +3,7 @@ import personaje.*
 import obstaculo.*
 import spawner.*
 import randomizer.*
+import advancer.*
 
 object procesamiento {
 	//Metodos
@@ -10,11 +11,15 @@ object procesamiento {
 	method detectarTeclas(){
 		keyboard.a().onPressDo({personaje.moverHacia(-1)})
 		keyboard.d().onPressDo({personaje.moverHacia(1)})
-		keyboard.z().onPressDo({game.addVisual(obstaculo)})
-		keyboard.x().onPressDo({game.addVisual(obstaculo2)})
-		keyboard.c().onPressDo({game.addVisual(obstaculo3)})
-		keyboard.v().onPressDo({game.addVisual(obstaculo4)})
-		keyboard.b().onPressDo({game.addVisual(obstaculo5)})
+		keyboard.z().onPressDo({spawner.spawnearElementoQueAvanza(obstaculo)})
+		keyboard.x().onPressDo({spawner.spawnearElementoQueAvanza(obstaculo2)})
+		keyboard.c().onPressDo({spawner.spawnearElementoQueAvanza(obstaculo3)})
+		keyboard.v().onPressDo({spawner.spawnearElementoQueAvanza(obstaculo4)})
+		keyboard.b().onPressDo({spawner.spawnearElementoQueAvanza(obstaculo5)})
+	}
+	
+	method detectarAvance() {
+		game.onTick(1000, "avanzar", advancer.avanzar())
 	}
 	
 	//Metodos

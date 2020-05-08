@@ -1,7 +1,13 @@
 import wollok.game.*
 import randomizer.*
+import advancer.*
 
 object spawner {
+	
+	method spawnearElementoQueAvanza(elemento) {
+		game.addVisual(elemento)
+		advancer.agregarElementoQueAvanza(elemento)
+	}
 	
 	method posicionLibreEnFilaSuperior() {
 		return randomizer.elementoRandomDeLista(self.posicionesLibresEnFilaSuperior())
