@@ -5,7 +5,7 @@ object personaje {
 	//Atributos
 	
 	var property position = game.at(2,0)
-	var property image = "auto_rojo.png"
+	var property image = "auto_rojo2.png"
 	
 	//Atributos
 	
