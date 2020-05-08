@@ -10,11 +10,11 @@ object procesamiento {
 	method detectarTeclas(){
 		keyboard.a().onPressDo({personaje.moverHacia(-1)})
 		keyboard.d().onPressDo({personaje.moverHacia(1)})
-		keyboard.o().onPressDo({game.addVisual(obstaculo)})
-		keyboard.i().onPressDo({game.addVisual(obstaculo2)})
-		keyboard.p().onPressDo(
-			{ game.say(personaje, spawner.posicionLibreEnFilaSuperior().toString()) }
-		)
+		keyboard.z().onPressDo({game.addVisual(obstaculo)})
+		keyboard.x().onPressDo({game.addVisual(obstaculo2)})
+		keyboard.c().onPressDo({game.addVisual(obstaculo3)})
+		keyboard.v().onPressDo({game.addVisual(obstaculo4)})
+		keyboard.b().onPressDo({game.addVisual(obstaculo5)})
 	}
 	
 	//Metodos
