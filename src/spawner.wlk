@@ -15,8 +15,8 @@ object spawner {
 	
 	method posicionesEnFilaSuperior() {
 		return
-			[0..(game.width())].map(
-				{ n => game.at(n, game.height()) }
+			randomizer.listaDeEnterosEntre(0, game.width() - 1).map(
+				{ n => game.at(n, game.height() - 1) }
 			)
 	}
 	
