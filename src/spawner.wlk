@@ -1,12 +1,22 @@
 import wollok.game.*
 import randomizer.*
 import advancer.*
+import obstaculo.*
 
 object spawner {
 	
+	var property aSpawnear = [obstaculo, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6, obstaculo7, moneda, moneda2, gas]
+	
+	method spawn(){
+		game.onTick(1000, "spawnear", {self.spawnearElementoQueAvanza(aSpawnear.anyOne())})
+	}
+	
 	method spawnearElementoQueAvanza(elemento) {
-		game.addVisual(elemento)
-		advancer.agregarElementoQueAvanza(elemento)
+		if(!game.hasVisual(elemento)){
+			elemento.position(self.posicionLibreEnFilaSuperior())
+			game.addVisual(elemento)
+			advancer.agregarElementoQueAvanza(elemento)
+		} 
 	}
 	
 	method posicionLibreEnFilaSuperior() {
@@ -21,7 +31,7 @@ object spawner {
 	
 	method posicionesEnFilaSuperior() {
 		return
-			randomizer.listaDeEnterosEntre(0, game.width() - 1).map(
+			randomizer.listaDeEnterosEntre(0, 3).map(
 				{ n => game.at(n, game.height() - 1) }
 			)
 	}
