@@ -1,4 +1,5 @@
 import wollok.game.*
+import puntaje.*
 
 object personaje {
 	
@@ -14,6 +15,10 @@ object personaje {
 		position = game.at((position.x() + x).max(0).min(game.width()-1) , position.y())
 	}
 	method chocar(){
+	}
+	method sumaPunto(puntos) {
+		
+		puntaje.sumarPuntos(puntos)
 	}
 	
 	//Metodos
