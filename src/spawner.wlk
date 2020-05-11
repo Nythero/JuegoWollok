@@ -13,7 +13,7 @@ object spawner {
 	
 	method spawnInicial(){
 		game.addVisual(personaje)
-		game.onTick(1000, "spawnear", {self.spawnearElementoQueAvanza(aSpawnear.anyOne())})
+		game.onTick(1000, "spawnear", { self.spawnearElementoQueAvanza(aSpawnear.anyOne()) })
 	}
 	
 	method spawnearElementoQueAvanza(elemento) {

@@ -15,7 +15,7 @@ object detector {
 	}
 	
 	method detectarAvance() {
-		game.onTick(1000, "avanzar", advancer.avanzar())
+		game.onTick(1000, "avanzar", { advancer.avanzar() })
 	}
 	
 	method detectarColisiones() {

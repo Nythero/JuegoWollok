@@ -27,13 +27,13 @@ object personaje {
 	method aumentarVelocidad(cantidad){
 		velocidad += cantidad/100
 		game.removeTickEvent("avanzar")
-		game.onTick(1000/velocidad, "avanzar",advancer.avanzar())
+		game.onTick(1000/velocidad, "avanzar", { advancer.avanzar() })
 		game.removeTickEvent("spawnear")
 		game.onTick(1000/velocidad, "spawnear", {spawner.spawnearElementoQueAvanza(spawner.aSpawnear().anyOne())})
 	}
 	
 	method avanzar(){
-		game.onTick(1000, "avanzar", advancer.avanzar())
+		game.onTick(1000, "avanzar", { advancer.avanzar() })
 	}
 	
 	//Metodos
