@@ -6,8 +6,8 @@ program juego {
 
 	detector.detectarConfiguracionInicial()
 	
-	detector.detectarSpawn()
-		
+	detector.detectarVisuales()
+	
 	detector.detectarTeclas()
 	
 	detector.detectarAvance()

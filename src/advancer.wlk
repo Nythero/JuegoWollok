@@ -12,11 +12,9 @@ object advancer {
 	}
 	
 	method avanzar() {
-		return ( {
-			elementosQueAvanzan.forEach(
-				{ elemento => self.avanzarElemento(elemento) }
-			)
-		} )
+		elementosQueAvanzan.forEach(
+			{ elemento => self.avanzarElemento(elemento) }
+		) 
 	}
 	
 	method avanzarElemento(elemento) {
