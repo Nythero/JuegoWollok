@@ -1,7 +1,7 @@
-#### Trabajo Práctico: Objetos Racing
+## Trabajo Práctico: Objetos Racing
 
 
-## Alumnos:
+#### Alumnos:
 Gonzalez, Agustin
 Santoleri, Luciano
 Perez, Juan Francisco
