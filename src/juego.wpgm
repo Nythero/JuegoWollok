@@ -1,7 +1,8 @@
 import wollok.game.*
 import personaje.*
-import procesamiento.*
+import detector.*
 import configuracion.*
+import spawner.*
 
 program abc {
 
@@ -9,9 +10,13 @@ program abc {
 	
 	game.addVisual(personaje)
 	
-	procesamiento.detectarTeclas()
+	detector.detectarTeclas()
 	
-	procesamiento.detectarAvance()
+	detector.detectarAvance()
+	
+	detector.detectarColiciones()
+	
+	spawner.spawn()
 	
 	game.start()
 	
