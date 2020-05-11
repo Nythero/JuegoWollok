@@ -19,9 +19,6 @@ object personaje {
 		position = game.at((position.x() + x).max(0).min(configuracion.trackWidth() - 1) , position.y())
 	}
 	
-	method chocar(){
-	}
-	
 	method sumaPunto(puntos) {
 		
 		puntaje.sumarPuntos(puntos)
