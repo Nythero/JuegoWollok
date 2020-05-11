@@ -9,15 +9,6 @@ object obstaculo {
 	
 	var property position
 	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
-	}
-	
 	method colisionar(otro){
 		game.stop()
 	}
@@ -29,15 +20,6 @@ object obstaculo2 {
 	
 	var property position
 	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
-	}
-	
 	method colisionar(otro){
 		game.stop()
 	}
@@ -48,15 +30,6 @@ object gas {
 	var property image = "gas.png"
 	
 	var property position
-	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
-	}
 	
 	method colisionar(otro){
 		otro.aumentarVelocidad(10)
@@ -70,15 +43,6 @@ object obstaculo3 {
 	
 	var property position
 	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
-	}
-	
 	method colisionar(otro){
 		game.stop()
 	}
@@ -89,15 +53,6 @@ object obstaculo4 {
 	var property image = "auto_verde2.png"
 	
 	var property position
-	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
-	}
 	
 	method colisionar(otro){
 		game.stop()
@@ -110,15 +65,6 @@ object obstaculo5 {
 	
 	var property position
 	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
-	}
-	
 	method colisionar(otro){
 		game.stop()
 	}
@@ -130,15 +76,6 @@ object obstaculo6 {
 	
 	var property position
 	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
-	}
-	
 	method colisionar(otro){
 		game.stop()
 	}
@@ -149,15 +86,6 @@ object obstaculo7 {
 	var property image = "auto_verde2.png"
 	
 	var property position
-	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
-	}
 	
 	method colisionar(otro){
 		game.stop()
@@ -177,15 +105,6 @@ object moneda {
 	
 	method aparece() {
 		game.addVisualIn(self,spawner.posicionLibreEnFilaSuperior())
-	}
-	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
 	}
 	
 	method colisionar(jugador) {
@@ -210,15 +129,6 @@ object moneda2 {
 	
 	method aparece() {
 		game.addVisualIn(self,spawner.posicionLibreEnFilaSuperior())
-	}
-	
-	method avanzar() {
-		if (position.y() == 0) {
-			spawner.despawnear(self)
-		}
-		else {
-			position = position.down(1)			
-		}
 	}
 	
 	method colisionar(jugador) {
