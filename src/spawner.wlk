@@ -14,11 +14,10 @@ object spawner {
 	}
 	
 	method spawnearElementoQueAvanza(elemento) {
-		if(!game.hasVisual(elemento)){
-			elemento.position(self.posicionLibreEnFilaSuperior())
-			game.addVisual(elemento)
-			advancer.agregarElementoQueAvanza(elemento)
-		} 
+		elemento.position(self.posicionLibreEnFilaSuperior())
+		game.addVisual(elemento)
+		advancer.agregarElementoQueAvanza(elemento)
+		self.sacarElementoASpawnear(elemento)
 	}
 	
 	method posicionLibreEnFilaSuperior() {
@@ -40,5 +39,15 @@ object spawner {
 	
 	method esPosicionLibre(posicion) {
 		return game.getObjectsIn(posicion).size() == 0
+	}
+	
+	method sacarElementoASpawnear(elemento) {
+		aSpawnear.remove(elemento)
+	}
+	
+	method despawnear(elemento) {
+		advancer.sacarElementoQueAvanza(elemento)
+		game.removeVisual(elemento)
+		self.aSpawnear().add(elemento)		
 	}
 }

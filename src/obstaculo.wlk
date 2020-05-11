@@ -11,9 +11,7 @@ object obstaculo {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -33,9 +31,7 @@ object obstaculo2 {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -55,9 +51,7 @@ object gas {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -66,9 +60,7 @@ object gas {
 	
 	method colisionar(otro){
 		otro.aumentarVelocidad(10)
-		advancer.sacarElementoQueAvanza(self)
-		game.removeVisual(self)
-		spawner.aSpawnear().add(self)
+		spawner.despawnear(self)
 	}
 }
 
@@ -80,9 +72,7 @@ object obstaculo3 {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -102,9 +92,7 @@ object obstaculo4 {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -124,9 +112,7 @@ object obstaculo5 {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -146,9 +132,7 @@ object obstaculo6 {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -168,9 +152,7 @@ object obstaculo7 {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -199,9 +181,7 @@ object moneda {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			
@@ -234,9 +214,7 @@ object moneda2 {
 	
 	method avanzar() {
 		if (position.y() == 0) {
-			advancer.sacarElementoQueAvanza(self)
-			game.removeVisual(self)
-			spawner.aSpawnear().add(self)
+			spawner.despawnear(self)
 		}
 		else {
 			position = position.down(1)			

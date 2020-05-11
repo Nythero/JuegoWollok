@@ -23,7 +23,7 @@ object detector {
 		game.onTick(1000, "avanzar", advancer.avanzar())
 	}
 	
-	method detectarColiciones() {
+	method detectarColisiones() {
 		game.onCollideDo(personaje, {otro => otro.colisionar(personaje)})
 	}
 	
