@@ -1,22 +1,18 @@
 import wollok.game.*
-import personaje.*
 import detector.*
 import configuracion.*
-import spawner.*
 
-program abc {
+program juego {
 
-	configuracion.configuracionInicial()
+	detector.detectarConfiguracionInicial()
 	
-	game.addVisual(personaje)
-	
+	detector.detectarSpawn()
+		
 	detector.detectarTeclas()
 	
 	detector.detectarAvance()
 	
-	detector.detectarColiciones()
-	
-	spawner.spawn()
+	detector.detectarColisiones()
 	
 	game.start()
 	
