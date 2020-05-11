@@ -1,3 +1,9 @@
-#### TP grupal: 
+#### Trabajo Práctico: Objetos Racing
 
-Hacer un juego en wollok game que muestre los conocimientos de la materia
+
+## Alumnos:
+Gonzalez, Agustin
+Santoleri, Luciano
+Perez, Juan Francisco
+
+
