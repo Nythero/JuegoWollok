@@ -1,13 +1,12 @@
 import wollok.game.*
 import detector.*
 import configuracion.*
-import spawner.*
 
-program abc {
+program juego {
 
-	configuracion.configuracionInicial()
+	detector.detectarConfiguracionInicial()
 	
-	spawner.spawn()
+	detector.detectarSpawn()
 		
 	detector.detectarTeclas()
 	

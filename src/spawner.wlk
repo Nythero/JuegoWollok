@@ -11,7 +11,7 @@ object spawner {
 	
 	var property aSpawnear = [obstaculo, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6, obstaculo7, moneda, moneda2, gas]
 	
-	method spawn(){
+	method spawnInicial(){
 		game.addVisual(personaje)
 		game.onTick(1000, "spawnear", {self.spawnearElementoQueAvanza(aSpawnear.anyOne())})
 	}

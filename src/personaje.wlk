@@ -16,7 +16,7 @@ object personaje {
 	
 	//Metodos
 	method moverHacia(x){
-		position = game.at((position.x() + x).max(0).min(configuracion.trackWidth()-1) , position.y())
+		position = game.at((position.x() + x).max(0).min(configuracion.trackWidth() - 1) , position.y())
 	}
 	
 	method chocar(){

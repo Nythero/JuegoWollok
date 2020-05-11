@@ -99,20 +99,14 @@ object moneda {
 	var property position
 	var property image = "moneda2.png"
 	
-	var property puntos = 5
+	var property puntosOtorgados = 5
 	
 	//Metodos
 	
-	method aparece() {
-		game.addVisualIn(self,spawner.posicionLibreEnFilaSuperior())
-	}
-	
 	method colisionar(jugador) {
-		puntaje.sumarPuntos(puntos)
-		advancer.sacarElementoQueAvanza(self)
-		game.removeVisual(self)
-		game.say(jugador, "puntaje:"+puntaje.puntaje()+"")
-			spawner.aSpawnear().add(self)
+		puntaje.sumarPuntos(puntosOtorgados)
+		game.say(jugador, "Puntaje:" + puntaje.puntaje() + "")
+		spawner.despawnear(self)
 	}
 }
 
@@ -123,19 +117,13 @@ object moneda2 {
 	var property position
 	var property image = "moneda2.png"
 	
-	var property puntos = 5
+	var property puntosOtorgados = 5
 	
 	//Metodos
 	
-	method aparece() {
-		game.addVisualIn(self,spawner.posicionLibreEnFilaSuperior())
-	}
-	
 	method colisionar(jugador) {
-		puntaje.sumarPuntos(puntos)
-		advancer.sacarElementoQueAvanza(self)
-		game.removeVisual(self)
-		game.say(jugador, "puntaje:"+puntaje.puntaje()+"")
-			spawner.aSpawnear().add(self)
+		puntaje.sumarPuntos(puntosOtorgados)
+		game.say(jugador, "Puntaje:" + puntaje.puntaje() + "")
+		spawner.despawnear(self)
 	}
 }
