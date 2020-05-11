@@ -1,10 +1,13 @@
 import wollok.game.*
+import configuracion.*
 import personaje.*
 import randomizer.*
 import advancer.*
 import obstaculo.*
 
 object spawner {
+	const spawnWidth = configuracion.trackWidth()
+	const spawnHeight = configuracion.trackHeight()
 	
 	var property aSpawnear = [obstaculo, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6, obstaculo7, moneda, moneda2, gas]
 	
@@ -32,8 +35,8 @@ object spawner {
 	
 	method posicionesEnFilaSuperior() {
 		return
-			randomizer.listaDeEnterosEntre(0, game.width() - 1).map(
-				{ n => game.at(n, game.height() - 1) }
+			randomizer.listaDeEnterosEntre(0, spawnWidth - 1).map(
+				{ n => game.at(n, spawnHeight - 1) }
 			)
 	}
 	
