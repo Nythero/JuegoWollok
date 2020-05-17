@@ -10,7 +10,7 @@ object spawner {
 	
 	var aSpawnear = [obstaculo, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6, obstaculo7, moneda, moneda2, gas]
 	
-	method elementoASpawnear(){
+  method elementoASpawnear(){
 		return aSpawnear.anyOne()
 	}
 	
