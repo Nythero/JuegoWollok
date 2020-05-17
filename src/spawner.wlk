@@ -1,6 +1,5 @@
 import wollok.game.*
 import configuracion.*
-import personaje.*
 import randomizer.*
 import advancer.*
 import obstaculo.*
@@ -9,11 +8,10 @@ object spawner {
 	const spawnWidth = configuracion.trackWidth()
 	const spawnHeight = configuracion.trackHeight()
 	
-	var property aSpawnear = [obstaculo, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6, obstaculo7, moneda, moneda2, gas]
+	var aSpawnear = [obstaculo, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6, obstaculo7, moneda, moneda2, gas]
 	
-	method spawnInicial(){
-		game.addVisual(personaje)
-		game.onTick(1000, "spawnear", { self.spawnearElementoQueAvanza(aSpawnear.anyOne()) })
+  method elementoASpawnear(){
+		return aSpawnear.anyOne()
 	}
 	
 	method spawnearElementoQueAvanza(elemento) {
@@ -51,6 +49,6 @@ object spawner {
 	method despawnear(elemento) {
 		advancer.sacarElementoQueAvanza(elemento)
 		game.removeVisual(elemento)
-		self.aSpawnear().add(elemento)		
+		aSpawnear.add(elemento)		
 	}
 }

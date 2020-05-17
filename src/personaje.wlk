@@ -1,8 +1,7 @@
 import wollok.game.*
 import puntaje.*
-import advancer.*
-import spawner.*
 import configuracion.*
+import detector.*
 
 object personaje {
 	
@@ -10,7 +9,7 @@ object personaje {
 	
 	var property position = game.at(2,0)
 	var property image = "auto_rojo2.png"
-	var velocidad = 1
+	var velocidad = 5
 	
 	//Atributos
 	
@@ -20,20 +19,16 @@ object personaje {
 	}
 	
 	method sumaPunto(puntos) {
-		
 		puntaje.sumarPuntos(puntos)
 	}
 	
 	method aumentarVelocidad(cantidad){
 		velocidad += cantidad/100
-		game.removeTickEvent("avanzar")
-		game.onTick(1000/velocidad, "avanzar", { advancer.avanzar() })
-		game.removeTickEvent("spawnear")
-		game.onTick(1000/velocidad, "spawnear", {spawner.spawnearElementoQueAvanza(spawner.aSpawnear().anyOne())})
+		detector.detectarVelocidad(velocidad)
 	}
 	
-	method avanzar(){
-		game.onTick(1000, "avanzar", { advancer.avanzar() })
+	method velocidad(){
+		return velocidad
 	}
 	
 	//Metodos

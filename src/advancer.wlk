@@ -13,8 +13,8 @@ object advancer {
 	
 	method avanzar() {
 		elementosQueAvanzan.forEach(
-				{ elemento => self.avanzarElemento(elemento) }
-			)
+		  { elemento => self.avanzarElemento(elemento) }
+		)
 	}
 	
 	method avanzarElemento(elemento) {
