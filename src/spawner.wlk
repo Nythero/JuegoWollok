@@ -4,18 +4,47 @@ import math.*
 import advancer.*
 import obstaculo.*
 import numbers.*
+import lists.*
 
 object spawner {
 	const spawnWidth = configuracion.trackWidth()
 	const spawnPosition = configuracion.trackHeight()
 	
-	var aSpawnear = [obstaculo, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6, obstaculo7, moneda, moneda2, gas]
+	var aSpawnear = []
 	
-  	method elementoASpawnear(){
-		return aSpawnear.anyOne()
+	method iniciarSpawn(cantO, cantG, cantM){
+		self.crearASpawnear(cantO, cantG, cantM)
 	}
 	
-	method spawnearElementoQueAvanza(elemento) {
+	method aSpawnear(){
+		return aSpawnear
+	}
+	
+	method crearASpawnear(cantO, cantG, cantM){
+		self.agregarVariosASpawnear({new Obstaculo()}, cantO)
+		self.agregarVariosASpawnear({new Moneda()}, cantM)
+		self.agregarVariosASpawnear({new Gas()}, cantG)
+		self.balancearASpawnear()
+	}
+	
+	method balancearASpawnear(){
+		aSpawnear = list.ordenarAlAzar(aSpawnear)
+	}
+	
+	method agregarVariosASpawnear(bloque, cantidad){
+		if (cantidad > 0){
+			aSpawnear.add(bloque.apply())
+			self.agregarVariosASpawnear(bloque, cantidad - 1)
+		}
+	}
+	
+  	method elementoASpawnear(){
+		return aSpawnear.head()
+	}
+	
+	method spawnearElementoQueAvanza() {
+		const elemento = self.elementoASpawnear()
+		aSpawnear.remove(elemento)
 		elemento.position(self.posicionLibreEnFilaSuperior())
 		game.addVisual(elemento)
 		advancer.agregarElementoQueAvanza(elemento)
@@ -23,7 +52,7 @@ object spawner {
 	}
 	
 	method posicionLibreEnFilaSuperior() {
-		return math.elementoRandomDeLista(self.posicionesLibresEnFilaSuperior())
+		return math.elementoRandomDeLista(self.posicionesEnFilaSuperior())
 	}
 	
 	method posicionesLibresEnFilaSuperior() {
@@ -50,6 +79,6 @@ object spawner {
 	method despawnear(elemento) {
 		advancer.sacarElementoQueAvanza(elemento)
 		game.removeVisual(elemento)
-		aSpawnear.add(elemento)		
+		aSpawnear.add(elemento)
 	}
 }
