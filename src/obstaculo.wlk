@@ -3,7 +3,7 @@ import spawner.*
 import advancer.*
 import puntaje.*
 
-object obstaculo {
+class Obstaculo {
 
 	var property image = "auto_verde2.png"
 	
@@ -14,18 +14,7 @@ object obstaculo {
 	}
 }
 
-object obstaculo2 {
-
-	var property image = "auto_verde2.png"
-	
-	var property position
-	
-	method colisionar(otro){
-		game.stop()
-	}
-}
-
-object gas {
+class Gas {
 
 	var property image = "gas.png"
 	
@@ -37,62 +26,7 @@ object gas {
 	}
 }
 
-object obstaculo3 {
-
-	var property image = "auto_verde2.png"
-	
-	var property position
-	
-	method colisionar(otro){
-		game.stop()
-	}
-}
-
-object obstaculo4 {
-
-	var property image = "auto_verde2.png"
-	
-	var property position
-	
-	method colisionar(otro){
-		game.stop()
-	}
-}
-
-object obstaculo5 {
-
-	var property image = "auto_verde2.png"
-	
-	var property position
-	
-	method colisionar(otro){
-		game.stop()
-	}
-}
-
-object obstaculo6 {
-
-	var property image = "auto_verde2.png"
-	
-	var property position
-	
-	method colisionar(otro){
-		game.stop()
-	}
-}
-
-object obstaculo7 {
-
-	var property image = "auto_verde2.png"
-	
-	var property position
-	
-	method colisionar(otro){
-		game.stop()
-	}
-}
-
-object moneda {
+class Moneda {
 	
 	//Atributos
 	
@@ -107,21 +41,5 @@ object moneda {
 		puntaje.sumarPuntos(puntosOtorgados)
 		spawner.despawnear(self)
 	}
-}
-
-object moneda2 {
 	
-	//Atributos
-	
-	var property position
-	var property image = "moneda2.png"
-	
-	var property puntosOtorgados = 5
-	
-	//Metodos
-	
-	method colisionar(jugador) {
-		puntaje.sumarPuntos(puntosOtorgados)
-		spawner.despawnear(self)
-	}
 }

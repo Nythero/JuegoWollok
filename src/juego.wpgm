@@ -10,7 +10,7 @@ program juego {
 	
 	detector.detectarTeclas()
 	
-	detector.detectarAvance()
+	detector.detectarInicio()
 	
 	detector.detectarColisiones()
 	

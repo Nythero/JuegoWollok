@@ -15,10 +15,10 @@ object detector {
 	method detectarTeclas(){
 		keyboard.a().onPressDo({personaje.moverHacia(-1)})
 		keyboard.d().onPressDo({personaje.moverHacia(1)})
-		keyboard.space().onPressDo({game.start()})
 	}
 	
-	method detectarAvance(){
+	method detectarInicio(){
+		spawner.iniciarSpawn(6,2,2)
 		game.onTick(1000/personaje.velocidad(), "avanzar", {reloj.procesar()})
 	}
 	

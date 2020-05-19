@@ -7,7 +7,10 @@ import wollok.game.*
 object reloj {
 
 	method procesar(){
-		spawner.spawnearElementoQueAvanza(spawner.elementoASpawnear())
+		if(spawner.aSpawnear() == []){
+			spawner.crearASpawnear(6, 2, 2)
+		}
+		spawner.spawnearElementoQueAvanza()
 		advancer.avanzar()
 		fondo.avanzar()
 	}
