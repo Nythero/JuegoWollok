@@ -105,7 +105,6 @@ object moneda {
 	
 	method colisionar(jugador) {
 		puntaje.sumarPuntos(puntosOtorgados)
-		game.say(jugador, "Puntaje:" + puntaje.puntaje() + "")
 		spawner.despawnear(self)
 	}
 }
@@ -123,7 +122,6 @@ object moneda2 {
 	
 	method colisionar(jugador) {
 		puntaje.sumarPuntos(puntosOtorgados)
-		game.say(jugador, "Puntaje:" + puntaje.puntaje() + "")
 		spawner.despawnear(self)
 	}
 }

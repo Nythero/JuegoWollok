@@ -1,16 +1,17 @@
 import wollok.game.*
 import configuracion.*
-import randomizer.*
+import math.*
 import advancer.*
 import obstaculo.*
+import numbers.*
 
 object spawner {
 	const spawnWidth = configuracion.trackWidth()
-	const spawnHeight = configuracion.trackHeight()
+	const spawnPosition = configuracion.trackHeight()
 	
 	var aSpawnear = [obstaculo, obstaculo2, obstaculo3, obstaculo4, obstaculo5, obstaculo6, obstaculo7, moneda, moneda2, gas]
 	
-  method elementoASpawnear(){
+  	method elementoASpawnear(){
 		return aSpawnear.anyOne()
 	}
 	
@@ -22,7 +23,7 @@ object spawner {
 	}
 	
 	method posicionLibreEnFilaSuperior() {
-		return randomizer.elementoRandomDeLista(self.posicionesLibresEnFilaSuperior())
+		return math.elementoRandomDeLista(self.posicionesLibresEnFilaSuperior())
 	}
 	
 	method posicionesLibresEnFilaSuperior() {
@@ -33,8 +34,8 @@ object spawner {
 	
 	method posicionesEnFilaSuperior() {
 		return
-			randomizer.listaDeEnterosEntre(0, spawnWidth - 1).map(
-				{ n => game.at(n, spawnHeight - 1) }
+			math.listaDeEnterosEntre(0, spawnWidth - 1).map(
+				{ n => game.at(n, spawnPosition) }
 			)
 	}
 	

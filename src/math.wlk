@@ -1,6 +1,6 @@
 import wollok.game.*
 
-object randomizer {
+object math {
 	
 	method elementoRandomDeLista(lista) {
 		return lista.get(self.enteroRandomEntre(0, lista.size() - 1))
@@ -18,5 +18,19 @@ object randomizer {
 				[e2]
 			else
 				[e1] + self.listaDeEnterosEntre(e1 + 1, e2)
+	}
+	
+	method numALista(n) {
+		return
+			if (n < 0)
+				"Error: el nro debe ser mayor o igual a cero"
+			else if (n < 10)
+				[n]
+			else
+				self.numALista(n.div(10)) + [self.ultimoDigito(n)]
+	}
+	
+	method ultimoDigito(n) {
+		return (n - n.div(10) * 10)
 	}
 }

@@ -2,11 +2,12 @@ import wollok.game.*
 import personaje.*
 import obstaculo.*
 import spawner.*
-import randomizer.*
 import advancer.*
 import configuracion.*
 import fondo.*
 import reloj.*
+import puntaje.*
+import numbers.*
 
 object detector {
 	//Metodos
@@ -37,6 +38,10 @@ object detector {
 	method detectarVelocidad(velocidad){
 		game.removeTickEvent("avanzar")
 		game.onTick(1000/velocidad, "avanzar", {reloj.procesar()})
+	}
+	
+	method detectarPuntaje() {
+		puntaje.mostrarPuntaje()
 	}
 	
 	//Metodos
