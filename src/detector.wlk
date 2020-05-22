@@ -18,7 +18,6 @@ object detector {
 	}
 	
 	method detectarInicio(){
-		spawner.iniciarSpawn(6,2,2)
 		game.onTick(1000/personaje.velocidad(), "avanzar", {reloj.procesar()})
 	}
 	
