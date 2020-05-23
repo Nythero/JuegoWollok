@@ -33,4 +33,11 @@ object math {
 	method ultimoDigito(n) {
 		return (n - n.div(10) * 10)
 	}
+	
+	
+	//Agarra un numero random de 3 cifras y lo divide por el weight
+	method randomByWeight(weight){
+		var max = 10**(-3)/weight
+		return 0.randomUpTo(max)
+	}
 }
