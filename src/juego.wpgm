@@ -6,15 +6,7 @@ program juego {
 
 	detector.detectarConfiguracionInicial()
 	
-	detector.detectarVisuales()
-	
-	detector.detectarTeclas()
-	
-	detector.detectarInicio()
-	
-	detector.detectarColisiones()
-	
-	detector.detectarPuntaje()
+	detector.iniciarEstado()
 	
 	game.start()
 	

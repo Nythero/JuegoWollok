@@ -3,8 +3,6 @@ import configuracion.*
 import math.*
 import advancer.*
 import obstaculo.*
-import numbers.*
-import lists.*
 import factories.*
 
 object spawner {
@@ -13,6 +11,7 @@ object spawner {
 	
 	var factories = [factoryObstaculos,factoryMonedas,factoryGases]
 	
+	//Cada factory tira un "dado" y el que tiene el numero mas chico es el elegido
 	method elegirFactory(){
 		return factories.min({ factory => math.randomByWeight(factory.spawnWeight())})
 	}
@@ -25,24 +24,11 @@ object spawner {
 	}
 	
 	method posicionLibreEnFilaSuperior() {
-		return math.elementoRandomDeLista(self.posicionesEnFilaSuperior())
+		return game.at(self.carrilAlAzar(),spawnPosition)
 	}
 	
-	method posicionesLibresEnFilaSuperior() {
-		return self.posicionesEnFilaSuperior().filter(
-			{ posicion => self.esPosicionLibre(posicion) }
-		)
-	}
-	
-	method posicionesEnFilaSuperior() {
-		return
-			math.listaDeEnterosEntre(0, spawnWidth - 1).map(
-				{ n => game.at(n, spawnPosition) }
-			)
-	}
-	
-	method esPosicionLibre(posicion) {
-		return game.getObjectsIn(posicion).size() == 0
+	method carrilAlAzar() {
+		return math.enteroRandomEntre(0, spawnWidth - 1)
 	}
 	
 	method despawnear(elemento) {

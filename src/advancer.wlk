@@ -25,4 +25,9 @@ object advancer {
 			elemento.position(elemento.position().down(1))
 		}
 	}
+	
+	method start(){
+		elementosQueAvanzan.clear()
+		
+	}
 }
