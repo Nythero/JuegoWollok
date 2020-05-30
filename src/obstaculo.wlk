@@ -2,6 +2,7 @@ import wollok.game.*
 import spawner.*
 import advancer.*
 import puntaje.*
+import detector.*
 
 class Obstaculo {
 
@@ -10,7 +11,7 @@ class Obstaculo {
 	var property position
 	
 	method colisionar(otro){
-		game.stop()
+		detector.cambiarEstado()
 	}
 }
 

@@ -1,0 +1,10 @@
+import wollok.game.*
+
+
+program abc {
+	
+	keyboard.space().onPressDo({game.start()})
+	
+	game.start()
+
+}

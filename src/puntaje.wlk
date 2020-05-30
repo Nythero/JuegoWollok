@@ -7,10 +7,13 @@ import numbers.*
 import writer.*
 
 object puntaje {
-	var property puntaje = 0
+	var property puntaje
+	
+	var multiplicador
 	
 	// Esta constante indica la posicion del dígito de la unidad del puntaje.
 	// La posición del resto de los dígitos se calcula en base a ella.
+	
 	const puntajePosition = game.at(
 		configuracion.trackWidth() - 1,
 		configuracion.trackHeight() + 1
@@ -19,12 +22,22 @@ object puntaje {
 	var puntajeMostrado
 	
 	method mostrarPuntaje() {
+		puntaje = 0
+		multiplicador = 1
 		puntajeMostrado = new Writing(writing = puntaje, position = puntajePosition)
 		puntajeMostrado.displayWriting()
 	}
 	
 	method sumarPuntos(puntos) {
-		puntaje += puntos
-		puntajeMostrado.refreshWriting(puntaje)
+		puntaje += self.aplicarMultiplicador(puntos)
+		puntajeMostrado.refreshWriting(puntaje.truncate(0))
+	}
+	
+	method aplicarMultiplicador(puntos){
+		return puntos * multiplicador
+	}
+	
+	method actualizarMultiplicador(_multiplicador){
+		multiplicador += _multiplicador
 	}
 }

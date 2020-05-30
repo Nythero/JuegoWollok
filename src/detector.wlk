@@ -8,39 +8,31 @@ import fondo.*
 import reloj.*
 import puntaje.*
 import numbers.*
+import estados.*
 
 object detector {
+	
+	var estado = pausado
+	
+	
 	//Metodos
-	
-	method detectarTeclas(){
-		keyboard.a().onPressDo({personaje.moverHacia(-1)})
-		keyboard.d().onPressDo({personaje.moverHacia(1)})
-	}
-	
-	method detectarInicio(){
-		game.onTick(1000/personaje.velocidad(), "avanzar", {reloj.procesar()})
-	}
-	
-	method detectarColisiones() {
-		game.onCollideDo(personaje, {otro => otro.colisionar(personaje)})
-	}
-	
-	method detectarVisuales(){
-		game.addVisual(fondo)
-		game.addVisual(personaje)
-	}
 	
 	method detectarConfiguracionInicial() {
 		configuracion.configuracionInicial()
 	}
 	
-	method detectarVelocidad(velocidad){
-		game.removeTickEvent("avanzar")
-		game.onTick(1000/velocidad, "avanzar", {reloj.procesar()})
+	method cambiarEstado(){
+		if (estado == pausado){
+			estado = enJuego
+		}
+		else {
+			estado = pausado
+		}
+		self.iniciarEstado()
 	}
 	
-	method detectarPuntaje() {
-		puntaje.mostrarPuntaje()
+	method iniciarEstado(){
+		estado.iniciar()
 	}
 	
 	//Metodos
