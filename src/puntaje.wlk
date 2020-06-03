@@ -15,8 +15,8 @@ object puntaje {
 	// La posición del resto de los dígitos se calcula en base a ella.
 	
 	const puntajePosition = game.at(
-		configuracion.trackWidth() - 1,
-		configuracion.trackHeight() + 1
+		configuracion.gameWidth() - 1,
+		configuracion.gameHeight() - 2
 	)
 	
 	var puntajeMostrado
