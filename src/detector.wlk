@@ -13,6 +13,7 @@ import estados.*
 object detector {
 	
 	var estado = pausado
+	const estados = [pausado, enJuego]
 	
 	
 	//Metodos
@@ -22,12 +23,15 @@ object detector {
 	}
 	
 	method cambiarEstado(){
-		if (estado == pausado){
+		/*if (estado == pausado){
 			estado = enJuego
 		}
 		else {
 			estado = pausado
-		}
+		}*/
+		estados.add(estados.get(0))
+		estados.remove(estados.get(0))
+		estado = estados.get(0)
 		self.iniciarEstado()
 	}
 	

@@ -6,18 +6,19 @@ object fondo {
 	
 	var property position = game.at(0, 0)
 	
+	const fondos = ["fondo2.png", "fondo1.png"]
+	
 	method iniciar(){
 		game.addVisual(self)
 	}
 	
 	method avanzar(){
-		if (image == "fondo1.png"){
-			image = "fondo2.png"
-		}
-		else{
-			image = "fondo1.png"
-		}
+		fondos.add(fondos.get(0))
+		fondos.remove(fondos.get(0))
+		image = fondos.get(0)
 	}
+	
+	
 	
 	method colisionar(personaje) {
 		
