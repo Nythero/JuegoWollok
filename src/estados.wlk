@@ -29,7 +29,6 @@ object enJuego {
 	method detectarTeclas(){
 		keyboard.a().onPressDo({ personaje.moverHacia(-1) })
 		keyboard.d().onPressDo({ personaje.moverHacia(1) })
-		keyboard.space().onPressDo({ game.say(personaje, ""+advancer.elementosQueAvanzan().size())})
 	}
 	
 	method iniciar(){
