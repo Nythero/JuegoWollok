@@ -12,7 +12,7 @@ object fondo {
 		game.addVisual(self)
 	}
 	
-	method avanzar(){		
+	method avanzar(){
 		fondos.add(fondos.get(0))
 		fondos.remove(fondos.get(0))
 		image = fondos.get(0)
