@@ -4,8 +4,8 @@ import wollok.game.*
 object configuracion {
 	
 	const property gameHeight = 11
-	const property gameWidth = 6
-	const property trackHeight = 9
+	const property gameWidth = 9
+	const property trackHeight = 10
 	const property trackWidth = 4
 	
 	method configuracionInicial(){
