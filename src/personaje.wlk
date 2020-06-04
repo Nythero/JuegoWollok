@@ -38,6 +38,5 @@ object personaje {
 	method velocidad(){
 		return velocidad
 	}
-	
 	//Metodos
 }

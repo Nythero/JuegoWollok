@@ -12,7 +12,7 @@ import estados.*
 
 object detector {
 	
-	var estado = pausado
+	var property estado = pausado
 	const estados = [pausado, enJuego]
 	
 	
