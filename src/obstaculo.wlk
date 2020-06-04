@@ -42,5 +42,7 @@ class Moneda {
 		puntaje.sumarPuntos(puntosOtorgados)
 		spawner.despawnear(self)
 	}
-	
+	method modificarPuntosQueOtorga(puntos) {
+		puntosOtorgados = puntos
+	}
 }

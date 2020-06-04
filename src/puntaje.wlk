@@ -19,7 +19,7 @@ object puntaje {
 		configuracion.gameHeight() - 2
 	)
 	
-	var puntajeMostrado
+	var property puntajeMostrado
 	
 	method mostrarPuntaje() {
 		puntaje = 0
