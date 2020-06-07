@@ -21,13 +21,17 @@ describe "Probando los obstaculos" {
 	
 	test "un Auto verde tiene por imagen auto-verde2.png y al colisionar con otro obstaculo cambia de estado" {
 		
-		/*assert.equals("auto_verde2.png",unAutoVerde.image())
+		assert.equals("auto_verde2.png",unAutoVerde.image())
 		unAutoVerde.colisionar(personaje)
-		assert.equals("enJuego",detector.estado())]]*/
+		assert.that(detector.estaEnJuego())
 		}
 	test "una Moneda es de valor 5 y tiene como imagen moneda2.png" {
 			
 		assert.equals(5,unaMoneda.puntosOtorgados())
 		assert.equals("moneda2.png",unaMoneda.image())
+	}
+	test "El Gas tiene como imagen en el juego a gas.png" {
+		
+		assert.equals("gas.png",tanqueDeGasolina.image())
 	}
 }

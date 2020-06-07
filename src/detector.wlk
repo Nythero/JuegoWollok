@@ -39,5 +39,9 @@ object detector {
 		estado.iniciar()
 	}
 	
+	method estaEnJuego() {
+		return estado == enJuego
+	}
+	
 	//Metodos
 }

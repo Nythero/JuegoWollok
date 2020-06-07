@@ -1,0 +1,9 @@
+import obstaculo.*
+import wollok.game.*
+import spawner.*
+import advancer.*
+import puntaje.*
+import detector.*
+import personaje.*
+
+
