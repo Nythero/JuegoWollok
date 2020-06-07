@@ -5,5 +5,8 @@ import advancer.*
 import puntaje.*
 import detector.*
 import personaje.*
+import configuracion.*
+
+
 
 
