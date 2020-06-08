@@ -29,6 +29,8 @@ class Obstaculo inherits ElementoQueAvanza {
 
 class ObstaculoMovedizo inherits Obstaculo {
 	
+	var property direccionMovimiento = [-1, 1].anyOne()
+	
 	override method image() = "auto_azul2.png"
 	
 	override method avanzar() {
@@ -38,14 +40,15 @@ class ObstaculoMovedizo inherits Obstaculo {
 	
 	method moverLateralmente() {
 		if (self.position().x() == 0) {
-			self.position(self.position().right(1)
-			)
+			direccionMovimiento = 1
+			self.position(self.position().right(direccionMovimiento))
 		}
 		else if (self.position().x() == configuracion.trackWidth() - 1) {
-			self.position(self.position().left(1))
+			direccionMovimiento = -1
+			self.position(self.position().right(direccionMovimiento))
 		}
 		else {
-			self.position(self.position().left([-1, 1].anyOne()))
+			self.position(self.position().right(direccionMovimiento))
 		}
 	}
 	
