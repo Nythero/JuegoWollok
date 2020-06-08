@@ -70,15 +70,18 @@ class Moneda inherits ElementoQueAvanza {
 	//Atributos
 	var property image = "moneda2.png"
 	
-	var property puntosOtorgados = 5
+	method puntosOtorgados() = 5
 	
 	//Metodos
 	
 	method colisionar(jugador) {
-		puntaje.sumarPuntos(puntosOtorgados)
+		puntaje.sumarPuntos(self.puntosOtorgados())
 		spawner.despawnear(self)
 	}
-	method modificarPuntosQueOtorga(puntos) {
-		puntosOtorgados = puntos
-	}
+}
+
+class MegaMoneda inherits Moneda {
+	
+	override method image() = "megaMoneda.png"
+	override method puntosOtorgados() = 25
 }

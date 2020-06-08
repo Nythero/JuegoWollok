@@ -6,7 +6,7 @@ object fondo {
 	
 	var property position = game.at(0, 0)
 	
-	const fondos = ["fondo2.png", "fondo1.png"]
+	const fondos = ["fondo1.png", "fondo2.png"]
 	
 	method iniciar(){
 		game.addVisual(self)

@@ -27,6 +27,15 @@ object factoryMonedas{
 	}
 }
 
+object factoryMegaMonedas{
+	
+	var property spawnWeight = 0.5
+	
+	method crear(){
+		return new MegaMoneda()
+	}
+}
+
 object factoryGases{
 	
 	var property spawnWeight = 2
