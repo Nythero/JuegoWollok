@@ -4,22 +4,31 @@ import advancer.*
 import puntaje.*
 import detector.*
 
-class Obstaculo {
+class ElementoQueAvanza {
+	var property position
+	
+	method avanzar() {		
+		if (self.position().y() == 0) {
+			spawner.despawnear(self)
+		}
+		else {
+			self.position(self.position().down(1))
+		}
+	}
+}
+
+class Obstaculo inherits ElementoQueAvanza {
 
 	var property image = "auto_verde2.png"
-	
-	var property position
 	
 	method colisionar(otro){
 		detector.cambiarEstado()
 	}
 }
 
-class Gas {
+class Gas inherits ElementoQueAvanza {
 
 	var property image = "gas.png"
-	
-	var property position
 	
 	method colisionar(otro){
 		otro.aumentarVelocidad(10)
@@ -27,11 +36,9 @@ class Gas {
 	}
 }
 
-class Moneda {
+class Moneda inherits ElementoQueAvanza {
 	
 	//Atributos
-	
-	var property position
 	var property image = "moneda2.png"
 	
 	var property puntosOtorgados = 5

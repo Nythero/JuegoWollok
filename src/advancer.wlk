@@ -13,17 +13,8 @@ object advancer {
 	
 	method avanzar() {
 		elementosQueAvanzan.forEach(
-		  { elemento => self.avanzarElemento(elemento) }
+		  { elemento => elemento.avanzar() }
 		)
-	}
-	
-	method avanzarElemento(elemento) {
-		if (elemento.position().y() == 0) {
-			spawner.despawnear(elemento)
-		}
-		else {
-			elemento.position(elemento.position().down(1))
-		}
 	}
 	
 	method start(){
