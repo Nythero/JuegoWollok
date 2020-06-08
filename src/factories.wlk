@@ -8,6 +8,16 @@ object factoryObstaculos{
 		return new Obstaculo()
 	}
 }
+
+object factoryObstaculosMovedizos {
+
+	var property spawnWeight = 1
+	
+	method crear(){
+		return new ObstaculoMovedizo()
+	}
+}
+
 object factoryMonedas{
 	
 	var property spawnWeight = 3
