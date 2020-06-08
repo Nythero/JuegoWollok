@@ -30,6 +30,7 @@ class Obstaculo inherits ElementoQueAvanza {
 class ObstaculoMovedizo inherits Obstaculo {
 	
 	var property direccionMovimiento = [-1, 1].anyOne()
+	const property direccionesMovimiento
 	
 	override method image() = "auto_azul2.png"
 	
@@ -39,16 +40,16 @@ class ObstaculoMovedizo inherits Obstaculo {
 	}
 	
 	method moverLateralmente() {
+		self.seleccionarDireccion()
+		self.position(self.position().right(direccionMovimiento))
+	}
+	
+	method seleccionarDireccion() {
 		if (self.position().x() == 0) {
 			direccionMovimiento = 1
-			self.position(self.position().right(direccionMovimiento))
 		}
 		else if (self.position().x() == configuracion.trackWidth() - 1) {
 			direccionMovimiento = -1
-			self.position(self.position().right(direccionMovimiento))
-		}
-		else {
-			self.position(self.position().right(direccionMovimiento))
 		}
 	}
 	
