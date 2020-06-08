@@ -3,23 +3,61 @@ import spawner.*
 import advancer.*
 import puntaje.*
 import detector.*
+import configuracion.*
 
-class Obstaculo {
-
-	var property image = "auto_verde2.png"
-	
+class ElementoQueAvanza {
 	var property position
+	
+	method avanzar() {
+		if (self.position().y() == 0) {
+			spawner.despawnear(self)
+		}
+		else {
+			self.position(self.position().down(1))
+		}
+	}
+}
+
+class Obstaculo inherits ElementoQueAvanza {
+
+	method image() = "auto_verde2.png"
 	
 	method colisionar(otro){
 		detector.cambiarEstado()
 	}
 }
 
-class Gas {
+class ObstaculoMovedizo inherits Obstaculo {
+	
+	var property direccionMovimiento = [-1, 1].anyOne()
+	const property direccionesMovimiento
+	
+	override method image() = "auto_azul2.png"
+	
+	override method avanzar() {
+		self.moverLateralmente()
+		super()
+	}
+	
+	method moverLateralmente() {
+		self.seleccionarDireccion()
+		self.position(self.position().right(direccionMovimiento))
+	}
+	
+	method seleccionarDireccion() {
+		if (self.position().x() == 0) {
+			direccionMovimiento = 1
+		}
+		else if (self.position().x() == configuracion.trackWidth() - 1) {
+			direccionMovimiento = -1
+		}
+	}
+	
+}
+
+class Gas inherits ElementoQueAvanza {
 
 	var property image = "gas.png"
-	
-	var property position
 	
 	method colisionar(otro){
 		otro.aumentarVelocidad(10)
@@ -27,22 +65,23 @@ class Gas {
 	}
 }
 
-class Moneda {
+class Moneda inherits ElementoQueAvanza {
 	
 	//Atributos
-	
-	var property position
 	var property image = "moneda2.png"
 	
-	var property puntosOtorgados = 5
+	method puntosOtorgados() = 5
 	
 	//Metodos
 	
 	method colisionar(jugador) {
-		puntaje.sumarPuntos(puntosOtorgados)
+		puntaje.sumarPuntos(self.puntosOtorgados())
 		spawner.despawnear(self)
 	}
-	method modificarPuntosQueOtorga(puntos) {
-		puntosOtorgados = puntos
-	}
+}
+
+class MegaMoneda inherits Moneda {
+	
+	override method image() = "megaMoneda.png"
+	override method puntosOtorgados() = 25
 }

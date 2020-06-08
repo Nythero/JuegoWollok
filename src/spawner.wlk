@@ -9,7 +9,13 @@ object spawner {
 	const spawnWidth = configuracion.trackWidth()
 	const spawnPosition = configuracion.trackHeight()
 	
-	var factories = [factoryObstaculos,factoryMonedas,factoryGases]
+	const factories = [
+		factoryObstaculos,
+		factoryObstaculosMovedizos,
+		factoryMonedas,
+		factoryMegaMonedas,
+		factoryGases
+	]
 	
 	//Cada factory tira un "dado" y el que tiene el numero mas chico es el elegido
 	method elegirFactory(){
