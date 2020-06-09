@@ -6,6 +6,7 @@ import puntaje.*
 import reloj.*
 import fondo.*
 import advancer.*
+import velocidad.*
 
 object pausado {
 	
@@ -36,7 +37,8 @@ object enJuego {
 		advancer.start()
 		fondo.iniciar()
 		personaje.iniciar()
-		self.iniciarAvance(personaje.velocidad())
+		velocidad.inicializar()
+		self.iniciarAvance(velocidad.valor())
 		puntaje.mostrarPuntaje()
 		self.iniciarColisiones()
 		self.detectarTeclas()

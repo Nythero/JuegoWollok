@@ -4,6 +4,7 @@ import advancer.*
 import puntaje.*
 import detector.*
 import configuracion.*
+import velocidad.*
 
 class ElementoQueAvanza {
 	var property position
@@ -60,7 +61,7 @@ class Gas inherits ElementoQueAvanza {
 	var property image = "gas.png"
 	
 	method colisionar(otro){
-		otro.aumentarVelocidad(10)
+		velocidad.aumentarVelocidad(10)
 		spawner.despawnear(self)
 	}
 }
