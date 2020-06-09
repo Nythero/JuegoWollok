@@ -2,11 +2,10 @@ import wollok.game.*
 import detector.*
 import personaje.*
 import drawer.*
-import puntaje.*
 import reloj.*
 import fondo.*
 import advancer.*
-import velocidad.*
+import magnitudes.*
 
 object pausado {
 	
@@ -39,7 +38,7 @@ object enJuego {
 		personaje.iniciar()
 		velocidad.inicializar()
 		self.iniciarAvance(velocidad.valor())
-		puntaje.mostrarPuntaje()
+		puntaje.inicializar()
 		self.iniciarColisiones()
 		self.detectarTeclas()
 	}
@@ -48,11 +47,11 @@ object enJuego {
 		game.onCollideDo(personaje, {otro => otro.colisionar(personaje)})
 	}
 	
-	method iniciarAvance(velocidad){
-		game.onTick(1000/velocidad, "avanzar", {reloj.procesar()})
+	method iniciarAvance(vel){
+		game.onTick(1000/vel, "avanzar", {reloj.procesar()})
 	}
-	method actualizarAvance(velocidad){
+	method actualizarAvance(vel){
 		game.removeTickEvent("avanzar")
-		game.onTick(1000/velocidad, "avanzar", {reloj.procesar()})
+		game.onTick(1000/vel, "avanzar", {reloj.procesar()})
 	}
 }

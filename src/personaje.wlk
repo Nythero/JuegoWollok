@@ -1,5 +1,4 @@
 import wollok.game.*
-import puntaje.*
 import configuracion.*
 import estados.*
 
@@ -21,10 +20,6 @@ object personaje {
 	
 	method moverHacia(x){
 		position = game.at((position.x() + x).max(0).min(configuracion.trackWidth() - 1) , position.y())
-	}
-	
-	method sumaPunto(puntos) {
-		puntaje.sumarPuntos(puntos)
 	}
 	//Metodos
 }

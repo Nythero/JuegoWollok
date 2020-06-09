@@ -1,10 +1,9 @@
 import wollok.game.*
 import spawner.*
 import advancer.*
-import puntaje.*
 import detector.*
 import configuracion.*
-import velocidad.*
+import magnitudes.*
 
 class ElementoQueAvanza {
 	var property position
@@ -61,7 +60,7 @@ class Gas inherits ElementoQueAvanza {
 	var property image = "gas.png"
 	
 	method colisionar(otro){
-		velocidad.aumentarVelocidad(10)
+		velocidad.aumentar(10)
 		spawner.despawnear(self)
 	}
 }
@@ -76,7 +75,7 @@ class Moneda inherits ElementoQueAvanza {
 	//Metodos
 	
 	method colisionar(jugador) {
-		puntaje.sumarPuntos(self.puntosOtorgados())
+		puntaje.aumentar(self.puntosOtorgados())
 		spawner.despawnear(self)
 	}
 }
