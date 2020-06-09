@@ -6,6 +6,7 @@ import reloj.*
 import fondo.*
 import advancer.*
 import magnitudes.*
+import tienda.*
 
 object pausado {
 	
@@ -41,6 +42,7 @@ object enJuego {
 		puntaje.inicializar()
 		self.iniciarColisiones()
 		self.detectarTeclas()
+		tienda.inicializar()
 	}
 	
 	method iniciarColisiones() {

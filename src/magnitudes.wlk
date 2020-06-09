@@ -53,4 +53,9 @@ object puntaje inherits Magnitud {
 	method aumentarMultiplicador(cantidad) {
 		multiplicador += cantidad
 	}
+	
+	method gastarPuntos(cantidad) {
+		valor -= cantidad
+		valorMostrado.refreshWriting(valor.truncate(0))
+	}
 }
