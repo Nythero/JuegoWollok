@@ -23,6 +23,7 @@ object tienda {
 			item =>
 				item.inicializarPosicion(self.slot(n))
 				item.inicializarTecla(keyboard.num(n + 1))
+				item.desactivarCooldown()
 				n++
 			}
 		)

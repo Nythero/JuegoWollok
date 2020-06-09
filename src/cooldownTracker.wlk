@@ -19,6 +19,12 @@ object cooldownTracker {
 		game.onTick(1000, "procesar cooldowns", { self.procesarCooldowns() } )
 	}
 	
+	method limpiarItems() {
+		itemsEnCooldown.forEach(
+			{ itemEnCooldown => itemEnCooldown.finalizarCooldown() }
+		)
+	}
+	
 	
 	method procesarCooldowns() {
 		itemsEnCooldown.forEach(
@@ -64,7 +70,7 @@ class ItemEnCooldown {
 	method finalizarCooldown() {
 		cooldownMostrado.eraseWriting()
 		cooldownTracker.sacarElementoEnCooldown(self)
-		item.enCooldown(false)
+		item.desactivarCooldown()
 	}
 	
 	method continuarCooldown() {

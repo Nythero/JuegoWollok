@@ -1,6 +1,7 @@
 import wollok.game.*
 import personaje.*
 import cooldownTracker.*
+import magnitudes.*
 
 class Item {
 	
@@ -23,12 +24,25 @@ class Item {
 		)
 	}
 	
+	method desactivarCooldown() {
+		enCooldown = false
+	}
+	
 	
 	method comprar() {
-		if (not self.enCooldown()) {
+		if (self.puedeSerComprado() && not self.enCooldown()) {
+			self.cobrar()
 			self.dispararCooldown()
 			self.activar()
 		}
+	}
+	
+	method puedeSerComprado() {
+		return puntaje.valor() >= self.precio()
+	}
+	
+	method cobrar() {
+		puntaje.gastarPuntos(self.precio())
 	}
 	
 	method dispararCooldown() {		
