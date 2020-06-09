@@ -6,7 +6,6 @@ import advancer.*
 import configuracion.*
 import fondo.*
 import reloj.*
-import puntaje.*
 import numbers.*
 import estados.*
 
