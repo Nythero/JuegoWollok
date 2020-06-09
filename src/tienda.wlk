@@ -1,5 +1,6 @@
 import configuracion.*
 import wollok.game.*
+import cooldownTracker.*
 import items.*
 
 object tienda {
@@ -13,7 +14,9 @@ object tienda {
 	
 	const posicion = game.at(configuracion.gameWidth() - 1 - ancho, alto)
 	
-	method inicializar() {
+	method inicializar() {		
+		cooldownTracker.inicializar()
+		
 		var n = 0
 		
 		items.forEach({

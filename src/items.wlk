@@ -1,17 +1,20 @@
 import wollok.game.*
 import personaje.*
+import cooldownTracker.*
 
 class Item {
 	
 	var property enCooldown = false
+	var property position
 	
 	method image()
 	
-	method cooldown()
+	method tiempoDeCooldown()
 	method precio()
 	
-	method inicializarPosicion(posicionDada) {		
-		game.addVisualIn(self, posicionDada)
+	method inicializarPosicion(posicionDada) {
+		position = posicionDada
+		game.addVisual(self)
 	}
 	
 	method inicializarTecla(teclaDada) {		
@@ -28,8 +31,8 @@ class Item {
 		}
 	}
 	
-	method dispararCooldown() {
-		self.enCooldown(true)
+	method dispararCooldown() {		
+		cooldownTracker.agregarItemEnCooldown(self)
 	}
 	
 	method activar()
@@ -39,7 +42,7 @@ object escudo inherits Item {
 	
 	override method image() = "items/escudo.png"	
 	
-	override method cooldown() = 5	
+	override method tiempoDeCooldown() = 3	
 	override method precio() = 30
 	
 	override method activar() {
