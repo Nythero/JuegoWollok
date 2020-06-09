@@ -24,7 +24,7 @@ object personaje {
 	}
 	
 	method iniciar(){
-		tieneEscudo = true
+		tieneEscudo = false
 		position = game.at(2,0)
 		game.addVisual(self)
 	}

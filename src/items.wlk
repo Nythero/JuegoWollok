@@ -10,6 +10,17 @@ class Item {
 	method cooldown()
 	method precio()
 	
+	method inicializarPosicion(posicionDada) {		
+		game.addVisualIn(self, posicionDada)
+	}
+	
+	method inicializarTecla(teclaDada) {		
+		teclaDada.onPressDo(
+			{ self.comprar() }
+		)
+	}
+	
+	
 	method comprar() {
 		if (not self.enCooldown()) {
 			self.dispararCooldown()
@@ -33,6 +44,5 @@ object escudo inherits Item {
 	
 	override method activar() {
 		personaje.ponerEscudo()
-	}
-	
+	}	
 }

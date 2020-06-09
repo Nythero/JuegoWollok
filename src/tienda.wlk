@@ -3,14 +3,9 @@ import wollok.game.*
 import items.*
 
 object tienda {
-
-	const item1 = new ItemDePrueba()
-	const item2 = new ItemDePrueba()
-	const item3 = new ItemDePrueba()
-	const item4 = new ItemDePrueba()
-	const item5 = new ItemDePrueba()
-	const item6 = new ItemDePrueba()
-	
+	// Para agregar un item a la tienda, solo hace falta agregarlo a esta lista	
+	// Se pueden agregar hasta 9 items (correspondiendose en orden con los numeros del
+	// teclado del 1 al 9)
 	const items = [escudo]
 	
 	const ancho = 3
@@ -18,16 +13,13 @@ object tienda {
 	
 	const posicion = game.at(configuracion.gameWidth() - 1 - ancho, alto)
 	
-	method comprar(item) {
-		items.get(item).comprar()
-	}
-	
 	method inicializar() {
 		var n = 0
 		
 		items.forEach({
 			item =>
-				game.addVisualIn(item, self.slot(n))
+				item.inicializarPosicion(self.slot(n))
+				item.inicializarTecla(keyboard.num(n + 1))
 				n++
 			}
 		)
@@ -47,9 +39,4 @@ object tienda {
 	method coordSlotX(n) {
 		return posicion.x() + n % ancho
 	}
-}
-
-class ItemDePrueba {
-	
-	var property image = "items/escudo.png"
 }
