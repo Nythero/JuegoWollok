@@ -1,5 +1,6 @@
 import configuracion.*
 import wollok.game.*
+import items.*
 
 object tienda {
 
@@ -10,7 +11,7 @@ object tienda {
 	const item5 = new ItemDePrueba()
 	const item6 = new ItemDePrueba()
 	
-	const items = [item1, item2, item3, item4, item5]
+	const items = [escudo]
 	
 	const ancho = 3
 	const alto = 2

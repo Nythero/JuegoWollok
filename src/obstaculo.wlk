@@ -23,7 +23,13 @@ class Obstaculo inherits ElementoQueAvanza {
 	method image() = "auto_verde2.png"
 	
 	method colisionar(otro){
-		detector.cambiarEstado()
+		if (otro.tieneEscudo()) {
+			spawner.despawnear(self)
+			otro.sacarEscudo()
+		}
+		else {
+			detector.cambiarEstado()			
+		}
 	}
 }
 
