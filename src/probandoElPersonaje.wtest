@@ -7,5 +7,30 @@ import personaje.*
 import configuracion.*
 
 
-
+describe "testeo del personaje"  {
+	
+	test "al iniciar el personaje no tiene escudo y su posicion es central" {
+		
+		personaje.iniciar()
+		assert.notThat(personaje.tieneEscudo())
+		assert.equals(game.at(2,0),personaje.position())
+	}
+	test "cuando inicia, el personaje no tiene escudo pero si lo compra pasa a tener uno" {
+		
+		personaje.iniciar()
+		assert.notThat(personaje.tieneEscudo())
+		
+		personaje.ponerEscudo()
+		assert.that(personaje.tieneEscudo())
+	}
+	test "el personaje comienza con imagen de auto_rojo2.png, si se compra escudo cambia imagen a 
+		  autoRojoConEscudo.png" {
+		  	
+		  	personaje.iniciar()
+		  	assert.equals("auto_rojo2.png",personaje.image())
+		  	
+		  	personaje.ponerEscudo()
+		  	assert.equals("autoRojoConEscudo.png",personaje.image())
+		  }
+}
 
