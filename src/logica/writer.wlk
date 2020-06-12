@@ -1,6 +1,6 @@
 import wollok.game.*
-import numbers.*
-import math.*
+import suplementarios.numbers.*
+import suplementarios.math.*
 
 class Writing {
 	var writing

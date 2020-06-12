@@ -1,5 +1,3 @@
-import wollok.game.*
-
 object math {
 	
 	method enteroRandomEntre(e1, e2) {
@@ -23,7 +21,7 @@ object math {
 	
 	//Agarra un numero random de 3 cifras y lo divide por el weight
 	method randomByWeight(weight){
-		var max = 10**(-3)/weight
+		const max = 10**(-3)/weight
 		return 0.randomUpTo(max)
 	}
 }

@@ -1,6 +1,6 @@
 import configuracion.*
 import wollok.game.*
-import cooldownTracker.*
+import logica.cooldownTracker.*
 import items.*
 
 object tienda {

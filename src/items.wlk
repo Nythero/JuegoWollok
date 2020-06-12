@@ -1,7 +1,8 @@
 import wollok.game.*
 import personaje.*
-import cooldownTracker.*
+import logica.cooldownTracker.*
 import magnitudes.*
+import buffs.*
 
 class Item {
 	
@@ -60,6 +61,6 @@ object escudo inherits Item {
 	override method precio() = 30
 	
 	override method activar() {
-		personaje.ponerEscudo()
+		personaje.ganarBuff(escudoB)
 	}	
 }

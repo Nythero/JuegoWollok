@@ -6,7 +6,7 @@ import advancer.*
 import configuracion.*
 import fondo.*
 import reloj.*
-import numbers.*
+import suplementarios.numbers.*
 import estados.*
 
 object detector {
@@ -22,12 +22,6 @@ object detector {
 	}
 	
 	method cambiarEstado(){
-		/*if (estado == pausado){
-			estado = enJuego
-		}
-		else {
-			estado = pausado
-		}*/
 		estados.add(estados.get(0))
 		estados.remove(estados.get(0))
 		estado = estados.get(0)
