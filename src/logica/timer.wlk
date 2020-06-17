@@ -5,15 +5,25 @@ class TimeableElement {
 	var property inTiming = false
 	var property position
 	
+	method image()
 	method time()
 	
-	method turnOnTiming() {
-		inTiming = true
+	method startDisplay(_position) {
+		position = _position
+		game.addVisual(self)
 	}
 	
-	method turnOffTiming() {
-		inTiming = false
+	method startTiming() {
+		self.inTiming(true)
+		timer.addTimedElement(self)
 	}
+	
+	method stopTiming() {
+		self.inTiming(false)
+		timer.removeElement(self)
+	}
+	
+	method activate()
 }
 
 object timer {
@@ -24,7 +34,7 @@ object timer {
 	method addTimedElement(_element) {		
 		const newTimedElement = new TimedElement(element = _element)		
 		newTimedElement.start()
-										
+		
 		timedElements.add(newTimedElement)		
 	}
 	
@@ -51,6 +61,16 @@ object timer {
 		timedElements.remove(timedElement)
 		
 	}
+	
+	method removeElement(_element) {
+		self.timedElementFromElement(_element).finishTiming()		
+	}
+	
+	method timedElementFromElement(_element) {
+		return timedElements.filter(
+				{ timedElement => timedElement.element() == _element }
+			).get(0)
+	}
 }
 
 class TimedElement {
@@ -60,7 +80,7 @@ class TimedElement {
 	
 	method start() {
 		
-		element.turnOnTiming()
+		element.inTiming(true)
 		
 		timeLeft = element.time()
 				
@@ -85,7 +105,7 @@ class TimedElement {
 	method finishTiming() {
 		timeShown.eraseWriting()
 		timer.removeTimedElement(self)
-		element.turnOffTiming()
+		element.inTiming(false)
 	}
 	
 	method keepTiming() {

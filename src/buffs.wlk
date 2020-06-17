@@ -1,15 +1,51 @@
+import wollok.game.*
 import logica.detector.*
+import logica.timer.*
+import personaje.*
+import logica.buffTracker.*
 
-class Buff { 
+class Buff inherits TimeableElement { 
 	
-	method accionar(jugador)
+	method refreshPosition(posicion) {
+		self.position(posicion)
+	}
 	
-	method estadoOpuesto()
+	method gain() {
+		self.startTiming()
+		self.activate()
+	}
 	
-	method id()
+	method lose() {
+		game.removeVisual(self)
+		self.stopTiming()
+		self.deactivate()
+	}
+	
+	method clear() {
+		if (self.inTiming()) {
+			self.lose()
+		}
+	}
+	
+	method deactivate()
 }
 
-object escudoB inherits Buff{
+object buffEscudo inherits Buff {
+	override method image() = "items/escudo.png"
+	override method time() = 5
+	
+	method id() = "escudo"
+	
+	override method activate() {
+		personaje.tipoDeAuto(autoConEscudo)
+	}
+	
+	override method deactivate() {
+		personaje.tipoDeAuto(autoComun)
+	}
+}
+
+/*object escudoB inherits Buff{
 	
 	override method accionar(jugador){
 		jugador.perderBuff(self)
@@ -41,4 +77,4 @@ object noEscudoB inherits Buff{
 	method id(){
 		return "escudo"
 	}
-}
+}*/
