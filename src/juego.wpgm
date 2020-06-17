@@ -1,5 +1,5 @@
 import wollok.game.*
-import detector.*
+import logica.detector.*
 import configuracion.*
 
 program juego {

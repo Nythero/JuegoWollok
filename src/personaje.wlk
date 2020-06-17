@@ -1,6 +1,7 @@
 import wollok.game.*
 import configuracion.*
-import estados.*
+import buffs.*
+import suplementarios.list.*
 
 object personaje {
 	
@@ -8,7 +9,7 @@ object personaje {
 	
 	var property position = game.at(2,0)
 	
-	var property tieneEscudo
+	const property buffsPresentes = #{}
 	
 	//Atributos
 	
@@ -17,14 +18,14 @@ object personaje {
 	
 	method image() {
 		return 
-			if (self.tieneEscudo())
+			if (self.tieneBuff(escudoB))
 				"autoRojoConEscudo.png"
 			else
 				"auto_rojo2.png"
 	}
 	
 	method iniciar(){
-		tieneEscudo = false
+		buffsPresentes.add(noEscudoB)
 		position = game.at(2,0)
 		game.addVisual(self)
 	}
@@ -33,12 +34,28 @@ object personaje {
 		position = game.at((position.x() + x).max(0).min(configuracion.trackWidth() - 1) , position.y())
 	}
 	
-	method ponerEscudo() {
-		tieneEscudo = true
+	method tieneBuff(buff){
+		return buffsPresentes.contains(buff)
 	}
 	
-	method sacarEscudo() {
-		tieneEscudo = false
+	method chocar(otro){
+		self.escudo().accionar(self)
+	}
+	
+	//Precondicion: El buff tiene que estar activado
+	method perderBuff(buff){
+		lista.reemplazarPor(buffsPresentes, buff, buff.estadoOpuesto())
+	}
+	
+	//Precondicion: El buff tiene que estar desactivado
+	//Proposito: Activa el buff 
+	method ganarBuff(buff){
+		lista.reemplazarPor(buffsPresentes, buff.estadoOpuesto(), buff)		
+		game.schedule(buff.duracion(), { self.perderBuff(buff)})
+	}
+	
+	method escudo(){
+		return lista.encontrarPorId(buffsPresentes, "escudo")
 	}
 	//Metodos
 }

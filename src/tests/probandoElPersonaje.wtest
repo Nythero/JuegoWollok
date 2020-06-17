@@ -1,10 +1,12 @@
+
 import obstaculo.*
 import wollok.game.*
-import spawner.*
-import advancer.*
-import detector.*
+import logica.spawner.*
+import logica.advancer.*
+import logica.detector.*
 import personaje.*
 import configuracion.*
+import buffs.*
 
 
 describe "testeo del personaje"  {
@@ -12,16 +14,16 @@ describe "testeo del personaje"  {
 	test "al iniciar el personaje no tiene escudo y su posicion es central" {
 		
 		personaje.iniciar()
-		assert.notThat(personaje.tieneEscudo())
+		assert.notThat(personaje.tieneBuff(escudoB))
 		assert.equals(game.at(2,0),personaje.position())
 	}
 	test "cuando inicia, el personaje no tiene escudo pero si lo compra pasa a tener uno" {
 		
 		personaje.iniciar()
-		assert.notThat(personaje.tieneEscudo())
+		assert.notThat(personaje.tieneBuff(escudoB))
 		
-		personaje.ponerEscudo()
-		assert.that(personaje.tieneEscudo())
+		personaje.ganarBuff(escudoB)
+		assert.that(personaje.tieneBuff(escudoB))
 	}
 	test "el personaje comienza con imagen de auto_rojo2.png, si se compra escudo cambia imagen a 
 		  autoRojoConEscudo.png" {
@@ -29,7 +31,7 @@ describe "testeo del personaje"  {
 		  	personaje.iniciar()
 		  	assert.equals("auto_rojo2.png",personaje.image())
 		  	
-		  	personaje.ponerEscudo()
+			personaje.ganarBuff(escudoB)
 		  	assert.equals("autoRojoConEscudo.png",personaje.image())
 		  }
 }

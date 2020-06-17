@@ -1,6 +1,6 @@
 import wollok.game.*
 import configuracion.*
-import math.*
+import suplementarios.math.*
 import advancer.*
 import obstaculo.*
 import factories.*

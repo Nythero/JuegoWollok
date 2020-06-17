@@ -1,7 +1,7 @@
 import wollok.game.*
-import spawner.*
-import advancer.*
-import detector.*
+import logica.spawner.*
+import logica.advancer.*
+import logica.detector.*
 import configuracion.*
 import magnitudes.*
 
@@ -15,6 +15,11 @@ class ElementoQueAvanza {
 		else {
 			self.position(self.position().down(1))
 		}
+		
+	}
+	
+	method colisionar(otro){
+		spawner.despawnear(self)
 	}
 }
 
@@ -22,14 +27,9 @@ class Obstaculo inherits ElementoQueAvanza {
 
 	method image() = "auto_verde2.png"
 	
-	method colisionar(otro){
-		if (otro.tieneEscudo()) {
-			spawner.despawnear(self)
-			otro.sacarEscudo()
-		}
-		else {
-			detector.cambiarEstado()			
-		}
+	override method colisionar(jugador){
+		super(jugador)
+		jugador.chocar(self)
 	}
 }
 
@@ -65,9 +65,9 @@ class Gas inherits ElementoQueAvanza {
 
 	var property image = "gas.png"
 	
-	method colisionar(otro){
+	override method colisionar(jugador){
 		velocidad.aumentar(10)
-		spawner.despawnear(self)
+		super(jugador)
 	}
 }
 
@@ -80,9 +80,9 @@ class Moneda inherits ElementoQueAvanza {
 	
 	//Metodos
 	
-	method colisionar(jugador) {
+	override method colisionar(jugador) {
 		puntaje.aumentar(self.puntosOtorgados())
-		spawner.despawnear(self)
+		super(jugador)
 	}
 }
 
