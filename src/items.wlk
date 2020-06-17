@@ -1,6 +1,6 @@
 import wollok.game.*
 import personaje.*
-import logica.cooldownTracker.*
+import logica.timer.*
 import magnitudes.*
 import buffs.*
 
@@ -47,7 +47,7 @@ class Item {
 	}
 	
 	method dispararCooldown() {		
-		cooldownTracker.agregarItemEnCooldown(self)
+		cooldownTracker.addTimedElement(self)
 	}
 	
 	method activar()

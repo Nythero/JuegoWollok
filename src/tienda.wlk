@@ -1,6 +1,6 @@
 import configuracion.*
 import wollok.game.*
-import logica.cooldownTracker.*
+import logica.timer.*
 import items.*
 
 object tienda {
@@ -9,13 +9,13 @@ object tienda {
 	// teclado del 1 al 9)
 	const items = [escudo]
 	
-	const ancho = 3
-	const alto = 2
+	const ancho = 5
+	const alto = 1
 	
-	const posicion = game.at(configuracion.gameWidth() - 1 - ancho, alto)
+	const posicion = game.at(configuracion.gameWidth() - ancho, alto)
 	
 	method inicializar() {		
-		cooldownTracker.inicializar()
+		cooldownTracker.start()
 		
 		var n = 0
 		
