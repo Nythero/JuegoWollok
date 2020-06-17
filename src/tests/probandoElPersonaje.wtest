@@ -8,7 +8,7 @@ import personaje.*
 import configuracion.*
 import buffs.*
 
-
+/*
 describe "testeo del personaje"  {
 	
 	test "al iniciar el personaje no tiene escudo y su posicion es central" {
@@ -36,3 +36,4 @@ describe "testeo del personaje"  {
 		  }
 }
 
+*/

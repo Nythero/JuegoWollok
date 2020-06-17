@@ -7,6 +7,7 @@ import fondo.*
 import advancer.*
 import magnitudes.*
 import tienda.*
+import logica.timer.*
 
 object pausado {
 	
@@ -41,8 +42,9 @@ object enJuego {
 		self.iniciarAvance(velocidad.valor())
 		puntaje.inicializar()
 		self.iniciarColisiones()
-		self.detectarTeclas()
-		tienda.inicializar()
+		self.detectarTeclas()		
+		timer.start()
+		tienda.start()
 	}
 	
 	method iniciarColisiones() {

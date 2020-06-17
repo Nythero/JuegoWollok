@@ -1,15 +1,39 @@
 import wollok.game.*
 import writer.*
 
-class Timer {
+class TimeableElement {
+	var property inTiming = false
+	var property position
+	
+	method image()
+	method time()
+	
+	method startDisplay(_position) {
+		position = _position
+		game.addVisual(self)
+	}
+	
+	method startTiming() {
+		self.inTiming(true)
+		timer.addTimedElement(self)
+	}
+	
+	method stopTiming() {
+		self.inTiming(false)
+	}
+	
+	method activate()
+}
+
+object timer {
 	
 	const timedElements = []
 	
 	
 	method addTimedElement(_element) {		
-		const newTimedElement = new TimedElement(element = _element, timer = self)		
+		const newTimedElement = new TimedElement(element = _element)		
 		newTimedElement.start()
-										
+		
 		timedElements.add(newTimedElement)		
 	}
 	
@@ -36,23 +60,28 @@ class Timer {
 		timedElements.remove(timedElement)
 		
 	}
-}
-
-object cooldownTracker inherits Timer {
 	
+	method removeElement(_element) {
+		self.timedElementFromElement(_element).removeTiming()		
+	}
+	
+	method timedElementFromElement(_element) {
+		return timedElements.filter(
+				{ timedElement => timedElement.element() == _element }
+			).get(0)
+	}
 }
 
 class TimedElement {
 	const property element
-	const property timer
 	var timeShown = null
 	var timeLeft = null
 	
 	method start() {
 		
-		element.enCooldown(true)
+		element.inTiming(true)
 		
-		timeLeft = element.tiempoDeCooldown()
+		timeLeft = element.time()
 				
 		timeShown = new Writing(
 			writing = timeLeft,
@@ -73,9 +102,14 @@ class TimedElement {
 	}
 	
 	method finishTiming() {
+		self.removeTiming()
+		element.stopTiming()
+	}
+	
+	method removeTiming() {
 		timeShown.eraseWriting()
 		timer.removeTimedElement(self)
-		element.desactivarCooldown()
+		element.inTiming(false)
 	}
 	
 	method keepTiming() {

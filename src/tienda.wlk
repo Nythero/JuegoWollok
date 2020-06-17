@@ -9,21 +9,19 @@ object tienda {
 	// teclado del 1 al 9)
 	const items = [escudo]
 	
-	const ancho = 5
-	const alto = 1
+	const width = 5
+	const height = 1
 	
-	const posicion = game.at(configuracion.gameWidth() - ancho, alto)
+	const property position = game.at(configuracion.gameWidth() - width, height - 1)
 	
-	method inicializar() {		
-		cooldownTracker.start()
-		
+	method start() {		
 		var n = 0
 		
-		items.forEach({
+		items.forEach( {
 			item =>
-				item.inicializarPosicion(self.slot(n))
-				item.inicializarTecla(keyboard.num(n + 1))
-				item.desactivarCooldown()
+				item.endCooldown()
+				item.startDisplay(self.slot(n))
+				item.startKey(keyboard.num(n + 1))
 				n++
 			}
 		)
@@ -37,10 +35,10 @@ object tienda {
 	}
 	
 	method coordSlotY(n) {
-		return posicion.y() - n.div(ancho)
+		return position.y() - n.div(width)
 	}
 	
 	method coordSlotX(n) {
-		return posicion.x() + n % ancho
+		return position.x() + n % width
 	}
 }
