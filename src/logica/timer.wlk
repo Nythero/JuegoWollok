@@ -50,9 +50,9 @@ class TimedElement {
 	
 	method start() {
 		
-		element.enCooldown(true)
+		element.turnOnTiming()
 		
-		timeLeft = element.tiempoDeCooldown()
+		timeLeft = element.time()
 				
 		timeShown = new Writing(
 			writing = timeLeft,
@@ -75,7 +75,7 @@ class TimedElement {
 	method finishTiming() {
 		timeShown.eraseWriting()
 		timer.removeTimedElement(self)
-		element.desactivarCooldown()
+		element.turnOffTiming()
 	}
 	
 	method keepTiming() {

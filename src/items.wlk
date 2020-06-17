@@ -4,14 +4,24 @@ import logica.timer.*
 import magnitudes.*
 import buffs.*
 
-class Item {
-	
-	var property enCooldown = false
+class TimeableElement {
+	var property inTiming = false
 	var property position
 	
-	method image()
+	method time()
 	
-	method tiempoDeCooldown()
+	method turnOnTiming() {
+		inTiming = true
+	}
+	
+	method turnOffTiming() {
+		inTiming = false
+	}
+}
+
+class Item inherits TimeableElement {
+	
+	method image()
 	method precio()
 	
 	method inicializarPosicion(posicionDada) {
@@ -25,13 +35,9 @@ class Item {
 		)
 	}
 	
-	method desactivarCooldown() {
-		enCooldown = false
-	}
-	
 	
 	method comprar() {
-		if (self.puedeSerComprado() && not self.enCooldown()) {
+		if (self.puedeSerComprado() && not self.inTiming()) {
 			self.cobrar()
 			self.dispararCooldown()
 			self.activar()
@@ -57,7 +63,7 @@ object escudo inherits Item {
 	
 	override method image() = "items/escudo.png"	
 	
-	override method tiempoDeCooldown() = 3	
+	override method time() = 3	
 	override method precio() = 30
 	
 	override method activar() {
