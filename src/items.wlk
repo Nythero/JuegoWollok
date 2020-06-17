@@ -4,21 +4,6 @@ import logica.timer.*
 import magnitudes.*
 import buffs.*
 
-class TimeableElement {
-	var property inTiming = false
-	var property position
-	
-	method time()
-	
-	method turnOnTiming() {
-		inTiming = true
-	}
-	
-	method turnOffTiming() {
-		inTiming = false
-	}
-}
-
 class Item inherits TimeableElement {
 	
 	method image()
@@ -53,7 +38,7 @@ class Item inherits TimeableElement {
 	}
 	
 	method dispararCooldown() {		
-		cooldownTracker.addTimedElement(self)
+		timer.addTimedElement(self)
 	}
 	
 	method activar()

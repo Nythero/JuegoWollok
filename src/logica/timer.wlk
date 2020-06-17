@@ -1,13 +1,28 @@
 import wollok.game.*
 import writer.*
 
-class Timer {
+class TimeableElement {
+	var property inTiming = false
+	var property position
+	
+	method time()
+	
+	method turnOnTiming() {
+		inTiming = true
+	}
+	
+	method turnOffTiming() {
+		inTiming = false
+	}
+}
+
+object timer {
 	
 	const timedElements = []
 	
 	
 	method addTimedElement(_element) {		
-		const newTimedElement = new TimedElement(element = _element, timer = self)		
+		const newTimedElement = new TimedElement(element = _element)		
 		newTimedElement.start()
 										
 		timedElements.add(newTimedElement)		
@@ -38,13 +53,8 @@ class Timer {
 	}
 }
 
-object cooldownTracker inherits Timer {
-	
-}
-
 class TimedElement {
 	const property element
-	const property timer
 	var timeShown = null
 	var timeLeft = null
 	

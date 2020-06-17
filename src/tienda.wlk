@@ -15,7 +15,7 @@ object tienda {
 	const posicion = game.at(configuracion.gameWidth() - ancho, alto)
 	
 	method inicializar() {		
-		cooldownTracker.start()
+		timer.start()
 		
 		var n = 0
 		
