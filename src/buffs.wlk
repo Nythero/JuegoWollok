@@ -4,7 +4,16 @@ import logica.timer.*
 import personaje.*
 import logica.buffTracker.*
 
-class Buff inherits TimeableElement { 
+class Buff inherits TimeableElement {
+	
+	override method stopTiming() {
+		if (self.inTiming()) {
+			timer.removeElement(self)
+		}
+		game.removeVisual(self)
+		super()
+		self.deactivate()
+	}
 	
 	method refreshPosition(posicion) {
 		self.position(posicion)
@@ -15,10 +24,8 @@ class Buff inherits TimeableElement {
 		self.activate()
 	}
 	
-	method lose() {
-		game.removeVisual(self)
+	method lose() {		
 		self.stopTiming()
-		self.deactivate()
 	}
 	
 	method clear() {

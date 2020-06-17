@@ -40,7 +40,11 @@ class Item inherits TimeableElement {
 	}
 	
 	method endCooldown() {
-		self.inTiming(false)
+		self.stopTiming()
+	}
+	
+	method deactivate() {
+		
 	}
 }
 
@@ -49,7 +53,7 @@ object escudo inherits Item {
 	override method image() = "items/escudo.png"	
 	
 	override method time() = 3
-	override method price() = 0
+	override method price() = 30
 	
 	override method activate() {
 		buffTracker.addBuff(buffEscudo)

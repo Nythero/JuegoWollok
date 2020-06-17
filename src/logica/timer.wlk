@@ -20,7 +20,6 @@ class TimeableElement {
 	
 	method stopTiming() {
 		self.inTiming(false)
-		timer.removeElement(self)
 	}
 	
 	method activate()
@@ -63,7 +62,7 @@ object timer {
 	}
 	
 	method removeElement(_element) {
-		self.timedElementFromElement(_element).finishTiming()		
+		self.timedElementFromElement(_element).removeTiming()		
 	}
 	
 	method timedElementFromElement(_element) {
@@ -103,6 +102,11 @@ class TimedElement {
 	}
 	
 	method finishTiming() {
+		self.removeTiming()
+		element.stopTiming()
+	}
+	
+	method removeTiming() {
 		timeShown.eraseWriting()
 		timer.removeTimedElement(self)
 		element.inTiming(false)
