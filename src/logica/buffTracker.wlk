@@ -14,21 +14,34 @@ object buffTracker {
 		tienda.position().y() + 1 + height
 	)
 	
+	method clear() {
+		buffs.forEach(
+			{ buff => buff.lose() }
+		)
+	}
+	
 	method addBuff(buff) {
-		buff.clear()
 		buffs.add(buff)
+		buff.lose()
 		buff.startDisplay(self.nextSlot())
 		buff.gain()
 	}
 	
 	method removeBuff(buff) {
 		buff.lose()
-		self.refreshBuffs()
 		buffs.remove(buff)
+		self.refreshBuffs()
+	}
+	
+	method forceRemoveBuff(buff) {
+		buff.forceLose()
+		buffs.remove(buff)
+		self.refreshBuffs()
 	}
 
 	method refreshBuffs() {
 		var n = 0
+		timer.refreshPositions()
 		
 		buffs.forEach({
 			item =>

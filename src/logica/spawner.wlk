@@ -14,7 +14,8 @@ object spawner {
 		factoryObstaculosMovedizos,
 		factoryMonedas,
 		factoryMegaMonedas,
-		factoryGases
+		factoryGases,
+		factoryGemas
 	]
 	
 	//Cada factory tira un "dado" y el que tiene el numero mas chico es el elegido

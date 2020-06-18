@@ -44,3 +44,13 @@ object factoryGases{
 		return new Gas()
 	}
 }
+
+
+object factoryGemas{
+
+	var property spawnWeight = 2
+	
+	method crear(){
+		return new Gema()
+	}
+}

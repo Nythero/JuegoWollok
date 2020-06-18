@@ -50,6 +50,6 @@ object autoConEscudo {
 	const property image = "autoRojoConEscudo.png"
 	
 	method chocar() {
-		buffTracker.removeBuff(buffEscudo)
+		buffTracker.forceRemoveBuff(buffEscudo)
 	}
 }

@@ -13,6 +13,12 @@ class TimeableElement {
 		game.addVisual(self)
 	}
 	
+	method endDisplay() {
+		if (game.hasVisual(self)) {
+			game.removeVisual(self)
+		}		
+	}
+	
 	method startTiming() {
 		self.inTiming(true)
 		timer.addTimedElement(self)
@@ -39,14 +45,23 @@ object timer {
 	
 	
 	method start() {
-		timedElements.clear()
+		self.clearElements()
 		game.onTick(1000, "process timed elements", { self.processElements() } )
 	}
 	
 	method clearElements() {
 		timedElements.forEach(
-			{ timedElement => timedElement.finishTiming() }
+			{ timedElement => 
+				timedElement.element().inTiming(false)
+				self.removeTimedElement(timedElement)
+			}
 		)
+	}
+	
+	method clear(timedElement) {
+		self.removeTimedElement(timedElement)
+		timedElement.element().inTiming(false)
+		timedElement.removeTiming()
 	}
 	
 	
@@ -61,14 +76,20 @@ object timer {
 		
 	}
 	
-	method removeElement(_element) {
-		self.timedElementFromElement(_element).removeTiming()		
+	method forceRemoveElement(element) {
+		self.clear(self.timedElementFromElement(element))
 	}
 	
 	method timedElementFromElement(_element) {
 		return timedElements.filter(
 				{ timedElement => timedElement.element() == _element }
 			).get(0)
+	}
+	
+	method refreshPositions() {
+		timedElements.forEach(
+			{ timedElement => timedElement.refreshPosition() }
+		)
 	}
 }
 
@@ -109,11 +130,15 @@ class TimedElement {
 	method removeTiming() {
 		timeShown.eraseWriting()
 		timer.removeTimedElement(self)
-		element.inTiming(false)
 	}
 	
 	method keepTiming() {
 		timeLeft -= 1
 		timeShown.refreshWriting(timeLeft)
+		self.refreshPosition()
+	}
+	
+	method refreshPosition() {
+		timeShown.refreshWritingPosition(element.position())
 	}
 }
