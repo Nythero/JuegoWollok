@@ -20,15 +20,17 @@ class ElementoQueAvanza {
 	
 	method colisionar(otro){
 		spawner.despawnear(self)
+		self.activar(otro)
 	}
+	
+	method activar(otro)
 }
 
 class Obstaculo inherits ElementoQueAvanza {
 
 	method image() = "auto_verde2.png"
 	
-	override method colisionar(jugador){
-		super(jugador)
+	override method activar(jugador){
 		jugador.chocar(self)
 	}
 }
@@ -65,9 +67,8 @@ class Gas inherits ElementoQueAvanza {
 
 	var property image = "gas.png"
 	
-	override method colisionar(jugador){
+	override method activar(jugador){
 		velocidad.aumentar(10)
-		super(jugador)
 	}
 }
 
@@ -80,9 +81,8 @@ class Moneda inherits ElementoQueAvanza {
 	
 	//Metodos
 	
-	override method colisionar(jugador) {
+	override method activar(jugador) {
 		puntaje.aumentar(self.puntosOtorgados())
-		super(jugador)
 	}
 }
 
@@ -90,4 +90,9 @@ class MegaMoneda inherits Moneda {
 	
 	override method image() = "megaMoneda.png"
 	override method puntosOtorgados() = 25
+}
+
+
+class Gema inherits ElementoQueAvanza {
+	
 }
