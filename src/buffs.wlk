@@ -5,8 +5,15 @@ import personaje.*
 import logica.buffTracker.*
 import magnitudes.*
 
+/*
+ * Las clases que heredan de Buff REQUIEREN:
+ * * override method image()
+ * * override method time() <--- tiene que ser menor o igual a 9 para que el display funcione correctamente
+ * * override method activate()
+ * * override method deactivate()
+ */
 class Buff inherits TimeableElement {
-	
+		
 	method gain() {
 		self.activate()
 		self.startTiming()
@@ -26,7 +33,8 @@ class Buff inherits TimeableElement {
 	}
 	
 	method refreshPosition(posicion) {
-		self.position(posicion)
+		self.endDisplay()
+		self.startDisplay(posicion)
 	}
 	
 	method forceLose() {

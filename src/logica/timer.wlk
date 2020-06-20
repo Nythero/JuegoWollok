@@ -147,5 +147,7 @@ class TimedElement {
 	
 	method refreshPosition() {
 		timeShown.refreshWritingPosition(element.position())
+		timeShown.eraseWriting()
+		timeShown.displayWriting()
 	}
 }
