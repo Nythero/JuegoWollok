@@ -38,7 +38,7 @@ class Magnitud {
 object velocidad inherits Magnitud {
 	
 	override method posicionX() = configuracion.gameWidth() - 1
-	override method posicionY() = configuracion.gameHeight() - 5
+	override method posicionY() = configuracion.gameHeight() - 4
 	override method valorInicial() = 5
 	override method multiplicadorInicial() = 0.01
 	override method multDisplay() = 10

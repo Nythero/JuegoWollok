@@ -10,7 +10,7 @@ object tienda {
 	const items = [escudo]
 	
 	const width = 5
-	const height = 1
+	const height = 2
 	
 	const property position = game.at(configuracion.gameWidth() - width, height - 1)
 	
