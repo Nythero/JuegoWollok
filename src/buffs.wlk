@@ -32,6 +32,7 @@ class Buff inherits TimeableElement {
 	method forceLose() {
 		self.deactivate()
 		self.endDisplay()
+		timer.forceRemoveElement(self)
 	}
 	
 	method clear() {

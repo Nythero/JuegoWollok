@@ -8,6 +8,7 @@ import fondo.*
 import reloj.*
 import suplementarios.numbers.*
 import estados.*
+import logica.buffTracker.*
 
 object detector {
 	
@@ -22,6 +23,7 @@ object detector {
 	}
 	
 	method cambiarEstado(){
+		buffTracker.clear()
 		estados.add(estados.get(0))
 		estados.remove(estados.get(0))
 		estado = estados.get(0)

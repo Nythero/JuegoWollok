@@ -33,7 +33,7 @@ class TimeableElement {
 
 object timer {
 	
-	const timedElements = []
+	const property timedElements = []
 	
 	
 	method addTimedElement(_element) {		
@@ -52,7 +52,7 @@ object timer {
 	method clearElements() {
 		timedElements.forEach(
 			{ timedElement => 
-				timedElement.element().inTiming(false)
+				timedElement.element().stopTiming()
 				self.removeTimedElement(timedElement)
 			}
 		)
@@ -60,8 +60,8 @@ object timer {
 	
 	method clear(timedElement) {
 		self.removeTimedElement(timedElement)
+		timedElement.forceRemoveTiming()
 		timedElement.element().inTiming(false)
-		timedElement.removeTiming()
 	}
 	
 	
@@ -123,13 +123,20 @@ class TimedElement {
 	}
 	
 	method finishTiming() {
-		self.removeTiming()
 		element.stopTiming()
+		self.removeTiming()
 	}
 	
 	method removeTiming() {
+		if (timer.timedElements().contains(self)) {
+			timeShown.eraseWriting()
+			timer.removeTimedElement(self)
+		}
+	}
+	
+	method forceRemoveTiming() {
 		timeShown.eraseWriting()
-		timer.removeTimedElement(self)
+		timer.removeTimedElement(self)		
 	}
 	
 	method keepTiming() {
