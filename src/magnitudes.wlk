@@ -6,7 +6,7 @@ import configuracion.*
 class Magnitud {	
 	var property valor	= null
 	var valorMostrado 	= null
-	var multiplicador 	= null
+	var property multiplicador 	= null
 	var multDisplay 	= null 
 	
 	
@@ -43,12 +43,9 @@ object velocidad inherits Magnitud {
 	override method multiplicadorInicial() = 0.01
 	override method multDisplay() = 10
 	
-	override method inicializar() {
-		super()
-	}
 	override method aumentar(cantidad) {
 		super(cantidad)
-		puntaje.aumentarMultiplicador(cantidad/100)
+		puntaje.sumarMultiplicador(cantidad/100)
 		enJuego.actualizarAvance(valor)
 	}	
 }
@@ -62,8 +59,12 @@ object puntaje inherits Magnitud {
 	override method multDisplay() = 1
 	
 	
-	method aumentarMultiplicador(cantidad) {
+	method sumarMultiplicador(cantidad) {
 		multiplicador += cantidad
+	}
+	
+	method multiplicarMultiplicador(cantidad) {
+		multiplicador *= cantidad
 	}
 	
 	method gastarPuntos(cantidad) {

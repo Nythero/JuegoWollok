@@ -4,9 +4,21 @@ import logica.advancer.*
 import logica.detector.*
 import configuracion.*
 import magnitudes.*
+import logica.buffTracker.*
+import buffs.*
 
+/*
+ * Las clases que heredan de ElementoQueAvanza REQUIEREN:
+ * * override method activar()
+ * * override method image()
+ * 
+ * Además, para que el elemento aparezca en el juego, hay que crear su factory
+ * 	y agregarla a la lista de factories del spawner.
+ */
 class ElementoQueAvanza {
 	var property position
+	
+	method image()
 	
 	method avanzar() {
 		if (self.position().y() == 0) {
@@ -20,23 +32,24 @@ class ElementoQueAvanza {
 	
 	method colisionar(otro){
 		spawner.despawnear(self)
+		self.activar(otro)
 	}
+	
+	method activar(otro)
 }
 
 class Obstaculo inherits ElementoQueAvanza {
 
-	method image() = "auto_verde2.png"
+	override method image() = "auto_verde2.png"
 	
-	override method colisionar(jugador){
-		super(jugador)
-		jugador.chocar(self)
+	override method activar(otro){
+		otro.chocar(self)
 	}
 }
 
 class ObstaculoMovedizo inherits Obstaculo {
 	
 	var property direccionMovimiento = [-1, 1].anyOne()
-	const property direccionesMovimiento
 	
 	override method image() = "auto_azul2.png"
 	
@@ -65,24 +78,22 @@ class Gas inherits ElementoQueAvanza {
 
 	var property image = "gas.png"
 	
-	override method colisionar(jugador){
+	override method activar(jugador){
 		velocidad.aumentar(10)
-		super(jugador)
 	}
 }
 
 class Moneda inherits ElementoQueAvanza {
 	
 	//Atributos
-	var property image = "moneda2.png"
+	override method image() = "moneda2.png"
 	
 	method puntosOtorgados() = 5
 	
 	//Metodos
 	
-	override method colisionar(jugador) {
+	override method activar(jugador) {
 		puntaje.aumentar(self.puntosOtorgados())
-		super(jugador)
 	}
 }
 
@@ -90,4 +101,13 @@ class MegaMoneda inherits Moneda {
 	
 	override method image() = "megaMoneda.png"
 	override method puntosOtorgados() = 25
+}
+
+
+class Gema inherits ElementoQueAvanza {
+	override method image() = "gema.png"
+	
+	override method activar(otro) {
+		buffTracker.addBuff(buffGema)
+	}
 }

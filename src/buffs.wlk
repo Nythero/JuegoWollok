@@ -3,29 +3,44 @@ import logica.detector.*
 import logica.timer.*
 import personaje.*
 import logica.buffTracker.*
+import magnitudes.*
 
+/*
+ * Las clases que heredan de Buff REQUIEREN:
+ * * override method image()
+ * * override method time() <--- tiene que ser menor o igual a 9 para que el display funcione correctamente
+ * * override method activate()
+ * * override method deactivate()
+ */
 class Buff inherits TimeableElement {
+		
+	method gain() {
+		self.activate()
+		self.startTiming()
+	}
 	
 	override method stopTiming() {
-		if (self.inTiming()) {
-			timer.removeElement(self)
-		}
-		game.removeVisual(self)
 		super()
-		self.deactivate()
+		buffTracker.forceRemoveBuff(self)
+	}
+	
+	method lose() {
+		if (self.inTiming()) {
+			timer.forceRemoveElement(self)
+			self.deactivate()
+		}
+		self.endDisplay()
 	}
 	
 	method refreshPosition(posicion) {
-		self.position(posicion)
+		self.endDisplay()
+		self.startDisplay(posicion)
 	}
 	
-	method gain() {
-		self.startTiming()
-		self.activate()
-	}
-	
-	method lose() {		
-		self.stopTiming()
+	method forceLose() {
+		self.deactivate()
+		self.endDisplay()
+		timer.forceRemoveElement(self)
 	}
 	
 	method clear() {
@@ -41,13 +56,24 @@ object buffEscudo inherits Buff {
 	override method image() = "items/escudo.png"
 	override method time() = 5
 	
-	method id() = "escudo"
-	
 	override method activate() {
 		personaje.tipoDeAuto(autoConEscudo)
 	}
 	
 	override method deactivate() {
 		personaje.tipoDeAuto(autoComun)
+	}
+}
+
+object buffGema inherits Buff {
+	override method image() = "gema.png"
+	override method time() = 9
+	
+	override method activate() {
+		puntaje.multiplicarMultiplicador(2)
+	}
+	
+	override method deactivate() {
+		puntaje.multiplicarMultiplicador(0.5)
 	}
 }

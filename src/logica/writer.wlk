@@ -4,13 +4,17 @@ import suplementarios.math.*
 
 class Writing {
 	var writing
-	const position
+	var position
 	var displayedWriting = []
 	
 	method refreshWriting(_writing) {
 		writing = _writing
 		self.eraseWriting()
 		self.displayWriting()
+	}
+	
+	method refreshWritingPosition(_position) {
+		position = _position
 	}
 	
 	method eraseWriting() {
