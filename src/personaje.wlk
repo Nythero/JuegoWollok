@@ -39,7 +39,7 @@ object personaje {
 }
 
 object autoComun {
-	const property image = "auto_rojo2.png"
+	const property image = "personaje/personajeSimple.png"
 	
 	method chocar() {
 		detector.cambiarEstado()
@@ -47,7 +47,7 @@ object autoComun {
 }
 
 object autoConEscudo {
-	const property image = "autoRojoConEscudo.png"
+	const property image = "personaje/personajeConEscudoAzul.png"
 	
 	method chocar() {
 		buffTracker.forceRemoveBuff(buffEscudo)

@@ -2,11 +2,11 @@ import wollok.game.*
 
 object fondo {
 	
-	var property image = "fondo1.png"
+	var property image = "fondos/fondo1.png"
 	
 	var property position = game.at(0, 0)
 	
-	const fondos = ["fondo1.png", "fondo2.png"]
+	const fondos = ["fondos/fondo1.png", "fondos/fondo2.png"]
 	
 	method iniciar(){
 		game.addVisual(self)

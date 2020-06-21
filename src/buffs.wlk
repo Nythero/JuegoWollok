@@ -53,7 +53,7 @@ class Buff inherits TimeableElement {
 }
 
 object buffEscudo inherits Buff {
-	override method image() = "items/escudo.png"
+	override method image() = "elementos/escudoAzul.png"
 	override method time() = 5
 	
 	override method activate() {
@@ -66,7 +66,7 @@ object buffEscudo inherits Buff {
 }
 
 object buffGema inherits Buff {
-	override method image() = "gema.png"
+	override method image() = "elementos/gema.png"
 	override method time() = 9
 	
 	override method activate() {

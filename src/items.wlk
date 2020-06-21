@@ -50,7 +50,7 @@ class Item inherits TimeableElement {
 
 object escudo inherits Item {
 	
-	override method image() = "items/escudo.png"	
+	override method image() = "elementos/escudoAzul.png"	
 	
 	override method time() = 3
 	override method price() = 30
