@@ -46,10 +46,10 @@ object autoComun {
 	}
 }
 
-object autoConEscudo {
+object autoConEscudoSimple {
 	const property image = "personaje/personajeConEscudoAzul.png"
 	
 	method chocar() {
-		buffTracker.forceRemoveBuff(buffEscudo)
+		buffTracker.forceRemoveBuff(buffEscudoSimple)
 	}
 }

@@ -56,6 +56,6 @@ object escudo inherits Item {
 	override method price() = 30
 	
 	override method activate() {
-		buffTracker.addBuff(buffEscudo)
+		buffTracker.addBuff(buffEscudoSimple)
 	}
 }
