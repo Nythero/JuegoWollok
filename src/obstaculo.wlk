@@ -111,3 +111,12 @@ class Gema inherits ElementoQueAvanza {
 		buffTracker.addBuff(buffGema)
 	}
 }
+
+
+class SuperEscudo inherits ElementoQueAvanza {
+	override method image() = "elementos/escudoVerde.png"
+	
+	override method activar(otro) {
+		buffTracker.addBuff(buffSuperEscudo)
+	}
+}

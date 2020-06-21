@@ -54,3 +54,13 @@ object factoryGemas{
 		return new Gema()
 	}
 }
+
+
+object factorySuperEscudos{
+
+	var property spawnWeight = 0.5
+	
+	method crear(){
+		return new SuperEscudo()
+	}
+}

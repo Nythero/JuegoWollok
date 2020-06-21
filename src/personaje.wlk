@@ -53,3 +53,17 @@ object autoConEscudoSimple {
 		buffTracker.forceRemoveBuff(buffEscudoSimple)
 	}
 }
+
+object autoConSuperEscudo {
+	const property image = "personaje/personajeConEscudoVerde.png"
+	
+	method chocar() {
+		buffTracker.forceRemoveBuff(buffSuperEscudo)
+	}
+}
+
+object autoConMegaEscudo {
+	const property image = "personaje/personajeConEscudoRosa.png"
+	
+	method chocar() {}
+}

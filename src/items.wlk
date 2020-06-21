@@ -59,3 +59,15 @@ object escudo inherits Item {
 		buffTracker.addBuff(buffEscudoSimple)
 	}
 }
+
+object megaEscudo inherits Item {
+	
+	override method image() = "elementos/escudoRosa.png"	
+	
+	override method time() = 9
+	override method price() = 100
+	
+	override method activate() {
+		buffTracker.addBuff(buffMegaEscudo)
+	}
+}

@@ -16,7 +16,7 @@ object buffTracker {
 	
 	method clear() {
 		buffs.forEach(
-			{ buff => buff.lose() }
+			{ buff => self.removeBuff(buff) }
 		)
 	}
 	
@@ -67,8 +67,16 @@ object buffTracker {
 	
 	method removeBuffType(type) {
 		self.buffsWithType(type).forEach(
-			{ buff => self.removeBuff(buff) }
+			{ buff =>
+				
+				self.removeBuff(buff)
+			}
 		)
+	}
+	
+	method softRemoveBuff(buff) {
+		buff.lose()
+		buffs.remove(buff)
 	}
 	
 	method buffsWithType(type) {

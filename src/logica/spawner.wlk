@@ -15,7 +15,8 @@ object spawner {
 		factoryMonedas,
 		factoryMegaMonedas,
 		factoryGases,
-		factoryGemas
+		factoryGemas,
+		factorySuperEscudos
 	]
 	
 	//Cada factory tira un "dado" y el que tiene el numero mas chico es el elegido

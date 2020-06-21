@@ -55,9 +55,10 @@ class Buff inherits TimeableElement {
 	method deactivate()
 }
 
+
+
 class BuffEscudo inherits Buff {
 	override method type() = "shield"
-	override method time() = 5
 	
 	override method deactivate() {
 		personaje.tipoDeAuto(autoComun)
@@ -67,11 +68,34 @@ class BuffEscudo inherits Buff {
 object buffEscudoSimple inherits BuffEscudo {
 	
 	override method image() = "elementos/escudoAzul.png"
+	override method time() = 5
 	
 	override method activate() {
 		personaje.tipoDeAuto(autoConEscudoSimple)
 	}
 }
+
+object buffSuperEscudo inherits BuffEscudo {
+	
+	override method image() = "elementos/escudoVerde.png"
+	override method time() = 9
+	
+	override method activate() {
+		personaje.tipoDeAuto(autoConSuperEscudo)
+	}	
+}
+
+object buffMegaEscudo inherits BuffEscudo {
+	
+	override method image() = "elementos/escudoRosa.png"
+	override method time() = 7
+	
+	override method activate() {
+		personaje.tipoDeAuto(autoConMegaEscudo)
+	}	
+}
+
+
 
 object buffGema inherits Buff {
 	
