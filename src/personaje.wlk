@@ -39,17 +39,31 @@ object personaje {
 }
 
 object autoComun {
-	const property image = "auto_rojo2.png"
+	const property image = "personaje/personajeSimple.png"
 	
 	method chocar() {
 		detector.cambiarEstado()
 	}
 }
 
-object autoConEscudo {
-	const property image = "autoRojoConEscudo.png"
+object autoConEscudoSimple {
+	const property image = "personaje/personajeConEscudoAzul.png"
 	
 	method chocar() {
-		buffTracker.forceRemoveBuff(buffEscudo)
+		buffTracker.forceRemoveBuff(buffEscudoSimple)
 	}
+}
+
+object autoConSuperEscudo {
+	const property image = "personaje/personajeConEscudoVerde.png"
+	
+	method chocar() {
+		buffTracker.forceRemoveBuff(buffSuperEscudo)
+	}
+}
+
+object autoConMegaEscudo {
+	const property image = "personaje/personajeConEscudoRosa.png"
+	
+	method chocar() {}
 }

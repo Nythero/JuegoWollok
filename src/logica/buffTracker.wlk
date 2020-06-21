@@ -16,12 +16,12 @@ object buffTracker {
 	
 	method clear() {
 		buffs.forEach(
-			{ buff => buff.lose() }
+			{ buff => self.removeBuff(buff) }
 		)
 	}
 	
 	method addBuff(buff) {
-		buff.lose()
+		self.removeBuffType(buff.type())
 		self.show(buff)
 		buffs.add(buff)
 		buff.gain()
@@ -63,6 +63,27 @@ object buffTracker {
 		)
 		
 		timer.refreshPositions()
+	}
+	
+	method removeBuffType(type) {
+		self.buffsWithType(type).forEach(
+			{ buff =>
+				
+				self.removeBuff(buff)
+			}
+		)
+	}
+	
+	method softRemoveBuff(buff) {
+		buff.lose()
+		buffs.remove(buff)
+	}
+	
+	method buffsWithType(type) {
+		return
+			buffs.filter(
+				{ buff => buff.type() == type }
+			)
 	}
 	
 	method slot(n) {

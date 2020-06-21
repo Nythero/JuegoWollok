@@ -7,7 +7,7 @@ object tienda {
 	// Para agregar un item a la tienda, solo hace falta agregarlo a esta lista	
 	// Se pueden agregar hasta 9 items (correspondiendose en orden con los numeros del
 	// teclado del 1 al 9)
-	const items = [escudo]
+	const items = [escudo, megaEscudo, borrador]
 	
 	const width = 5
 	const height = 2

@@ -11,8 +11,11 @@ import magnitudes.*
  * * override method time() <--- tiene que ser menor o igual a 9 para que el display funcione correctamente
  * * override method activate()
  * * override method deactivate()
+ * * override method type()
  */
 class Buff inherits TimeableElement {
+	
+	method type()
 		
 	method gain() {
 		self.activate()
@@ -52,21 +55,53 @@ class Buff inherits TimeableElement {
 	method deactivate()
 }
 
-object buffEscudo inherits Buff {
-	override method image() = "items/escudo.png"
-	override method time() = 5
-	
-	override method activate() {
-		personaje.tipoDeAuto(autoConEscudo)
-	}
+
+
+class BuffEscudo inherits Buff {
+	override method type() = "shield"
 	
 	override method deactivate() {
 		personaje.tipoDeAuto(autoComun)
 	}
 }
 
+object buffEscudoSimple inherits BuffEscudo {
+	
+	override method image() = "elementos/escudoAzul.png"
+	override method time() = 5
+	
+	override method activate() {
+		personaje.tipoDeAuto(autoConEscudoSimple)
+	}
+}
+
+object buffSuperEscudo inherits BuffEscudo {
+	
+	override method image() = "elementos/escudoVerde.png"
+	override method time() = 9
+	
+	override method activate() {
+		personaje.tipoDeAuto(autoConSuperEscudo)
+	}	
+}
+
+object buffMegaEscudo inherits BuffEscudo {
+	
+	override method image() = "elementos/escudoRosa.png"
+	override method time() = 2
+	
+	override method activate() {
+		personaje.tipoDeAuto(autoConMegaEscudo)
+	}	
+}
+
+
+
 object buffGema inherits Buff {
-	override method image() = "gema.png"
+	
+	override method type() = "multiplier"
+	
+	override method image() = "elementos/gema.png"
 	override method time() = 9
 	
 	override method activate() {
