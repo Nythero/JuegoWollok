@@ -11,6 +11,7 @@ import buffs.*
  * Las clases que heredan de ElementoQueAvanza REQUIEREN:
  * * override method activar()
  * * override method image()
+ * * override method tipo() <- usado por el item borrador para eliminar obstaculos desfavorables
  * 
  * Además, para que el elemento aparezca en el juego, hay que crear su factory
  * 	y agregarla a la lista de factories del spawner.
@@ -19,6 +20,11 @@ class ElementoQueAvanza {
 	var property position
 	
 	method image()
+	method tipo()
+	
+	method esDesfavorable() {
+		return self.tipo() == "desfavorable"
+	}
 	
 	method avanzar() {
 		if (self.position().y() == 0) {
@@ -35,12 +41,14 @@ class ElementoQueAvanza {
 		self.activar(otro)
 	}
 	
+	
 	method activar(otro)
 }
 
 class Obstaculo inherits ElementoQueAvanza {
-
+	
 	override method image() = "elementos/obstaculoVerde.png"
+	override method tipo() = "desfavorable"
 	
 	override method activar(otro){
 		otro.chocar(self)
@@ -75,8 +83,9 @@ class ObstaculoMovedizo inherits Obstaculo {
 }
 
 class Gas inherits ElementoQueAvanza {
-
-	var property image = "elementos/gas.png"
+		
+	override method image() = "elementos/gas.png"
+	override method tipo() = "favorable"
 	
 	override method activar(jugador){
 		velocidad.aumentar(10)
@@ -87,6 +96,7 @@ class Moneda inherits ElementoQueAvanza {
 	
 	//Atributos
 	override method image() = "elementos/moneda.png"
+	override method tipo() = "favorable"
 	
 	method puntosOtorgados() = 5
 	
@@ -106,6 +116,7 @@ class MegaMoneda inherits Moneda {
 
 class Gema inherits ElementoQueAvanza {
 	override method image() = "elementos/gema.png"
+	override method tipo() = "favorable"
 	
 	override method activar(otro) {
 		buffTracker.addBuff(buffGema)
@@ -115,6 +126,7 @@ class Gema inherits ElementoQueAvanza {
 
 class SuperEscudo inherits ElementoQueAvanza {
 	override method image() = "elementos/escudoVerde.png"
+	override method tipo() = "favorable"
 	
 	override method activar(otro) {
 		buffTracker.addBuff(buffSuperEscudo)

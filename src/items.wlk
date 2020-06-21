@@ -4,6 +4,7 @@ import logica.timer.*
 import logica.buffTracker.*
 import magnitudes.*
 import buffs.*
+import logica.advancer.*
 
 class Item inherits TimeableElement {
 	
@@ -64,10 +65,22 @@ object megaEscudo inherits Item {
 	
 	override method image() = "elementos/escudoRosa.png"	
 	
-	override method time() = 9
+	override method time() = 7
 	override method price() = 100
 	
 	override method activate() {
 		buffTracker.addBuff(buffMegaEscudo)
+	}
+}
+
+object borrador inherits Item {
+	
+	override method image() = "elementos/eraser.png"	
+	
+	override method time() = 9
+	override method price() = 250
+	
+	override method activate() {
+		advancer.eliminarEnemigos()
 	}
 }

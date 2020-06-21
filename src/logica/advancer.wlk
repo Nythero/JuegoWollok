@@ -19,6 +19,18 @@ object advancer {
 	
 	method start(){
 		elementosQueAvanzan.clear()
-		
+	}
+	
+	method eliminarEnemigos() {
+		self.enemigos().forEach(
+			{ enemigo => spawner.despawnear(enemigo) }
+		)
+	}
+	
+	method enemigos() {
+		return
+			elementosQueAvanzan.filter(
+				{ elemento => elemento.esDesfavorable() }
+			)
 	}
 }

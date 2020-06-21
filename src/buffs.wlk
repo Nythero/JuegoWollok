@@ -88,7 +88,7 @@ object buffSuperEscudo inherits BuffEscudo {
 object buffMegaEscudo inherits BuffEscudo {
 	
 	override method image() = "elementos/escudoRosa.png"
-	override method time() = 7
+	override method time() = 2
 	
 	override method activate() {
 		personaje.tipoDeAuto(autoConMegaEscudo)
