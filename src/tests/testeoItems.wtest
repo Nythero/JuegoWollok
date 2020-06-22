@@ -19,5 +19,18 @@ describe "testeo de los items" {
 		escudo.activate()
 		assert.that(buffTracker.contains(buffEscudoSimple))
 	}
-	// SE CONTINUA CON EL TESTEO
+	test "El mega escudo tiene un tiempo de 7 y precio de 100 monedas, y al activarlo se une al conjunto
+          de buffs" {
+		
+		assert.equals(7,megaEscudo.time())
+		assert.equals(100,megaEscudo.price())
+		megaEscudo.activate()
+		assert.that(buffTracker.contains(buffMegaEscudo))
+	}
+	test "el borrador tiene como imagen elementos/eraser.png , tiempo de 9 y precio de 250" {
+		
+		assert.equals(9,borrador.time())
+		assert.equals(250,borrador.price())
+		assert.equals("elementos/eraser.png",borrador.image())
+	}
 }
