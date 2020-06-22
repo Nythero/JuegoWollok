@@ -97,4 +97,7 @@ object buffTracker {
 	method coordSlotX(n) {
 		return posicion.x() + n % width
 	}
+	method contains(_item) {
+		return buffs.contains(_item)
+	} 
 }

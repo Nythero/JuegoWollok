@@ -1,0 +1,23 @@
+import items.*
+import wollok.game.*
+import personaje.*
+import logica.timer.*
+import logica.buffTracker.*
+import magnitudes.*
+import buffs.*
+import logica.advancer.*
+
+describe "testeo de los items" {
+	
+	test "el escudo normal tiene un precio de 30 monedas y se activa con un tiempo de 3 segundos" {
+		
+		assert.equals(3,escudo.time())
+		assert.equals(30,escudo.price())
+	}
+	test "al activar el escudo se une al conjunto de buffs" {
+		
+		escudo.activate()
+		assert.that(buffTracker.contains(buffEscudoSimple))
+	}
+	// SE CONTINUA CON EL TESTEO
+}

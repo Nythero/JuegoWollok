@@ -35,5 +35,4 @@ describe "testeo del personaje"  {
 		  	assert.equals("autoRojoConEscudo.png",personaje.image())
 		  }
 }
-
 */
