@@ -14,4 +14,8 @@ object lista {
 		return lista.filter({ elemento => elemento.id() == _id}).uniqueElement()
 	}
 	
+	method naturalesHasta(max){
+		return (0..max)
+	}
+	
 }

@@ -8,6 +8,7 @@ import advancer.*
 import magnitudes.*
 import tienda.*
 import logica.timer.*
+import nivel.*
 
 object pausado {
 	
@@ -45,6 +46,7 @@ object enJuego {
 		self.detectarTeclas()		
 		timer.start()
 		tienda.start()
+		nivelManager.iniciarNiveles()
 	}
 	
 	method iniciarColisiones() {

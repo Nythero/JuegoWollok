@@ -21,7 +21,13 @@ object math {
 	
 	//Agarra un numero random de 3 cifras y lo divide por el weight
 	method randomByWeight(weight){
-		const max = 10**(-3)/weight
-		return 0.randomUpTo(max)
+		return if (weight == 0){
+			100
+		}
+		else{
+			const max = 10**(-3)/weight
+			0.randomUpTo(max)
+		}
+			
 	}
 }
