@@ -4,33 +4,129 @@ import logica.spawner.*
 import logica.advancer.*
 import logica.detector.*
 import personaje.*
+import magnitudes.*
 
 describe "Probando los obstaculos" {
 	
 	var unAutoVerde
 	var tanqueDeGasolina
 	var unaMoneda
+	var megaMoneda
+	var movedizo
+	var gema
+	var escudo
 	
 	fixture {
 		
 		unAutoVerde = new Obstaculo()
 		tanqueDeGasolina = new Gas()
 		unaMoneda = new Moneda()
+		megaMoneda = new MegaMoneda()
+		movedizo = new ObstaculoMovedizo()
+		gema = new Gema()
+		escudo = new SuperEscudo()
+		
+		game.addVisual(unAutoVerde)
+		game.addVisual(tanqueDeGasolina)
+		game.addVisual(unaMoneda)
+		game.addVisual(megaMoneda)
+		game.addVisual(movedizo)
+		game.addVisual(gema)
+		game.addVisual(escudo)
+		
+		velocidad.inicializar()
+		
+		puntaje.inicializar()
 	}
 	
 	test "un Auto verde tiene por imagen auto-verde2.png y al colisionar con otro obstaculo cambia de estado" {
 		
-		assert.equals("auto_verde2.png",unAutoVerde.image())
+		assert.equals("elementos/obstaculoVerde.png",unAutoVerde.image())
 		unAutoVerde.colisionar(personaje)
 		assert.that(detector.estaEnJuego())
-		}
-	test "una Moneda es de valor 5 y tiene como imagen moneda2.png" {
+	}
+		
+	test "una Moneda es de valor 5 y tiene como imagen moneda2.png y aumenta el puntaje" {
 			
 		assert.equals(5,unaMoneda.puntosOtorgados())
-		assert.equals("moneda2.png",unaMoneda.image())
-	}
-	test "El Gas tiene como imagen en el juego a gas.png" {
 		
-		assert.equals("gas.png",tanqueDeGasolina.image())
+		assert.equals("elementos/moneda.png",unaMoneda.image())
+		
+		assert.equals(0, puntaje.valor())
+		
+		unaMoneda.colisionar(personaje)
+		
+		assert.equals(5, puntaje.valor())
+	}
+	
+	test "El Gas tiene como imagen en el juego a gas.png y aumenta la velocidad" {
+		
+		assert.equals("elementos/gas.png",tanqueDeGasolina.image())
+		
+		assert.equals(5, velocidad.valor())
+		
+		assert.equals(0.01, velocidad.multiplicador())
+		
+		tanqueDeGasolina.colisionar(personaje)
+		
+		assert.equals(velocidad.valorInicial()*(1+velocidad.multiplicadorInicial()), velocidad.valor())
+	}
+	
+	test "El Gas aumenta el multiplicador de puntaje" {
+		
+		assert.equals(1,puntaje.multiplicador())
+		
+		tanqueDeGasolina.colisionar(personaje)
+		
+		assert.equals(1.05 ,puntaje.multiplicador())
+		
+	}
+	
+	test "Megamoneda aumenta el puntaje en 25"{
+		
+		assert.equals(0, puntaje.valor())
+		
+		megaMoneda.colisionar(personaje)
+		
+		assert.equals(25, puntaje.valor())
+		
+	}
+	
+	test "Obstaculo movedizo hacia la derecha"{
+		
+		movedizo.position(game.at(2,2))
+		movedizo.direccionMovimiento(1)
+		movedizo.avanzar()
+	    assert.equals(game.at(3,1), movedizo.position())
+		movedizo.avanzar()
+	    assert.equals(game.at(2,0), movedizo.position())
+	}
+	
+	test "Obstaculo movedizo hacia la izquierda"{
+		
+		movedizo.position(game.at(1,2))
+		movedizo.direccionMovimiento(-1)
+		movedizo.avanzar()
+	    assert.equals(game.at(0,1), movedizo.position())
+		movedizo.avanzar()
+	    assert.equals(game.at(1,0), movedizo.position())
+	}
+	
+	test "Gema aplica su buff"{
+		
+		assert.equals(1,puntaje.multiplicador())
+		
+		gema.colisionar(personaje)
+		
+		assert.equals(2,puntaje.multiplicador())
+		
+	}
+	
+	test "Super escudo aplica su buff"{
+		assert.equals(autoComun, personaje.tipoDeAuto())
+		
+		escudo.colisionar(personaje)
+		
+		assert.equals(autoConSuperEscudo, personaje.tipoDeAuto())
 	}
 }

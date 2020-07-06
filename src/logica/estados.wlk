@@ -9,12 +9,9 @@ import magnitudes.*
 import tienda.*
 import logica.timer.*
 import nivel.*
+import fondo.*
 
 object pausado {
-	
-	var mensaje = new Drawing(	position = game.at(0,0),
-								image = "espacio.png"							
-	)
 	
 	method detectarTeclas(){
 		keyboard.space().onPressDo({ detector.cambiarEstado() })
@@ -22,7 +19,7 @@ object pausado {
 	
 	method iniciar(){
 		game.clear()
-		game.addVisual(mensaje)
+		fondo.ponerFondoDePausa()
 		self.detectarTeclas()
 	}
 }
@@ -37,7 +34,7 @@ object enJuego {
 	method iniciar(){
 		game.clear()
 		advancer.start()
-		fondo.iniciar()
+		fondo.ponerFondoEnJuego()
 		personaje.iniciar()
 		velocidad.inicializar()
 		self.iniciarAvance(velocidad.valor())

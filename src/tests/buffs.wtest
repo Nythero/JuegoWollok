@@ -1,0 +1,93 @@
+import buffs.*
+import obstaculo.*
+import personaje.*
+import logica.detector.*
+import logica.estados.*
+import magnitudes.*
+import wollok.game.*
+import logica.buffTracker.*
+
+
+describe "test de los buffos" {
+	
+	var obstaculo
+	
+	fixture {
+		detector.cambiarEstado()
+		
+		obstaculo = new Obstaculo()
+		
+		game.addVisual(obstaculo)
+	}
+	
+	test "Buff Gema duplica los puntos"{
+		
+		var mega = new MegaMoneda()
+		
+		game.addVisual(mega)
+		
+		puntaje.inicializar()
+		
+		buffTracker.addBuff(buffGema)
+		
+		mega.colisionar(personaje)
+		
+		assert.equals(50, puntaje.valor())
+		
+	}
+	
+	test "Escudo simple evita una colision"{
+		
+		buffTracker.addBuff(buffEscudoSimple)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(enJuego, detector.estado())
+		
+		game.addVisual(obstaculo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(pausado, detector.estado())
+	}
+	
+	test "Escudo Super evita una colision"{
+		
+		buffTracker.addBuff(buffSuperEscudo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(enJuego, detector.estado())
+		
+		game.addVisual(obstaculo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(pausado, detector.estado())
+	}
+	
+	test "Mega escudo evita todas las colisiones mientras esta activo"{
+		
+		buffTracker.addBuff(buffMegaEscudo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(enJuego, detector.estado())
+		
+		game.addVisual(obstaculo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(enJuego, detector.estado())
+		
+		buffTracker.forceRemoveBuff(buffMegaEscudo)
+		
+		game.addVisual(obstaculo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(pausado, detector.estado())
+		
+		
+		}
+}
