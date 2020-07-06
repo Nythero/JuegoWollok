@@ -4,6 +4,7 @@ import logica.spawner.*
 import logica.advancer.*
 import logica.detector.*
 import personaje.*
+import magnitudes.*
 
 describe "Probando los obstaculos" {
 	
@@ -16,21 +17,56 @@ describe "Probando los obstaculos" {
 		unAutoVerde = new Obstaculo()
 		tanqueDeGasolina = new Gas()
 		unaMoneda = new Moneda()
+		
+		game.addVisual(unAutoVerde)
+		game.addVisual(tanqueDeGasolina)
+		game.addVisual(unaMoneda)
+		
+		velocidad.inicializar()
+		
+		puntaje.inicializar()
 	}
 	
 	test "un Auto verde tiene por imagen auto-verde2.png y al colisionar con otro obstaculo cambia de estado" {
 		
-		assert.equals("auto_verde2.png",unAutoVerde.image())
+		assert.equals("elementos/obstaculoVerde.png",unAutoVerde.image())
 		unAutoVerde.colisionar(personaje)
 		assert.that(detector.estaEnJuego())
-		}
-	test "una Moneda es de valor 5 y tiene como imagen moneda2.png" {
+	}
+		
+	test "una Moneda es de valor 5 y tiene como imagen moneda2.png y aumenta el puntaje" {
 			
 		assert.equals(5,unaMoneda.puntosOtorgados())
-		assert.equals("moneda2.png",unaMoneda.image())
-	}
-	test "El Gas tiene como imagen en el juego a gas.png" {
 		
-		assert.equals("gas.png",tanqueDeGasolina.image())
+		assert.equals("elementos/moneda.png",unaMoneda.image())
+		
+		assert.equals(0, puntaje.valor())
+		
+		unaMoneda.colisionar(personaje)
+		
+		assert.equals(5, puntaje.valor())
+	}
+	
+	test "El Gas tiene como imagen en el juego a gas.png y aumenta la velocidad" {
+		
+		assert.equals("elementos/gas.png",tanqueDeGasolina.image())
+		
+		assert.equals(5, velocidad.valor())
+		
+		assert.equals(0.01, velocidad.multiplicador())
+		
+		tanqueDeGasolina.colisionar(personaje)
+		
+		assert.equals(velocidad.valorInicial()*(1+velocidad.multiplicadorInicial()), velocidad.valor())
+	}
+	
+	test "El Gas aumenta el multiplicador de personaje" {
+		
+		assert.equals(1,puntaje.multiplicador())
+		
+		tanqueDeGasolina.colisionar(personaje)
+		
+		assert.equals(1.05 ,puntaje.multiplicador())
+		
 	}
 }

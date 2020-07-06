@@ -88,7 +88,7 @@ class Gas inherits ElementoQueAvanza {
 	override method tipo() = "favorable"
 	
 	override method activar(jugador){
-		velocidad.aumentar(10)
+		velocidad.aumentar(5)
 	}
 }
 
