@@ -10,8 +10,14 @@ import logica.buffTracker.*
 
 describe "test de los buffos" {
 	
+	var obstaculo
+	
 	fixture {
 		detector.cambiarEstado()
+		
+		obstaculo = new Obstaculo()
+		
+		game.addVisual(obstaculo)
 	}
 	
 	test "Buff Gema duplica los puntos"{
@@ -32,10 +38,6 @@ describe "test de los buffos" {
 	
 	test "Escudo simple evita una colision"{
 		
-		var obstaculo = new Obstaculo()
-		
-		game.addVisual(obstaculo)
-		
 		buffTracker.addBuff(buffEscudoSimple)
 		
 		obstaculo.colisionar(personaje)
@@ -51,10 +53,6 @@ describe "test de los buffos" {
 	
 	test "Escudo Super evita una colision"{
 		
-		var obstaculo = new Obstaculo()
-		
-		game.addVisual(obstaculo)
-		
 		buffTracker.addBuff(buffSuperEscudo)
 		
 		obstaculo.colisionar(personaje)
@@ -69,10 +67,6 @@ describe "test de los buffos" {
 	}
 	
 	test "Mega escudo evita todas las colisiones mientras esta activo"{
-		
-		var obstaculo = new Obstaculo()
-		
-		game.addVisual(obstaculo)
 		
 		buffTracker.addBuff(buffMegaEscudo)
 		
