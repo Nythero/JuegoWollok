@@ -48,4 +48,52 @@ describe "test de los buffos" {
 		
 		assert.equals(pausado, detector.estado())
 	}
+	
+	test "Escudo Super evita una colision"{
+		
+		var obstaculo = new Obstaculo()
+		
+		game.addVisual(obstaculo)
+		
+		buffTracker.addBuff(buffSuperEscudo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(enJuego, detector.estado())
+		
+		game.addVisual(obstaculo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(pausado, detector.estado())
+	}
+	
+	test "Mega escudo evita todas las colisiones mientras esta activo"{
+		
+		var obstaculo = new Obstaculo()
+		
+		game.addVisual(obstaculo)
+		
+		buffTracker.addBuff(buffMegaEscudo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(enJuego, detector.estado())
+		
+		game.addVisual(obstaculo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(enJuego, detector.estado())
+		
+		buffTracker.forceRemoveBuff(buffMegaEscudo)
+		
+		game.addVisual(obstaculo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(pausado, detector.estado())
+		
+		
+		}
 }
