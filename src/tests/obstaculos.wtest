@@ -11,16 +11,22 @@ describe "Probando los obstaculos" {
 	var unAutoVerde
 	var tanqueDeGasolina
 	var unaMoneda
+	var megaMoneda
+	var movedizo
 	
 	fixture {
 		
 		unAutoVerde = new Obstaculo()
 		tanqueDeGasolina = new Gas()
 		unaMoneda = new Moneda()
+		megaMoneda = new MegaMoneda()
+		movedizo = new ObstaculoMovedizo()
 		
 		game.addVisual(unAutoVerde)
 		game.addVisual(tanqueDeGasolina)
 		game.addVisual(unaMoneda)
+		game.addVisual(megaMoneda)
+		game.addVisual(movedizo)
 		
 		velocidad.inicializar()
 		
@@ -60,7 +66,7 @@ describe "Probando los obstaculos" {
 		assert.equals(velocidad.valorInicial()*(1+velocidad.multiplicadorInicial()), velocidad.valor())
 	}
 	
-	test "El Gas aumenta el multiplicador de personaje" {
+	test "El Gas aumenta el multiplicador de puntaje" {
 		
 		assert.equals(1,puntaje.multiplicador())
 		
@@ -68,5 +74,35 @@ describe "Probando los obstaculos" {
 		
 		assert.equals(1.05 ,puntaje.multiplicador())
 		
+	}
+	
+	test "Megamoneda aumenta el puntaje en 25"{
+		
+		assert.equals(0, puntaje.valor())
+		
+		megaMoneda.colisionar(personaje)
+		
+		assert.equals(25, puntaje.valor())
+		
+	}
+	
+	test "Obstaculo movedizo hacia la derecha"{
+		
+		movedizo.position(game.at(2,2))
+		movedizo.direccionMovimiento(1)
+		movedizo.avanzar()
+	    assert.equals(game.at(3,1), movedizo.position())
+		movedizo.avanzar()
+	    assert.equals(game.at(2,0), movedizo.position())
+	}
+	
+	test "Obstaculo movedizo hacia la izquierda"{
+		
+		movedizo.position(game.at(1,2))
+		movedizo.direccionMovimiento(-1)
+		movedizo.avanzar()
+	    assert.equals(game.at(0,1), movedizo.position())
+		movedizo.avanzar()
+	    assert.equals(game.at(1,0), movedizo.position())
 	}
 }

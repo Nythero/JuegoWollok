@@ -110,7 +110,7 @@ class Moneda inherits ElementoQueAvanza {
 class MegaMoneda inherits Moneda {
 	
 	override method image() = "elementos/megaMoneda.png"
-	override method puntosOtorgados() = 25
+	override method puntosOtorgados() = super() * 5
 }
 
 
