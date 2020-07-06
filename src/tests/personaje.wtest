@@ -1,0 +1,72 @@
+
+import obstaculo.*
+import wollok.game.*
+import logica.spawner.*
+import logica.advancer.*
+import logica.detector.*
+import personaje.*
+import configuracion.*
+import buffs.*
+
+
+describe "testeo del personaje"  {
+	
+	test "al iniciar el personaje no tiene escudo" {
+		
+		personaje.iniciar()
+		assert.equals(autoComun, personaje.tipoDeAuto())
+	}
+	
+	test "cuando inicia, el personaje no tiene escudo pero si lo compra pasa a tener uno" {
+		
+		personaje.iniciar()
+		assert.equals(autoComun, personaje.tipoDeAuto())
+		
+		buffEscudoSimple.activate()
+		assert.equals(autoConEscudoSimple, personaje.tipoDeAuto())
+	}
+	
+	test "el personaje comienza con imagen de auto_rojo2.png, si se compra escudo cambia imagen a 
+		  autoRojoConEscudo.png" {
+		  	
+		personaje.iniciar()
+		assert.equals("personaje/personajeSimple.png",personaje.image())
+		  	
+		buffEscudoSimple.activate()
+		assert.equals("personaje/personajeConEscudoAzul.png",personaje.image())
+	}
+	
+	test "Mover derecha e izquierda"{
+		personaje.iniciar()
+		
+		assert.equals(game.at(2,0),personaje.position())
+		
+		personaje.moverHacia(1)
+		
+		assert.equals(game.at(3,0),personaje.position())
+		
+		personaje.moverHacia(-1)
+		personaje.moverHacia(-1)
+		
+		assert.equals(game.at(1,0),personaje.position())
+		
+	}
+	
+	test "Movimiento en caso borde"{
+		personaje.position(game.at(3,0))
+		
+		personaje.moverHacia(1)
+		
+		assert.equals(game.at(3,0),personaje.position())
+		
+		personaje.position(game.at(0,0))
+		
+		personaje.moverHacia(-1)
+		
+		assert.equals(game.at(0,0),personaje.position())
+		
+		
+	}
+	
+}
+
