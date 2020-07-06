@@ -8,7 +8,8 @@ object fondo {
 	
 	const fondos = ["fondos/fondo1.png", "fondos/fondo2.png"]
 	
-	method iniciar(){
+	method ponerFondoEnJuego(){
+		image = fondos.get(0)
 		game.addVisual(self)
 	}
 	
@@ -18,7 +19,10 @@ object fondo {
 		image = fondos.get(0)
 	}
 	
-	
+	method ponerFondoDePausa() {
+		game.addVisual(self)
+		image = "fondos/fondoPausado.png"
+	}
 	
 	method colisionar(personaje) {
 		
