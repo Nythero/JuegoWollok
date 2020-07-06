@@ -1,0 +1,51 @@
+import buffs.*
+import obstaculo.*
+import personaje.*
+import logica.detector.*
+import logica.estados.*
+import magnitudes.*
+import wollok.game.*
+import logica.buffTracker.*
+
+
+describe "test de los buffos" {
+	
+	fixture {
+		detector.cambiarEstado()
+	}
+	
+	test "Buff Gema duplica los puntos"{
+		
+		var mega = new MegaMoneda()
+		
+		game.addVisual(mega)
+		
+		puntaje.inicializar()
+		
+		buffTracker.addBuff(buffGema)
+		
+		mega.colisionar(personaje)
+		
+		assert.equals(50, puntaje.valor())
+		
+	}
+	
+	test "Escudo simple evita una colision"{
+		
+		var obstaculo = new Obstaculo()
+		
+		game.addVisual(obstaculo)
+		
+		buffTracker.addBuff(buffEscudoSimple)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(enJuego, detector.estado())
+		
+		game.addVisual(obstaculo)
+		
+		obstaculo.colisionar(personaje)
+		
+		assert.equals(pausado, detector.estado())
+	}
+}
