@@ -1,8 +1,8 @@
 import obstaculo.*
 
 object factoryObstaculos{
-
-	var property spawnWeight = 8
+	
+	var property spawnWeight
 	
 	method crear(){
 		return new Obstaculo()
@@ -10,8 +10,8 @@ object factoryObstaculos{
 }
 
 object factoryObstaculosMovedizos {
-
-	var property spawnWeight = 1
+	
+	var property spawnWeight
 	
 	method crear(){
 		return new ObstaculoMovedizo()
@@ -20,7 +20,7 @@ object factoryObstaculosMovedizos {
 
 object factoryMonedas{
 	
-	var property spawnWeight = 3
+	var property spawnWeight
 	
 	method crear(){
 		return new Moneda()
@@ -29,7 +29,7 @@ object factoryMonedas{
 
 object factoryMegaMonedas{
 	
-	var property spawnWeight = 0.5
+	var property spawnWeight
 	
 	method crear(){
 		return new MegaMoneda()
@@ -38,7 +38,7 @@ object factoryMegaMonedas{
 
 object factoryGases{
 	
-	var property spawnWeight = 2
+	var property spawnWeight
 	
 	method crear(){
 		return new Gas()
@@ -47,8 +47,8 @@ object factoryGases{
 
 
 object factoryGemas{
-
-	var property spawnWeight = 1
+	
+	var property spawnWeight
 	
 	method crear(){
 		return new Gema()
@@ -57,8 +57,8 @@ object factoryGemas{
 
 
 object factorySuperEscudos{
-
-	var property spawnWeight = 0.5
+	
+	var property spawnWeight
 	
 	method crear(){
 		return new SuperEscudo()
