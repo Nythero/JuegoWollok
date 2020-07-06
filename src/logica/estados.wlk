@@ -1,7 +1,6 @@
 import wollok.game.*
 import detector.*
 import personaje.*
-import suplementarios.drawer.*
 import reloj.*
 import fondo.*
 import advancer.*
