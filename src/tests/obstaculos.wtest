@@ -13,6 +13,8 @@ describe "Probando los obstaculos" {
 	var unaMoneda
 	var megaMoneda
 	var movedizo
+	var gema
+	var escudo
 	
 	fixture {
 		
@@ -21,12 +23,16 @@ describe "Probando los obstaculos" {
 		unaMoneda = new Moneda()
 		megaMoneda = new MegaMoneda()
 		movedizo = new ObstaculoMovedizo()
+		gema = new Gema()
+		escudo = new SuperEscudo()
 		
 		game.addVisual(unAutoVerde)
 		game.addVisual(tanqueDeGasolina)
 		game.addVisual(unaMoneda)
 		game.addVisual(megaMoneda)
 		game.addVisual(movedizo)
+		game.addVisual(gema)
+		game.addVisual(escudo)
 		
 		velocidad.inicializar()
 		
@@ -104,5 +110,23 @@ describe "Probando los obstaculos" {
 	    assert.equals(game.at(0,1), movedizo.position())
 		movedizo.avanzar()
 	    assert.equals(game.at(1,0), movedizo.position())
+	}
+	
+	test "Gema aplica su buff"{
+		
+		assert.equals(1,puntaje.multiplicador())
+		
+		gema.colisionar(personaje)
+		
+		assert.equals(2,puntaje.multiplicador())
+		
+	}
+	
+	test "Super escudo aplica su buff"{
+		assert.equals(autoComun, personaje.tipoDeAuto())
+		
+		escudo.colisionar(personaje)
+		
+		assert.equals(autoConSuperEscudo, personaje.tipoDeAuto())
 	}
 }
