@@ -88,7 +88,7 @@ class Gas inherits ElementoQueAvanza {
 	override method tipo() = "favorable"
 	
 	override method activar(jugador){
-		velocidad.aumentar(10)
+		velocidad.aumentar(5)
 	}
 }
 
@@ -110,7 +110,7 @@ class Moneda inherits ElementoQueAvanza {
 class MegaMoneda inherits Moneda {
 	
 	override method image() = "elementos/megaMoneda.png"
-	override method puntosOtorgados() = 25
+	override method puntosOtorgados() = super() * 5
 }
 
 
