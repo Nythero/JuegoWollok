@@ -18,11 +18,11 @@ describe "Probando los obstaculos" {
 	
 	fixture {
 		
-		unAutoVerde = new Obstaculo()
+		unAutoVerde = new Enemigo()
 		tanqueDeGasolina = new Gas()
 		unaMoneda = new Moneda()
 		megaMoneda = new MegaMoneda()
-		movedizo = new ObstaculoMovedizo()
+		movedizo = new EnemigoMovedizo()
 		gema = new Gema()
 		escudo = new SuperEscudo()
 		

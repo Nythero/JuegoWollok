@@ -5,7 +5,6 @@ import spawner.*
 import advancer.*
 import configuracion.*
 import fondo.*
-import reloj.*
 import suplementarios.numbers.*
 import estados.*
 import logica.buffTracker.*

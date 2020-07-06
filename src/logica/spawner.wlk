@@ -28,7 +28,7 @@ object spawner {
 		const elemento = self.elegirFactory().crear()
 		elemento.position(self.posicionLibreEnFilaSuperior())
 		game.addVisual(elemento)
-		advancer.agregarElementoQueAvanza(elemento)
+		advancer.agregarObstaculo(elemento)
 	}
 	
 	method posicionLibreEnFilaSuperior() {
@@ -40,7 +40,7 @@ object spawner {
 	}
 	
 	method despawnear(elemento) {
-		advancer.sacarElementoQueAvanza(elemento)
+		advancer.sacarObstaculo(elemento)
 		game.removeVisual(elemento)
 	}
 }

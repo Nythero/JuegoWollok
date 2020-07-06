@@ -2,6 +2,7 @@ import wollok.game.*
 import logica.writer.*
 import logica.estados.*
 import configuracion.*
+import logica.advancer.*
 
 class Magnitud {	
 	var property valor	= null
@@ -46,7 +47,7 @@ object velocidad inherits Magnitud {
 	override method aumentar(cantidad) {
 		super(cantidad)
 		puntaje.sumarMultiplicador(cantidad/100)
-		enJuego.actualizarAvance(valor)
+		advancer.actualizarAvance(valor)
 	}	
 }
 

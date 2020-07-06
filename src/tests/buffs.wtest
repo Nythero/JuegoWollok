@@ -15,7 +15,7 @@ describe "test de los buffos" {
 	fixture {
 		detector.cambiarEstado()
 		
-		obstaculo = new Obstaculo()
+		obstaculo = new Enemigo()
 		
 		game.addVisual(obstaculo)
 	}
