@@ -14,7 +14,7 @@ object stateManager {
 	const estados = [pausado, enJuego]
 		
 	method cambiarEstado() {
-		buffTracker.clear()
+		self.limpiarJuego()
 		
 		estados.add(estados.get(0))
 		estados.remove(estados.get(0))
@@ -29,5 +29,11 @@ object stateManager {
 	
 	method estaEnJuego() {
 		return estado == enJuego
+	}
+	
+	method limpiarJuego() {
+		buffTracker.clear()
+		advancer.limpiar()
+		fondo.limpiar()
 	}
 }

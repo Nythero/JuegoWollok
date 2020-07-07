@@ -19,8 +19,12 @@ object advancer {
 		)
 	}
 	
-	method start(){
-		obstaculos.clear()
+	method limpiar(){
+		obstaculos.forEach(
+			{ obstaculo =>
+				spawner.despawnear(obstaculo)
+			}
+		)
 	}
 	
 	method eliminarEnemigos() {

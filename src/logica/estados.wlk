@@ -18,7 +18,7 @@ object pausado {
 	
 	method iniciar(){
 		game.clear()
-		fondo.ponerFondoDePausa()
+		fondo.iniciarFondoEnPausa()
 		self.detectarTeclas()
 	}
 }
@@ -32,8 +32,7 @@ object enJuego {
 	
 	method iniciar(){
 		game.clear()
-		advancer.start()
-		fondo.ponerFondoEnJuego()
+		fondo.iniciarFondoEnJuego()
 		personaje.iniciar()
 		velocidad.inicializar()
 		advancer.iniciarAvance(velocidad.valor())

@@ -2,30 +2,31 @@ import wollok.game.*
 
 object fondo {
 	
-	var property image = "fondos/fondo1.png"
-	
+	var property image
 	var property position = game.at(0, 0)
 	
-	const fondos = ["fondos/fondo1.png", "fondos/fondo2.png"]
+	const fondosEnJuego = ["fondos/fondoEnJuego1.png", "fondos/fondoEnJuego2.png"]	
+	const fondoEnPausa = "fondos/fondoEnPausa.png"
 	
-	method ponerFondoEnJuego(){
-		image = fondos.get(0)
+	method iniciarFondoEnJuego(){
+		image = fondosEnJuego.get(0)
 		game.addVisual(self)
 	}
 	
 	method avanzar(){
-		fondos.add(fondos.get(0))
-		fondos.remove(fondos.get(0))
-		image = fondos.get(0)
+		fondosEnJuego.add(fondosEnJuego.get(0))
+		fondosEnJuego.remove(fondosEnJuego.get(0))
+		image = fondosEnJuego.get(0)
 	}
 	
-	method ponerFondoDePausa() {
+	method iniciarFondoEnPausa() {
+		image = fondoEnPausa
 		game.addVisual(self)
-		image = "fondos/fondoPausado.png"
 	}
 	
-	method colisionar(personaje) {
-		
+	method colisionar(personaje) {}
+	
+	method limpiar() {
+		game.removeVisual(self)
 	}
-			
 }
