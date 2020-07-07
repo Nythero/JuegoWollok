@@ -1,5 +1,5 @@
+import suplementarios.writer.*
 import wollok.game.*
-import writer.*
 
 class TimeableElement {
 	var property inTiming = false

@@ -1,5 +1,5 @@
-import wollok.game.*
 import suplementarios.math.*
+import wollok.game.*
 
 class Writing {
 	var writing

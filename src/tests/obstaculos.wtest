@@ -1,10 +1,8 @@
-import obstaculo.*
-import wollok.game.*
-import logica.spawner.*
-import logica.advancer.*
-import logica.stateManager.*
-import personaje.*
 import magnitudes.*
+import obstaculos.advancer.*
+import obstaculos.obstaculos.*
+import personaje.*
+import wollok.game.*
 
 describe "Probando los obstaculos" {
 	

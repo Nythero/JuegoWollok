@@ -1,8 +1,7 @@
-import wollok.game.*
-import logica.timer.*
-import personaje.*
-import logica.buffTracker.*
+import cronometrados.buffTracker.*
+import cronometrados.timer.*
 import magnitudes.*
+import personaje.*
 
 /*
  * Las clases que heredan de Buff REQUIEREN:

@@ -1,7 +1,7 @@
-import wollok.game.*
+import cronometrados.tienda.*
+import estados.stateManager.*
 import personaje.*
-import tienda.*
-import logica.stateManager.*
+import wollok.game.*
 
 object configuracion {
 	

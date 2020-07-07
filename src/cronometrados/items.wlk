@@ -1,11 +1,9 @@
-import wollok.game.*
-import personaje.*
-import logica.timer.*
-import logica.buffTracker.*
+import cronometrados.buffs.*
+import cronometrados.buffTracker.*
+import cronometrados.timer.*
+import estados.stateManager.*
 import magnitudes.*
-import buffs.*
-import logica.advancer.*
-import logica.stateManager.*
+import obstaculos.advancer.*
 
 class Item inherits TimeableElement {
 	

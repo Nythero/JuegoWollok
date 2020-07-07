@@ -1,4 +1,4 @@
-import logica.factories.*
+import obstaculos.factories.*
 import suplementarios.list.*
 import wollok.game.*
 

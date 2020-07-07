@@ -1,10 +1,8 @@
-import wollok.game.*
 import configuracion.*
-import buffs.*
-import logica.timer.*
-import suplementarios.list.*
-import logica.buffTracker.*
-import logica.stateManager.*
+import cronometrados.buffs.*
+import cronometrados.buffTracker.*
+import estados.stateManager.*
+import wollok.game.*
 
 object personaje {
 	

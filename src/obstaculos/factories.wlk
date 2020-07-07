@@ -1,4 +1,4 @@
-import obstaculo.*
+import obstaculos.obstaculos.*
 
 class Factory {
 	var property spawnWeight = null

@@ -1,9 +1,8 @@
-import wollok.game.*
 import configuracion.*
+import obstaculos.advancer.*
+import obstaculos.factories.*
 import suplementarios.math.*
-import advancer.*
-import obstaculo.*
-import factories.*
+import wollok.game.*
 
 object spawner {
 	const spawnWidth = configuracion.trackWidth()

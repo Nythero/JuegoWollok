@@ -1,7 +1,6 @@
 import configuracion.*
+import cronometrados.items.*
 import wollok.game.*
-import logica.timer.*
-import items.*
 
 object tienda {
 	// Para agregar un item a la tienda, solo hace falta agregarlo a esta lista	

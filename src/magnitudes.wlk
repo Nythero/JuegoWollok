@@ -1,8 +1,7 @@
-import wollok.game.*
-import logica.writer.*
-import logica.estados.*
 import configuracion.*
-import logica.advancer.*
+import obstaculos.advancer.*
+import suplementarios.writer.*
+import wollok.game.*
 
 class Magnitud {	
 	var property valor = null

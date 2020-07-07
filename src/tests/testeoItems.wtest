@@ -1,11 +1,6 @@
-import items.*
-import wollok.game.*
-import personaje.*
-import logica.timer.*
-import logica.buffTracker.*
-import magnitudes.*
-import buffs.*
-import logica.advancer.*
+import cronometrados.buffs.*
+import cronometrados.buffTracker.*
+import cronometrados.items.*
 
 describe "testeo de los items" {
 	

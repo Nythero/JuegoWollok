@@ -1,10 +1,8 @@
-import wollok.game.*
-import logica.spawner.*
-import logica.advancer.*
 import configuracion.*
+import cronometrados.buffs.*
+import cronometrados.buffTracker.*
 import magnitudes.*
-import logica.buffTracker.*
-import buffs.*
+import obstaculos.spawner.*
 
 /*
  * Las clases que heredan de Obstaculo REQUIEREN:

@@ -1,5 +1,5 @@
-import spawner.*
-import fondo.*
+import estados.fondo.*
+import obstaculos.spawner.*
 import wollok.game.*
 
 object advancer {

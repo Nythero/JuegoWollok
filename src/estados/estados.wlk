@@ -1,16 +1,11 @@
-import wollok.game.*
-import logica.stateManager.*
-import personaje.*
-import fondo.*
-import advancer.*
+import cronometrados.buffTracker.*
+import cronometrados.tienda.*
+import cronometrados.timer.*
+import estados.fondo.*
 import magnitudes.*
-import tienda.*
-import logica.timer.*
-import nivel.*
-import fondo.*
-import logica.buffTracker.*
-import configuracion.*
-
+import obstaculos.advancer.*
+import obstaculos.nivelManager.*
+import personaje.*
 
 object enPausa {
 	

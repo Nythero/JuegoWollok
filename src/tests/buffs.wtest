@@ -1,11 +1,11 @@
-import buffs.*
-import obstaculo.*
-import personaje.*
-import logica.stateManager.*
-import logica.estados.*
+import cronometrados.buffs.*
+import cronometrados.buffTracker.*
+import estados.estados.*
+import estados.stateManager.*
 import magnitudes.*
+import obstaculos.obstaculos.*
+import personaje.*
 import wollok.game.*
-import logica.buffTracker.*
 
 
 describe "test de los buffos" {

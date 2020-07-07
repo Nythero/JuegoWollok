@@ -1,4 +1,4 @@
-import estados.*
+import estados.estados.*
 import wollok.game.*
 
 object stateManager {

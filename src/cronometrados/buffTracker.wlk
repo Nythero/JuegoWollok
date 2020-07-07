@@ -1,7 +1,7 @@
-import tienda.*
+import cronometrados.tienda.*
+import cronometrados.timer.*
 import configuracion.*
 import wollok.game.*
-import timer.*
 
 object buffTracker {
 	const buffs = #{}
