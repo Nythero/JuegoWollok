@@ -1,4 +1,6 @@
 import wollok.game.*
+import personaje.*
+import tienda.*
 
 object configuracion {
 	
@@ -11,5 +13,12 @@ object configuracion {
 		game.title("Objetos Racing")
 		game.height(gameHeight)
 		game.width(gameWidth)
+		self.iniciarTeclas()
+	}
+	
+	
+	method iniciarTeclas() {
+		personaje.iniciarTeclas()
+		tienda.startKeys()
 	}
 }

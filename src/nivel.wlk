@@ -33,7 +33,7 @@ object nivelManager{
 	}
 	
 	method cambiarNivel(){
-		var nivelNuevo = niveles.copyWithout(nivelActual).anyOne()
+		const nivelNuevo = niveles.copyWithout(nivelActual).anyOne()
 		self.aplicarWeights(nivelNuevo)
 		nivelActual = nivelNuevo
 		game.schedule(10000, {self.cambiarNivel()})
@@ -42,6 +42,12 @@ object nivelManager{
 	method iniciarNiveles(){
 		self.aplicarWeights(niveles.get(0))
 		game.schedule(10000, {self.cambiarNivel()})
+	}
+	
+	method limpiar() {
+		factories.forEach(
+			{ factory => factory.spawnWeight(null) }
+		)
 	}
 }
 

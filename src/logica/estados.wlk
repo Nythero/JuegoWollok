@@ -35,16 +35,15 @@ object enPausa {
 object enJuego {
 	
 	method iniciar() {
-		game.clear()
 		fondo.iniciarFondoEnJuego()
 		personaje.iniciar()
 		velocidad.inicializar()
 		puntaje.inicializar()
+		nivelManager.iniciarNiveles()
 		advancer.iniciarAvance(velocidad.valor())
 		self.iniciarColisiones()
 		timer.start()
 		tienda.start()
-		nivelManager.iniciarNiveles()
 	}
 	
 	method limpiar() {
@@ -55,6 +54,8 @@ object enJuego {
 		puntaje.limpiar()
 		advancer.limpiar()
 		timer.clear()
+		tienda.clear()
+		nivelManager.limpiar()
 	}
 	
 	method iniciarColisiones() {

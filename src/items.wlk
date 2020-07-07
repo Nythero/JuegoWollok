@@ -5,19 +5,20 @@ import logica.buffTracker.*
 import magnitudes.*
 import buffs.*
 import logica.advancer.*
+import logica.stateManager.*
 
 class Item inherits TimeableElement {
 	
 	method price()
 	
-	method startKey(key) {		
+	method startKey(key) {
 		key.onPressDo(
 			{ self.buy() }
 		)
 	}
 	
 	method buy() {
-		if (self.canBeBought() && not self.inCooldown()) {
+		if (self.canBeBought() and not self.inCooldown()) {
 			self.charge()
 			self.beginCooldown()
 			self.activate()
@@ -25,7 +26,9 @@ class Item inherits TimeableElement {
 	}
 	
 	method canBeBought() {
-		return puntaje.valor() >= self.price()
+		return
+			stateManager.estaEnJuego() and
+			puntaje.valor() >= self.price()
 	}
 	
 	method inCooldown() {

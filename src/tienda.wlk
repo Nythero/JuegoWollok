@@ -14,15 +14,33 @@ object tienda {
 	
 	const property position = game.at(configuracion.gameWidth() - width, height - 1)
 	
-	method start() {		
+	method start() {
 		var n = 0
 		
-		items.forEach( {
-			item =>
-				item.endCooldown()
+		items.forEach(
+			{ item =>
 				item.startDisplay(self.slot(n))
+				n++
+			}
+		)
+	}
+	
+	method startKeys() {
+		var n = 0
+		
+		items.forEach(
+			{ item =>
 				item.startKey(keyboard.num(n + 1))
 				n++
+			}
+		)
+	}
+	
+	method clear() {
+		items.forEach(
+			{ item =>
+				item.endCooldown()
+				item.endDisplay()
 			}
 		)
 	}

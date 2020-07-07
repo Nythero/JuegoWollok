@@ -1,66 +1,56 @@
 import obstaculo.*
 
-object factoryObstaculos{
+class Factory {
+	var property spawnWeight = null
 	
-	var property spawnWeight
+	method crear()
+}
+
+object factoryObstaculos inherits Factory {
 	
-	method crear(){
+	override method crear(){
 		return new Enemigo()
 	}
 }
 
-object factoryObstaculosMovedizos {
+object factoryObstaculosMovedizos inherits Factory {
 	
-	var property spawnWeight
-	
-	method crear(){
+	override method crear(){
 		return new EnemigoMovedizo()
 	}
 }
 
-object factoryMonedas{
+object factoryMonedas inherits Factory {
 	
-	var property spawnWeight
-	
-	method crear(){
+	override method crear(){
 		return new Moneda()
 	}
 }
 
-object factoryMegaMonedas{
+object factoryMegaMonedas inherits Factory {
 	
-	var property spawnWeight
-	
-	method crear(){
+	override method crear(){
 		return new MegaMoneda()
 	}
 }
 
-object factoryGases{
+object factoryGases inherits Factory {
 	
-	var property spawnWeight
-	
-	method crear(){
+	override method crear(){
 		return new Gas()
 	}
 }
 
-
-object factoryGemas{
+object factoryGemas inherits Factory {
 	
-	var property spawnWeight
-	
-	method crear(){
+	override method crear(){
 		return new Gema()
 	}
 }
 
-
-object factorySuperEscudos{
+object factorySuperEscudos inherits Factory {
 	
-	var property spawnWeight
-	
-	method crear(){
+	override method crear(){
 		return new SuperEscudo()
 	}
 }

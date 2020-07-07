@@ -24,8 +24,8 @@ object personaje {
 	}
 	
 	method iniciar() {
+		position = game.at(2,0)
 		game.addVisual(self)
-		self.iniciarTeclas()
 	}
 	
 	method iniciarTeclas() {
@@ -43,12 +43,6 @@ object personaje {
 	
 	method limpiar() {
 		game.removeVisual(self)
-		self.limpiarTeclas()
-	}
-	
-	method limpiarTeclas() {
-		keyboard.a().onPressDo({})
-		keyboard.d().onPressDo({})
 	}
 	//Metodos
 }
