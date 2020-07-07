@@ -1,10 +1,6 @@
-import obstaculo.*
-import wollok.game.*
-import logica.spawner.*
-import logica.advancer.*
+import cronometrados.buffs.*
 import personaje.*
-import configuracion.*
-import buffs.*
+import wollok.game.*
 
 
 describe "testeo del personaje"  {

@@ -1,32 +1,33 @@
-import buffs.*
-import obstaculo.*
-import personaje.*
-import logica.stateManager.*
-import logica.estados.*
+import cronometrados.buffs.*
+import cronometrados.buffTracker.*
+import estados.estados.*
+import estados.stateManager.*
 import magnitudes.*
+import obstaculos.obstaculos.*
+import personaje.*
 import wollok.game.*
-import logica.buffTracker.*
 
 
 describe "test de los buffos" {
 	
-	var obstaculo
+	var enemigo
 	
 	fixture {
+		stateManager.iniciarEstado()
 		stateManager.cambiarEstado()
 		
-		obstaculo = new Enemigo()
+		enemigo = new Enemigo()
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 	}
 	
 	test "Buff Gema duplica los puntos"{
 		
-		var mega = new MegaMoneda()
+		const mega = new MegaMoneda()
 		
 		game.addVisual(mega)
 		
-		puntaje.inicializar()
+		puntaje.iniciar()
 		
 		buffTracker.addBuff(buffGema)
 		
@@ -40,54 +41,53 @@ describe "test de los buffos" {
 		
 		buffTracker.addBuff(buffEscudoSimple)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
-		assert.equals(enJuego, stateManager.estado())
+		assert.equals(enJuego, stateManager.estadoActual())
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
-		assert.equals(pausado, stateManager.estado())
+		assert.equals(enPausa, stateManager.estadoActual())
 	}
 	
 	test "Escudo Super evita una colision"{
 		
 		buffTracker.addBuff(buffSuperEscudo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
-		assert.equals(enJuego, stateManager.estado())
+		assert.equals(enJuego, stateManager.estadoActual())
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
-		assert.equals(pausado, stateManager.estado())
+		assert.equals(enPausa, stateManager.estadoActual())
 	}
 	
 	test "Mega escudo evita todas las colisiones mientras esta activo"{
 		
 		buffTracker.addBuff(buffMegaEscudo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
-		assert.equals(enJuego, stateManager.estado())
+		assert.equals(enJuego, stateManager.estadoActual())
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
-		assert.equals(enJuego, stateManager.estado())
+		assert.equals(enJuego, stateManager.estadoActual())
 		
 		buffTracker.forceRemoveBuff(buffMegaEscudo)
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
-		assert.equals(pausado, stateManager.estado())
+		assert.equals(enPausa, stateManager.estadoActual())
 		
-		
-		}
+	}
 }

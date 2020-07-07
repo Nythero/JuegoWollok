@@ -1,5 +1,5 @@
+import suplementarios.writer.*
 import wollok.game.*
-import writer.*
 
 class TimeableElement {
 	var property inTiming = false
@@ -45,8 +45,12 @@ object timer {
 	
 	
 	method start() {
-		self.clearElements()
 		game.onTick(1000, "process timed elements", { self.processElements() } )
+	}
+	
+	method clear() {
+		self.clearElements()
+		game.removeTickEvent("process timed elements")
 	}
 	
 	method clearElements() {

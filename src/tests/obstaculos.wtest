@@ -1,10 +1,8 @@
-import obstaculo.*
-import wollok.game.*
-import logica.spawner.*
-import logica.advancer.*
-import logica.stateManager.*
-import personaje.*
 import magnitudes.*
+import obstaculos.advancer.*
+import obstaculos.obstaculos.*
+import personaje.*
+import wollok.game.*
 
 describe "Probando los obstaculos" {
 	
@@ -34,16 +32,11 @@ describe "Probando los obstaculos" {
 		game.addVisual(gema)
 		game.addVisual(escudo)
 		
-		velocidad.inicializar()
+		velocidad.iniciar()
 		
-		puntaje.inicializar()
-	}
-	
-	test "un Auto verde tiene por imagen auto-verde2.png y al colisionar con otro obstaculo cambia de estado" {
+		puntaje.iniciar()
 		
-		assert.equals("elementos/obstaculoVerde.png",unAutoVerde.image())
-		unAutoVerde.colisionar(personaje)
-		assert.that(stateManager.estaEnJuego())
+		advancer.iniciarAvance(velocidad.valor())
 	}
 		
 	test "una Moneda es de valor 5 y tiene como imagen moneda2.png y aumenta el puntaje" {

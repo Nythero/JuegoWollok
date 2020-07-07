@@ -1,5 +1,5 @@
-import spawner.*
-import fondo.*
+import estados.fondo.*
+import obstaculos.spawner.*
 import wollok.game.*
 
 object advancer {
@@ -19,8 +19,13 @@ object advancer {
 		)
 	}
 	
-	method start(){
-		obstaculos.clear()
+	method limpiar(){
+		game.removeTickEvent("avanzar")
+		obstaculos.forEach(
+			{ obstaculo =>
+				spawner.despawnear(obstaculo)
+			}
+		)
 	}
 	
 	method eliminarEnemigos() {

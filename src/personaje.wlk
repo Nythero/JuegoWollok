@@ -1,10 +1,8 @@
-import wollok.game.*
 import configuracion.*
-import buffs.*
-import logica.timer.*
-import suplementarios.list.*
-import logica.buffTracker.*
-import logica.stateManager.*
+import cronometrados.buffs.*
+import cronometrados.buffTracker.*
+import estados.stateManager.*
+import wollok.game.*
 
 object personaje {
 	
@@ -23,9 +21,14 @@ object personaje {
 		return tipoDeAuto.image()
 	}
 	
-	method iniciar(){
+	method iniciar() {
 		position = game.at(2,0)
 		game.addVisual(self)
+	}
+	
+	method levantarTeclas() {
+		keyboard.a().onPressDo({ self.moverHacia(-1) })
+		keyboard.d().onPressDo({ self.moverHacia(1) })
 	}
 	
 	method moverHacia(x){
@@ -34,6 +37,10 @@ object personaje {
 	
 	method chocar(otro){
 		tipoDeAuto.chocar()
+	}
+	
+	method limpiar() {
+		game.removeVisual(self)
 	}
 	//Metodos
 }

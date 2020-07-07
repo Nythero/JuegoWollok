@@ -1,14 +1,12 @@
-import wollok.game.*
-import logica.writer.*
-import logica.estados.*
 import configuracion.*
-import logica.advancer.*
+import obstaculos.advancer.*
+import suplementarios.writer.*
+import wollok.game.*
 
 class Magnitud {	
-	var property valor	= null
-	var valorMostrado 	= null
-	var property multiplicador 	= null
-	var multDisplay 	= null 
+	var property valor = null
+	var valorMostrado = null
+	var property multiplicador = null
 	
 	
 	method posicionX()
@@ -23,17 +21,23 @@ class Magnitud {
 
 	method posicion() = game.at(self.posicionX(), self.posicionY()) 
 	
-	method inicializar() {
+	method iniciar() {
 		valor = self.valorInicial()
 		multiplicador = self.multiplicadorInicial()
 		valorMostrado = new Writing(writing = self.valorMostrado(), position = self.posicion())
 		valorMostrado.displayWriting()
 	}
 	
+	method limpiar() {
+		valor = null
+		multiplicador = null
+		valorMostrado.eraseWriting()
+	}
+	
 	method aumentar(cantidad) {
 		valor += cantidad * multiplicador
 		valorMostrado.refreshWriting((valor * self.multDisplay()).truncate(0))
-	}	
+	}
 }
 
 object velocidad inherits Magnitud {

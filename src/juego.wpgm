@@ -1,9 +1,9 @@
-import wollok.game.*
-import logica.stateManager.*
 import configuracion.*
+import estados.stateManager.*
+import wollok.game.*
 
 program juego {
-	configuracion.iniciarConfiguracion()
+	configuracion.levantarConfiguracion()
 	stateManager.iniciarEstado()
 	game.start()
 }
