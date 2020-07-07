@@ -1,6 +1,7 @@
 import wollok.game.*
 import personaje.*
 import tienda.*
+import logica.stateManager.*
 
 object configuracion {
 	
@@ -9,16 +10,23 @@ object configuracion {
 	const property trackHeight = 10
 	const property trackWidth = 4
 	
-	method iniciarConfiguracion(){
+	method levantarConfiguracion(){
 		game.title("Objetos Racing")
 		game.height(gameHeight)
 		game.width(gameWidth)
-		self.iniciarTeclas()
+		self.levantarTeclas()
+		self.levantarColisiones()
 	}
 	
+	method levantarTeclas() {
+		personaje.levantarTeclas()
+		tienda.setUpKeys()
+		stateManager.levantarTeclas()
+	}
 	
-	method iniciarTeclas() {
-		personaje.iniciarTeclas()
-		tienda.startKeys()
+	method levantarColisiones() {
+		game.addVisual(personaje)
+		game.onCollideDo(personaje, { obstaculo => obstaculo.colisionar(personaje) })
+		game.removeVisual(personaje)
 	}
 }

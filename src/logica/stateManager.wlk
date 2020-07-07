@@ -1,4 +1,5 @@
 import estados.*
+import wollok.game.*
 
 object stateManager {
 	
@@ -21,5 +22,15 @@ object stateManager {
 	
 	method estaEnJuego() {
 		return estadoActual == enJuego
+	}
+	
+	method levantarTeclas() {
+		keyboard.space().onPressDo({ self.ponerEnJuego() })
+	}
+	
+	method ponerEnJuego() {
+		if (not self.estaEnJuego()) {
+			self.cambiarEstado()
+		}
 	}
 }

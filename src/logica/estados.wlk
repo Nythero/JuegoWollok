@@ -9,26 +9,17 @@ import logica.timer.*
 import nivel.*
 import fondo.*
 import logica.buffTracker.*
+import configuracion.*
 
 
 object enPausa {
 	
 	method iniciar() {
 		fondo.iniciarFondoEnPausa()
-		self.inciarTeclas()
 	}
 	
 	method limpiar() {
 		fondo.limpiar()
-		self.limpiarTeclas()
-	}
-	
-	method inciarTeclas() {
-		keyboard.space().onPressDo({ stateManager.cambiarEstado() })
-	}
-	
-	method limpiarTeclas() {
-		keyboard.space().onPressDo({})
 	}
 }
 
@@ -37,11 +28,10 @@ object enJuego {
 	method iniciar() {
 		fondo.iniciarFondoEnJuego()
 		personaje.iniciar()
-		velocidad.inicializar()
-		puntaje.inicializar()
+		velocidad.iniciar()
+		puntaje.iniciar()
 		nivelManager.iniciarNiveles()
 		advancer.iniciarAvance(velocidad.valor())
-		self.iniciarColisiones()
 		timer.start()
 		tienda.start()
 	}
@@ -56,9 +46,5 @@ object enJuego {
 		timer.clear()
 		tienda.clear()
 		nivelManager.limpiar()
-	}
-	
-	method iniciarColisiones() {
-		game.onCollideDo(personaje, {otro => otro.colisionar(personaje)})
 	}
 }

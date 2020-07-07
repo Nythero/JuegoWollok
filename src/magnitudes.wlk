@@ -22,7 +22,7 @@ class Magnitud {
 
 	method posicion() = game.at(self.posicionX(), self.posicionY()) 
 	
-	method inicializar() {
+	method iniciar() {
 		valor = self.valorInicial()
 		multiplicador = self.multiplicadorInicial()
 		valorMostrado = new Writing(writing = self.valorMostrado(), position = self.posicion())

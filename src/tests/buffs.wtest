@@ -27,7 +27,7 @@ describe "test de los buffos" {
 		
 		game.addVisual(mega)
 		
-		puntaje.inicializar()
+		puntaje.iniciar()
 		
 		buffTracker.addBuff(buffGema)
 		

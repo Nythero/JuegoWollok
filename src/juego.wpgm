@@ -3,7 +3,7 @@ import logica.stateManager.*
 import configuracion.*
 
 program juego {
-	configuracion.iniciarConfiguracion()
+	configuracion.levantarConfiguracion()
 	stateManager.iniciarEstado()
 	game.start()
 }

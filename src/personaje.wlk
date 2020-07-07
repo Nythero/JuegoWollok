@@ -28,7 +28,7 @@ object personaje {
 		game.addVisual(self)
 	}
 	
-	method iniciarTeclas() {
+	method levantarTeclas() {
 		keyboard.a().onPressDo({ self.moverHacia(-1) })
 		keyboard.d().onPressDo({ self.moverHacia(1) })
 	}

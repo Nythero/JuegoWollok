@@ -34,9 +34,9 @@ describe "Probando los obstaculos" {
 		game.addVisual(gema)
 		game.addVisual(escudo)
 		
-		velocidad.inicializar()
+		velocidad.iniciar()
 		
-		puntaje.inicializar()
+		puntaje.iniciar()
 		
 		advancer.iniciarAvance(velocidad.valor())
 	}
