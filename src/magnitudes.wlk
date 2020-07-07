@@ -5,10 +5,9 @@ import configuracion.*
 import logica.advancer.*
 
 class Magnitud {	
-	var property valor	= null
-	var valorMostrado 	= null
-	var property multiplicador 	= null
-	var multDisplay 	= null 
+	var property valor = null
+	var valorMostrado = null
+	var property multiplicador = null
 	
 	
 	method posicionX()
@@ -30,10 +29,16 @@ class Magnitud {
 		valorMostrado.displayWriting()
 	}
 	
+	method limpiar() {
+		valor = null
+		multiplicador = null
+		valorMostrado.eraseWriting()
+	}
+	
 	method aumentar(cantidad) {
 		valor += cantidad * multiplicador
 		valorMostrado.refreshWriting((valor * self.multDisplay()).truncate(0))
-	}	
+	}
 }
 
 object velocidad inherits Magnitud {

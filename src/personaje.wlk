@@ -23,9 +23,14 @@ object personaje {
 		return tipoDeAuto.image()
 	}
 	
-	method iniciar(){
-		position = game.at(2,0)
+	method iniciar() {
 		game.addVisual(self)
+		self.iniciarTeclas()
+	}
+	
+	method iniciarTeclas() {
+		keyboard.a().onPressDo({ self.moverHacia(-1) })
+		keyboard.d().onPressDo({ self.moverHacia(1) })
 	}
 	
 	method moverHacia(x){
@@ -34,6 +39,16 @@ object personaje {
 	
 	method chocar(otro){
 		tipoDeAuto.chocar()
+	}
+	
+	method limpiar() {
+		game.removeVisual(self)
+		self.limpiarTeclas()
+	}
+	
+	method limpiarTeclas() {
+		keyboard.a().onPressDo({})
+		keyboard.d().onPressDo({})
 	}
 	//Metodos
 }

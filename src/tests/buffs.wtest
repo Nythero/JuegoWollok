@@ -42,13 +42,13 @@ describe "test de los buffos" {
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(enJuego, stateManager.estado())
+		assert.equals(enJuego, stateManager.estadoActual())
 		
 		game.addVisual(obstaculo)
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(pausado, stateManager.estado())
+		assert.equals(enPausa, stateManager.estadoActual())
 	}
 	
 	test "Escudo Super evita una colision"{
@@ -57,13 +57,13 @@ describe "test de los buffos" {
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(enJuego, stateManager.estado())
+		assert.equals(enJuego, stateManager.estadoActual())
 		
 		game.addVisual(obstaculo)
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(pausado, stateManager.estado())
+		assert.equals(enPausa, stateManager.estadoActual())
 	}
 	
 	test "Mega escudo evita todas las colisiones mientras esta activo"{
@@ -72,13 +72,13 @@ describe "test de los buffos" {
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(enJuego, stateManager.estado())
+		assert.equals(enJuego, stateManager.estadoActual())
 		
 		game.addVisual(obstaculo)
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(enJuego, stateManager.estado())
+		assert.equals(enJuego, stateManager.estadoActual())
 		
 		buffTracker.forceRemoveBuff(buffMegaEscudo)
 		
@@ -86,7 +86,7 @@ describe "test de los buffos" {
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(pausado, stateManager.estado())
+		assert.equals(enPausa, stateManager.estadoActual())
 		
 		
 		}

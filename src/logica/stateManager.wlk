@@ -1,39 +1,25 @@
-import wollok.game.*
-import personaje.*
-import obstaculo.*
-import spawner.*
-import advancer.*
-import configuracion.*
-import fondo.*
 import estados.*
-import logica.buffTracker.*
 
 object stateManager {
 	
-	var property estado = pausado
-	const estados = [pausado, enJuego]
+	var property estadoActual = enPausa
+	const estados = [enPausa, enJuego]
 		
 	method cambiarEstado() {
-		self.limpiarJuego()
+		estadoActual.limpiar()
 		
 		estados.add(estados.get(0))
 		estados.remove(estados.get(0))
-		estado = estados.get(0)
+		estadoActual = estados.get(0)
 		
 		self.iniciarEstado()
 	}
 	
 	method iniciarEstado() {
-		estado.iniciar()
+		estadoActual.iniciar()
 	}
 	
 	method estaEnJuego() {
-		return estado == enJuego
-	}
-	
-	method limpiarJuego() {
-		buffTracker.clear()
-		advancer.limpiar()
-		fondo.limpiar()
+		return estadoActual == enJuego
 	}
 }

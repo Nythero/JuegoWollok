@@ -20,6 +20,7 @@ object advancer {
 	}
 	
 	method limpiar(){
+		game.removeTickEvent("avanzar")
 		obstaculos.forEach(
 			{ obstaculo =>
 				spawner.despawnear(obstaculo)

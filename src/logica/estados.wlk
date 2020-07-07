@@ -8,40 +8,53 @@ import tienda.*
 import logica.timer.*
 import nivel.*
 import fondo.*
+import logica.buffTracker.*
 
 
-object pausado {
+object enPausa {
 	
-	method detectarTeclas(){
+	method iniciar() {
+		game.clear()
+		fondo.iniciarFondoEnPausa()
+		self.inciarTeclas()
+	}
+	
+	method limpiar() {
+		fondo.limpiar()
+		self.limpiarTeclas()
+	}
+	
+	method inciarTeclas() {
 		keyboard.space().onPressDo({ stateManager.cambiarEstado() })
 	}
 	
-	method iniciar(){
-		game.clear()
-		fondo.iniciarFondoEnPausa()
-		self.detectarTeclas()
+	method limpiarTeclas() {
+		keyboard.space().onPressDo({})
 	}
 }
 
 object enJuego {
 	
-	method detectarTeclas(){
-		keyboard.a().onPressDo({ personaje.moverHacia(-1) })
-		keyboard.d().onPressDo({ personaje.moverHacia(1) })
-	}
-	
-	method iniciar(){
+	method iniciar() {
 		game.clear()
 		fondo.iniciarFondoEnJuego()
 		personaje.iniciar()
 		velocidad.inicializar()
-		advancer.iniciarAvance(velocidad.valor())
 		puntaje.inicializar()
+		advancer.iniciarAvance(velocidad.valor())
 		self.iniciarColisiones()
-		self.detectarTeclas()		
 		timer.start()
 		tienda.start()
 		nivelManager.iniciarNiveles()
+	}
+	
+	method limpiar() {
+		buffTracker.clear()
+		fondo.limpiar()
+		personaje.limpiar()
+		velocidad.limpiar()
+		puntaje.limpiar()
+		advancer.limpiar()
 	}
 	
 	method iniciarColisiones() {
