@@ -4,7 +4,7 @@ import buffs.*
 import logica.timer.*
 import suplementarios.list.*
 import logica.buffTracker.*
-import logica.detector.*
+import logica.stateManager.*
 
 object personaje {
 	
@@ -42,7 +42,7 @@ object autoComun {
 	const property image = "personaje/personajeSimple.png"
 	
 	method chocar() {
-		detector.cambiarEstado()
+		stateManager.cambiarEstado()
 	}
 }
 

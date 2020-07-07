@@ -1,7 +1,6 @@
 import wollok.game.*
 import logica.spawner.*
 import logica.advancer.*
-import logica.detector.*
 import configuracion.*
 import magnitudes.*
 import logica.buffTracker.*

@@ -1,5 +1,5 @@
 import wollok.game.*
-import detector.*
+import logica.stateManager.*
 import personaje.*
 import fondo.*
 import advancer.*
@@ -9,10 +9,11 @@ import logica.timer.*
 import nivel.*
 import fondo.*
 
+
 object pausado {
 	
 	method detectarTeclas(){
-		keyboard.space().onPressDo({ detector.cambiarEstado() })
+		keyboard.space().onPressDo({ stateManager.cambiarEstado() })
 	}
 	
 	method iniciar(){

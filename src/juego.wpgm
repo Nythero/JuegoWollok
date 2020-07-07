@@ -1,13 +1,9 @@
 import wollok.game.*
-import logica.detector.*
+import logica.stateManager.*
 import configuracion.*
 
 program juego {
-
-	detector.detectarConfiguracionInicial()
-	
-	detector.iniciarEstado()
-	
+	configuracion.iniciarConfiguracion()
+	stateManager.iniciarEstado()
 	game.start()
-	
 }

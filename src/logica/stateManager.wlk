@@ -8,33 +8,26 @@ import fondo.*
 import estados.*
 import logica.buffTracker.*
 
-object detector {
+object stateManager {
 	
 	var property estado = pausado
 	const estados = [pausado, enJuego]
-	
-	
-	//Metodos
-	
-	method detectarConfiguracionInicial() {
-		configuracion.configuracionInicial()
-	}
-	
-	method cambiarEstado(){
+		
+	method cambiarEstado() {
 		buffTracker.clear()
+		
 		estados.add(estados.get(0))
 		estados.remove(estados.get(0))
 		estado = estados.get(0)
+		
 		self.iniciarEstado()
 	}
 	
-	method iniciarEstado(){
+	method iniciarEstado() {
 		estado.iniciar()
 	}
 	
 	method estaEnJuego() {
 		return estado == enJuego
 	}
-	
-	//Metodos
 }

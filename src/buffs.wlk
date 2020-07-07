@@ -1,5 +1,4 @@
 import wollok.game.*
-import logica.detector.*
 import logica.timer.*
 import personaje.*
 import logica.buffTracker.*

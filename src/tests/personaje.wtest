@@ -1,9 +1,7 @@
-
 import obstaculo.*
 import wollok.game.*
 import logica.spawner.*
 import logica.advancer.*
-import logica.detector.*
 import personaje.*
 import configuracion.*
 import buffs.*
