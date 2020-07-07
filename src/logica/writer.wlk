@@ -1,5 +1,4 @@
 import wollok.game.*
-import suplementarios.numbers.*
 import suplementarios.math.*
 
 class Writing {
@@ -43,5 +42,13 @@ class Writing {
 	
 	method writingAsList() {
 		return math.numALista(writing)
+	}
+}
+
+class Num {
+	const n
+	
+	method image() {
+		return "nums/n" + n + ".png"
 	}
 }

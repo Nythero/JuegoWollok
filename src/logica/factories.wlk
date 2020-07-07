@@ -5,7 +5,7 @@ object factoryObstaculos{
 	var property spawnWeight
 	
 	method crear(){
-		return new Obstaculo()
+		return new Enemigo()
 	}
 }
 
@@ -14,7 +14,7 @@ object factoryObstaculosMovedizos {
 	var property spawnWeight
 	
 	method crear(){
-		return new ObstaculoMovedizo()
+		return new EnemigoMovedizo()
 	}
 }
 

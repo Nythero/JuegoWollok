@@ -1,7 +1,7 @@
 import buffs.*
 import obstaculo.*
 import personaje.*
-import logica.detector.*
+import logica.stateManager.*
 import logica.estados.*
 import magnitudes.*
 import wollok.game.*
@@ -13,9 +13,9 @@ describe "test de los buffos" {
 	var obstaculo
 	
 	fixture {
-		detector.cambiarEstado()
+		stateManager.cambiarEstado()
 		
-		obstaculo = new Obstaculo()
+		obstaculo = new Enemigo()
 		
 		game.addVisual(obstaculo)
 	}
@@ -42,13 +42,13 @@ describe "test de los buffos" {
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(enJuego, detector.estado())
+		assert.equals(enJuego, stateManager.estado())
 		
 		game.addVisual(obstaculo)
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(pausado, detector.estado())
+		assert.equals(pausado, stateManager.estado())
 	}
 	
 	test "Escudo Super evita una colision"{
@@ -57,13 +57,13 @@ describe "test de los buffos" {
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(enJuego, detector.estado())
+		assert.equals(enJuego, stateManager.estado())
 		
 		game.addVisual(obstaculo)
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(pausado, detector.estado())
+		assert.equals(pausado, stateManager.estado())
 	}
 	
 	test "Mega escudo evita todas las colisiones mientras esta activo"{
@@ -72,13 +72,13 @@ describe "test de los buffos" {
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(enJuego, detector.estado())
+		assert.equals(enJuego, stateManager.estado())
 		
 		game.addVisual(obstaculo)
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(enJuego, detector.estado())
+		assert.equals(enJuego, stateManager.estado())
 		
 		buffTracker.forceRemoveBuff(buffMegaEscudo)
 		
@@ -86,7 +86,7 @@ describe "test de los buffos" {
 		
 		obstaculo.colisionar(personaje)
 		
-		assert.equals(pausado, detector.estado())
+		assert.equals(pausado, stateManager.estado())
 		
 		
 		}

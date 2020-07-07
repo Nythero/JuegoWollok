@@ -1,24 +1,26 @@
 import spawner.*
+import fondo.*
+import wollok.game.*
 
 object advancer {
-	const property elementosQueAvanzan = []
+	const property obstaculos = []
 	
-	method agregarElementoQueAvanza(elemento) {
-		elementosQueAvanzan.add(elemento)
+	method agregarObstaculo(elemento) {
+		obstaculos.add(elemento)
 	}
 	
-	method sacarElementoQueAvanza(elemento) {
-		elementosQueAvanzan.remove(elemento)
+	method sacarObstaculo(elemento) {
+		obstaculos.remove(elemento)
 	}
 	
-	method avanzar() {
-		elementosQueAvanzan.forEach(
+	method avanzarObstaculos() {
+		obstaculos.forEach(
 		  { elemento => elemento.avanzar() }
 		)
 	}
 	
 	method start(){
-		elementosQueAvanzan.clear()
+		obstaculos.clear()
 	}
 	
 	method eliminarEnemigos() {
@@ -29,8 +31,23 @@ object advancer {
 	
 	method enemigos() {
 		return
-			elementosQueAvanzan.filter(
+			obstaculos.filter(
 				{ elemento => elemento.esDesfavorable() }
 			)
+	}
+	
+	method procesarAvance(){
+		spawner.spawnearElementoQueAvanza()
+		self.avanzarObstaculos()
+		fondo.avanzar()
+	}
+	
+	method iniciarAvance(vel) {
+		game.onTick(1000/vel, "avanzar", { self.procesarAvance() })
+	}
+	
+	method actualizarAvance(vel) {
+		game.removeTickEvent("avanzar")
+		self.iniciarAvance(vel)
 	}
 }

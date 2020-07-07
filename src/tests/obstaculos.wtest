@@ -2,7 +2,7 @@ import obstaculo.*
 import wollok.game.*
 import logica.spawner.*
 import logica.advancer.*
-import logica.detector.*
+import logica.stateManager.*
 import personaje.*
 import magnitudes.*
 
@@ -18,11 +18,11 @@ describe "Probando los obstaculos" {
 	
 	fixture {
 		
-		unAutoVerde = new Obstaculo()
+		unAutoVerde = new Enemigo()
 		tanqueDeGasolina = new Gas()
 		unaMoneda = new Moneda()
 		megaMoneda = new MegaMoneda()
-		movedizo = new ObstaculoMovedizo()
+		movedizo = new EnemigoMovedizo()
 		gema = new Gema()
 		escudo = new SuperEscudo()
 		
@@ -43,7 +43,7 @@ describe "Probando los obstaculos" {
 		
 		assert.equals("elementos/obstaculoVerde.png",unAutoVerde.image())
 		unAutoVerde.colisionar(personaje)
-		assert.that(detector.estaEnJuego())
+		assert.that(stateManager.estaEnJuego())
 	}
 		
 	test "una Moneda es de valor 5 y tiene como imagen moneda2.png y aumenta el puntaje" {

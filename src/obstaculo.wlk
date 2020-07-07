@@ -1,14 +1,13 @@
 import wollok.game.*
 import logica.spawner.*
 import logica.advancer.*
-import logica.detector.*
 import configuracion.*
 import magnitudes.*
 import logica.buffTracker.*
 import buffs.*
 
 /*
- * Las clases que heredan de ElementoQueAvanza REQUIEREN:
+ * Las clases que heredan de Obstaculo REQUIEREN:
  * * override method activar()
  * * override method image()
  * * override method tipo() <- usado por el item borrador para eliminar obstaculos desfavorables
@@ -16,7 +15,7 @@ import buffs.*
  * Además, para que el elemento aparezca en el juego, hay que crear su factory
  * 	y agregarla a la lista de factories del spawner.
  */
-class ElementoQueAvanza {
+class Obstaculo {
 	var property position
 	
 	method image()
@@ -45,9 +44,9 @@ class ElementoQueAvanza {
 	method activar(otro)
 }
 
-class Obstaculo inherits ElementoQueAvanza {
+class Enemigo inherits Obstaculo {
 	
-	override method image() = "elementos/obstaculoVerde.png"
+	override method image() = "elementos/enemigoVerde.png"
 	override method tipo() = "desfavorable"
 	
 	override method activar(otro){
@@ -55,11 +54,11 @@ class Obstaculo inherits ElementoQueAvanza {
 	}
 }
 
-class ObstaculoMovedizo inherits Obstaculo {
+class EnemigoMovedizo inherits Enemigo {
 	
 	var property direccionMovimiento = [-1, 1].anyOne()
 	
-	override method image() = "elementos/obstaculoAzul.png"
+	override method image() = "elementos/enemigoAzul.png"
 	
 	override method avanzar() {
 		self.moverLateralmente()
@@ -82,7 +81,7 @@ class ObstaculoMovedizo inherits Obstaculo {
 	
 }
 
-class Gas inherits ElementoQueAvanza {
+class Gas inherits Obstaculo {
 		
 	override method image() = "elementos/gas.png"
 	override method tipo() = "favorable"
@@ -92,7 +91,7 @@ class Gas inherits ElementoQueAvanza {
 	}
 }
 
-class Moneda inherits ElementoQueAvanza {
+class Moneda inherits Obstaculo {
 	
 	//Atributos
 	override method image() = "elementos/moneda.png"
@@ -114,7 +113,7 @@ class MegaMoneda inherits Moneda {
 }
 
 
-class Gema inherits ElementoQueAvanza {
+class Gema inherits Obstaculo {
 	override method image() = "elementos/gema.png"
 	override method tipo() = "favorable"
 	
@@ -124,7 +123,7 @@ class Gema inherits ElementoQueAvanza {
 }
 
 
-class SuperEscudo inherits ElementoQueAvanza {
+class SuperEscudo inherits Obstaculo {
 	override method image() = "elementos/escudoVerde.png"
 	override method tipo() = "favorable"
 	

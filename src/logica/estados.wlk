@@ -1,8 +1,6 @@
 import wollok.game.*
-import detector.*
+import logica.stateManager.*
 import personaje.*
-import suplementarios.drawer.*
-import reloj.*
 import fondo.*
 import advancer.*
 import magnitudes.*
@@ -11,10 +9,11 @@ import logica.timer.*
 import nivel.*
 import fondo.*
 
+
 object pausado {
 	
 	method detectarTeclas(){
-		keyboard.space().onPressDo({ detector.cambiarEstado() })
+		keyboard.space().onPressDo({ stateManager.cambiarEstado() })
 	}
 	
 	method iniciar(){
@@ -37,7 +36,7 @@ object enJuego {
 		fondo.ponerFondoEnJuego()
 		personaje.iniciar()
 		velocidad.inicializar()
-		self.iniciarAvance(velocidad.valor())
+		advancer.iniciarAvance(velocidad.valor())
 		puntaje.inicializar()
 		self.iniciarColisiones()
 		self.detectarTeclas()		
@@ -48,13 +47,5 @@ object enJuego {
 	
 	method iniciarColisiones() {
 		game.onCollideDo(personaje, {otro => otro.colisionar(personaje)})
-	}
-	
-	method iniciarAvance(vel){
-		game.onTick(1000/vel, "avanzar", {reloj.procesar()})
-	}
-	method actualizarAvance(vel){
-		game.removeTickEvent("avanzar")
-		game.onTick(1000/vel, "avanzar", {reloj.procesar()})
 	}
 }
