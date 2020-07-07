@@ -10,19 +10,20 @@ import logica.buffTracker.*
 
 describe "test de los buffos" {
 	
-	var obstaculo
+	var enemigo
 	
 	fixture {
+		stateManager.iniciarEstado()
 		stateManager.cambiarEstado()
 		
-		obstaculo = new Enemigo()
+		enemigo = new Enemigo()
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 	}
 	
 	test "Buff Gema duplica los puntos"{
 		
-		var mega = new MegaMoneda()
+		const mega = new MegaMoneda()
 		
 		game.addVisual(mega)
 		
@@ -40,13 +41,13 @@ describe "test de los buffos" {
 		
 		buffTracker.addBuff(buffEscudoSimple)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
 		assert.equals(enJuego, stateManager.estadoActual())
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
 		assert.equals(enPausa, stateManager.estadoActual())
 	}
@@ -55,13 +56,13 @@ describe "test de los buffos" {
 		
 		buffTracker.addBuff(buffSuperEscudo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
 		assert.equals(enJuego, stateManager.estadoActual())
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
 		assert.equals(enPausa, stateManager.estadoActual())
 	}
@@ -70,24 +71,23 @@ describe "test de los buffos" {
 		
 		buffTracker.addBuff(buffMegaEscudo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
 		assert.equals(enJuego, stateManager.estadoActual())
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
 		assert.equals(enJuego, stateManager.estadoActual())
 		
 		buffTracker.forceRemoveBuff(buffMegaEscudo)
 		
-		game.addVisual(obstaculo)
+		game.addVisual(enemigo)
 		
-		obstaculo.colisionar(personaje)
+		enemigo.colisionar(personaje)
 		
 		assert.equals(enPausa, stateManager.estadoActual())
 		
-		
-		}
+	}
 }

@@ -14,7 +14,6 @@ import logica.buffTracker.*
 object enPausa {
 	
 	method iniciar() {
-		game.clear()
 		fondo.iniciarFondoEnPausa()
 		self.inciarTeclas()
 	}
@@ -55,6 +54,7 @@ object enJuego {
 		velocidad.limpiar()
 		puntaje.limpiar()
 		advancer.limpiar()
+		timer.clear()
 	}
 	
 	method iniciarColisiones() {
