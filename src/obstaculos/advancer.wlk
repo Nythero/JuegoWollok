@@ -1,4 +1,5 @@
 import estados.fondo.*
+import magnitudes.*
 import obstaculos.spawner.*
 import wollok.game.*
 
@@ -47,12 +48,16 @@ object advancer {
 		fondoEnJuego.avanzar()
 	}
 	
-	method iniciarAvance(vel) {
-		game.onTick(1000/vel, "avanzar", { self.procesarAvance() })
+	method iniciar() {
+		self.configurarTick(velocidad.valor())
+	}
+	
+	method configurarTick(vel) {
+		game.onTick(1000/vel, "avanzar", { self.procesarAvance() })		
 	}
 	
 	method actualizarAvance(vel) {
 		game.removeTickEvent("avanzar")
-		self.iniciarAvance(vel)
+		self.configurarTick(vel)
 	}
 }

@@ -36,7 +36,7 @@ describe "Probando los obstaculos" {
 		
 		puntaje.iniciar()
 		
-		advancer.iniciarAvance(velocidad.valor())
+		advancer.iniciar()
 	}
 		
 	test "una Moneda es de valor 5 y tiene como imagen moneda2.png y aumenta el puntaje" {

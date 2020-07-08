@@ -5,7 +5,7 @@ object stateManager {
 	
 	var property estadoActual = enPausa
 	const estados = [enPausa, enJuego]
-		
+	
 	method cambiarEstado() {
 		estadoActual.limpiar()
 		

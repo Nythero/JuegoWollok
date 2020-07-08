@@ -42,7 +42,7 @@ object enJuego {
 		velocidad.iniciar()
 		puntaje.iniciar()
 		nivelManager.iniciarNiveles()
-		advancer.iniciarAvance(velocidad.valor())
+		advancer.iniciar()
 		timer.start()
 		tienda.start()
 	}
