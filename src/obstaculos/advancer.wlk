@@ -44,7 +44,7 @@ object advancer {
 	method procesarAvance(){
 		spawner.spawnearElementoQueAvanza()
 		self.avanzarObstaculos()
-		fondo.avanzar()
+		fondoEnJuego.avanzar()
 	}
 	
 	method iniciarAvance(vel) {

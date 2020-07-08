@@ -8,15 +8,26 @@ import obstaculos.advancer.*
 import obstaculos.nivelManager.*
 import personaje.*
 
-object enPausa {
+class Estado {
+	
+	method objetosDeEstado()
 	
 	method iniciar() {
-		fondo.iniciarFondoEnPausa()
+		self.objetosDeEstado().forEach(
+			{ objeto => objeto.iniciar() }
+		)
 	}
 	
 	method limpiar() {
-		fondo.limpiar()
+		self.objetosDeEstado().forEach(
+			{ objeto => objeto.limpiar() }
+		)
 	}
+}
+
+object enPausa inherits Estado {
+	
+	override method objetosDeEstado() = #{fondo}
 	
 	method continuar() {
 		stateManager.cambiarEstado()
@@ -26,7 +37,7 @@ object enPausa {
 object enJuego {
 	
 	method iniciar() {
-		fondo.iniciarFondoEnJuego()
+		fondo.iniciar()
 		personaje.iniciar()
 		velocidad.iniciar()
 		puntaje.iniciar()
