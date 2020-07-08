@@ -24,7 +24,7 @@ object tienda {
 		)
 	}
 	
-	method setUpKeys() {
+	method levantarTeclas() {
 		var n = 0
 		
 		items.forEach(

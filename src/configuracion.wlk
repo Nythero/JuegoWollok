@@ -10,6 +10,8 @@ object configuracion {
 	const property trackHeight = 10
 	const property trackWidth = 4
 	
+	const property objetosConTeclas = [personaje, tienda, stateManager]
+	
 	method levantarConfiguracion(){
 		game.title("Objetos Racing")
 		game.height(gameHeight)
@@ -19,9 +21,9 @@ object configuracion {
 	}
 	
 	method levantarTeclas() {
-		personaje.levantarTeclas()
-		tienda.setUpKeys()
-		stateManager.levantarTeclas()
+		objetosConTeclas.forEach(
+			{ objeto => objeto.levantarTeclas() }
+		)
 	}
 	
 	method levantarColisiones() {
