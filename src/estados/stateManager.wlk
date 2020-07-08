@@ -25,12 +25,6 @@ object stateManager {
 	}
 	
 	method levantarTeclas() {
-		keyboard.space().onPressDo({ self.ponerEnJuego() })
-	}
-	
-	method ponerEnJuego() {
-		if (not self.estaEnJuego()) {
-			self.cambiarEstado()
-		}
+		keyboard.space().onPressDo({ estadoActual.continuar() })
 	}
 }

@@ -2,6 +2,7 @@ import cronometrados.buffTracker.*
 import cronometrados.tienda.*
 import cronometrados.timer.*
 import estados.fondo.*
+import estados.stateManager.*
 import magnitudes.*
 import obstaculos.advancer.*
 import obstaculos.nivelManager.*
@@ -15,6 +16,10 @@ object enPausa {
 	
 	method limpiar() {
 		fondo.limpiar()
+	}
+	
+	method continuar() {
+		stateManager.cambiarEstado()
 	}
 }
 
@@ -42,4 +47,6 @@ object enJuego {
 		tienda.clear()
 		nivelManager.limpiar()
 	}
+	
+	method continuar() {}
 }
