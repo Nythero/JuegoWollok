@@ -44,11 +44,11 @@ object timer {
 	}
 	
 	
-	method start() {
+	method iniciar() {
 		game.onTick(1000, "process timed elements", { self.processElements() } )
 	}
 	
-	method clear() {
+	method limpiar() {
 		self.clearElements()
 		game.removeTickEvent("process timed elements")
 	}

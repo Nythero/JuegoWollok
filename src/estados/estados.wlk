@@ -19,45 +19,36 @@ class Estado {
 	}
 	
 	method limpiar() {
-		self.objetosDeEstado().forEach(
+		self.objetosDeEstado().reverse().forEach(
 			{ objeto => objeto.limpiar() }
 		)
 	}
+	
+	method continuar()
 }
 
 object enPausa inherits Estado {
 	
-	override method objetosDeEstado() = #{fondo}
+	override method objetosDeEstado() = [fondo]
 	
-	method continuar() {
+	override method continuar() {
 		stateManager.cambiarEstado()
 	}
 }
 
-object enJuego {
+object enJuego inherits Estado {
 	
-	method iniciar() {
-		fondo.iniciar()
-		personaje.iniciar()
-		velocidad.iniciar()
-		puntaje.iniciar()
-		nivelManager.iniciarNiveles()
-		advancer.iniciar()
-		timer.start()
-		tienda.start()
-	}
+	override method objetosDeEstado() = [
+		fondo,
+		personaje,
+		velocidad,
+		puntaje,
+		nivelManager,
+		advancer,
+		timer,
+		tienda,
+		buffTracker
+	]
 	
-	method limpiar() {
-		buffTracker.clear()
-		fondo.limpiar()
-		personaje.limpiar()
-		velocidad.limpiar()
-		puntaje.limpiar()
-		advancer.limpiar()
-		timer.clear()
-		tienda.clear()
-		nivelManager.limpiar()
-	}
-	
-	method continuar() {}
+	override method continuar() {}
 }

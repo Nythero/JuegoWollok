@@ -14,7 +14,9 @@ object buffTracker {
 		tienda.position().y() + 1 + height
 	)
 	
-	method clear() {
+	method iniciar() {}
+	
+	method limpiar() {
 		buffs.forEach(
 			{ buff => self.removeBuff(buff) }
 		)

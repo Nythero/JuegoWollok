@@ -38,7 +38,7 @@ object nivelManager{
 		nivelActual = nivelNuevo
 	}
 	
-	method iniciarNiveles(){
+	method iniciar(){
 		self.aplicarWeights(niveles.get(0))
 		game.onTick(10000, "cambiar nivel", { self.cambiarNivel() })
 	}

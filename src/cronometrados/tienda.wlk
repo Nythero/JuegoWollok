@@ -13,7 +13,7 @@ object tienda {
 	
 	const property position = game.at(configuracion.gameWidth() - width, height - 1)
 	
-	method start() {
+	method iniciar() {
 		var n = 0
 		
 		items.forEach(
@@ -35,7 +35,7 @@ object tienda {
 		)
 	}
 	
-	method clear() {
+	method limpiar() {
 		items.forEach(
 			{ item =>
 				item.endCooldown()
