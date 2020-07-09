@@ -15,12 +15,9 @@ object scoreManager {
 	}
 	
 	method registrarScore(valor) {
-		if (scores.size() < 5) {
-			scores.add(valor)
-		}
-		else if (valor > scores.min()) {
+		scores.add(valor)
+		if (scores.size() > 5) {
 			scores.remove(scores.min())
-			scores.add(valor)
 		}
 	}
 	
