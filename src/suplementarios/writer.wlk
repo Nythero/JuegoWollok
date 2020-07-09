@@ -41,7 +41,7 @@ class Writing {
 	}
 	
 	method writingAsList() {
-		return math.numALista(writing)
+		return math.numALista(writing.truncate(0))
 	}
 }
 

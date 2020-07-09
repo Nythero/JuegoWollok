@@ -69,7 +69,8 @@ object enLobby inherits Estado {
 	override method siguienteEstado() = enJuego
 	
 	override method objetosDeEstado() = [
-		fondo
+		fondo,
+		scoreManager
 	]
 	
 	override method continuar() {
