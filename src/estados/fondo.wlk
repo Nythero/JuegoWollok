@@ -14,7 +14,7 @@ object fondo {
 	
 	method limpiar() {
 		game.removeVisual(self)
-		estadoDeFondo.cambiarEstado()
+		estadoDeFondo.cambiar()
 	}
 }
 
@@ -24,7 +24,7 @@ object fondoEnPausa {
 		game.addVisual(fondo)
 	}
 	
-	method cambiarEstado() {
+	method cambiar() {
 		fondo.estadoDeFondo(fondoEnJuego)
 	}
 }
@@ -37,13 +37,24 @@ object fondoEnJuego {
 		game.addVisual(fondo)
 	}
 	
-	method cambiarEstado() {
-		fondo.estadoDeFondo(fondoEnPausa)
+	method cambiar() {
+		fondo.estadoDeFondo(fondoEnLobby)
 	}
 	
 	method avanzar() {
 		fondos.add(fondos.get(0))
 		fondos.remove(fondos.get(0))
 		fondo.image(fondos.get(0))
+	}
+}
+
+object fondoEnLobby {
+	method iniciar() {
+		fondo.image("fondos/fondoEnLobby.png")
+		game.addVisual(fondo)
+	}
+	
+	method cambiar() {
+		fondo.estadoDeFondo(fondoEnJuego)
 	}
 }

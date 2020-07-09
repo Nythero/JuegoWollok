@@ -7,9 +7,11 @@ import magnitudes.*
 import obstaculos.advancer.*
 import obstaculos.nivelManager.*
 import personaje.*
+import scoreManager.*
 
 class Estado {
 	
+	method siguienteEstado()
 	method objetosDeEstado()
 	
 	method iniciar() {
@@ -24,10 +26,16 @@ class Estado {
 		)
 	}
 	
+	method cambiar() {
+		stateManager.estadoActual(self.siguienteEstado())
+	}
+	
 	method continuar()
 }
 
 object enPausa inherits Estado {
+	
+	override method siguienteEstado() = enJuego
 	
 	override method objetosDeEstado() = [fondo]
 	
@@ -38,6 +46,8 @@ object enPausa inherits Estado {
 
 object enJuego inherits Estado {
 	
+	override method siguienteEstado() = enLobby
+	
 	override method objetosDeEstado() = [
 		fondo,
 		personaje,
@@ -47,8 +57,22 @@ object enJuego inherits Estado {
 		advancer,
 		timer,
 		tienda,
+		scoreManager,
 		buffTracker
 	]
 	
 	override method continuar() {}
+}
+
+object enLobby inherits Estado {
+	
+	override method siguienteEstado() = enJuego
+	
+	override method objetosDeEstado() = [
+		fondo
+	]
+	
+	override method continuar() {
+		stateManager.cambiarEstado()
+	}
 }
