@@ -36,7 +36,7 @@ object personaje {
 	}
 	
 	method chocar(otro){
-		tipoDeAuto.chocar()
+		tipoDeAuto.chocar(otro)
 	}
 	
 	method limpiar() {
@@ -48,7 +48,7 @@ object personaje {
 object autoComun {
 	const property image = "personaje/personajeSimple.png"
 	
-	method chocar() {
+	method chocar(otro) {
 		stateManager.cambiarEstado()
 	}
 }
@@ -56,21 +56,25 @@ object autoComun {
 object autoConEscudoSimple {
 	const property image = "personaje/personajeConEscudoAzul.png"
 	
-	method chocar() {
+	method chocar(otro) {
 		buffTracker.forceRemoveBuff(buffEscudoSimple)
+		otro.extraAlChocar()
 	}
 }
 
 object autoConSuperEscudo {
 	const property image = "personaje/personajeConEscudoVerde.png"
 	
-	method chocar() {
+	method chocar(otro) {
 		buffTracker.forceRemoveBuff(buffSuperEscudo)
+		otro.extraAlChocar()
 	}
 }
 
 object autoConMegaEscudo {
 	const property image = "personaje/personajeConEscudoRosa.png"
 	
-	method chocar() {}
+	method chocar(otro) {
+		otro.extraAlChocar()
+	}
 }

@@ -3,24 +3,15 @@ import obstaculos.advancer.*
 import obstaculos.factories.*
 import suplementarios.math.*
 import wollok.game.*
+import obstaculos.nivelManager.*
 
 object spawner {
 	const spawnWidth = configuracion.trackWidth()
 	const spawnPosition = configuracion.trackHeight()
 	
-	const factories = [
-		factoryObstaculos,
-		factoryObstaculosMovedizos,
-		factoryMonedas,
-		factoryMegaMonedas,
-		factoryGases,
-		factoryGemas,
-		factorySuperEscudos
-	]
-	
 	//Cada factory tira un "dado" y el que tiene el numero mas chico es el elegido
 	method elegirFactory(){
-		return factories.min({ factory => math.randomByWeight(factory.spawnWeight())})
+		return nivelManager.factoriesActual().min({ factory => math.randomByWeight(factory.spawnWeight())})
 	}
 	
 	method spawnearElementoQueAvanza() {
