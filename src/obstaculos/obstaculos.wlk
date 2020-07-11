@@ -8,20 +8,16 @@ import obstaculos.spawner.*
  * Las clases que heredan de Obstaculo REQUIEREN:
  * * override method activar()
  * * override method image()
- * * override method tipo() <- usado por el item borrador para eliminar obstaculos desfavorables
+ * * override method esDesfavorable() <- usado por el item borrador para eliminar obstaculos desfavorables
  * 
- * Además, para que el elemento aparezca en el juego, hay que crear su factory
- * 	y agregarla a la lista de factories del spawner.
+ * Además, para que el obstaculo aparezca en el juego, hay que crear su factory
+ * 	y agregarla a la lista de algún nivel.
  */
 class Obstaculo {
 	var property position
 	
 	method image()
-	method tipo()
-	
-	method esDesfavorable() {
-		return self.tipo() == "desfavorable"
-	}
+	method esFavorable()
 	
 	method avanzar() {
 		if (self.position().y() == 0) {
@@ -45,7 +41,7 @@ class Obstaculo {
 class Enemigo inherits Obstaculo {
 	
 	override method image() = "elementos/enemigoVerde.png"
-	override method tipo() = "desfavorable"
+	override method esFavorable() = false
 	
 	override method activar(otro){
 		otro.chocar(self)
@@ -95,7 +91,7 @@ class EnemigoOro inherits Enemigo {
 class Gas inherits Obstaculo {
 		
 	override method image() = "elementos/gas.png"
-	override method tipo() = "favorable"
+	override method esFavorable() = true
 	
 	override method activar(jugador){
 		velocidad.aumentar(5)
@@ -106,7 +102,7 @@ class Moneda inherits Obstaculo {
 	
 	//Atributos
 	override method image() = "elementos/moneda.png"
-	override method tipo() = "favorable"
+	override method esFavorable() = true
 	
 	method puntosOtorgados() = 5
 	
@@ -126,7 +122,7 @@ class MegaMoneda inherits Moneda {
 
 class Gema inherits Obstaculo {
 	override method image() = "elementos/gema.png"
-	override method tipo() = "favorable"
+	override method esFavorable() = true
 	
 	override method activar(otro) {
 		buffTracker.addBuff(buffGema)
@@ -136,7 +132,7 @@ class Gema inherits Obstaculo {
 
 class SuperEscudo inherits Obstaculo {
 	override method image() = "elementos/escudoVerde.png"
-	override method tipo() = "favorable"
+	override method esFavorable() = true
 	
 	override method activar(otro) {
 		buffTracker.addBuff(buffSuperEscudo)
