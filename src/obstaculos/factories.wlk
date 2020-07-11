@@ -54,3 +54,11 @@ object factorySuperEscudos inherits Factory {
 		return new SuperEscudo()
 	}
 }
+
+object factoryEnemigoOro inherits Factory {
+	
+	override method crear(){
+		return new EnemigoOro()
+	}
+	
+}

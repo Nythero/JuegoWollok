@@ -50,6 +50,10 @@ class Enemigo inherits Obstaculo {
 	override method activar(otro){
 		otro.chocar(self)
 	}
+	
+	method extraAlChocar(){
+		velocidad.aumentar(-5)
+	}
 }
 
 class EnemigoMovedizo inherits Enemigo {
@@ -77,6 +81,15 @@ class EnemigoMovedizo inherits Enemigo {
 		}
 	}
 	
+}
+
+class EnemigoOro inherits Enemigo {
+	
+	override method image() = "elementos/enemigoAmarillo.png"
+	
+	override method extraAlChocar(){
+		puntaje.aumentar(25)
+	}
 }
 
 class Gas inherits Obstaculo {

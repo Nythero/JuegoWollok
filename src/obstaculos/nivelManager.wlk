@@ -1,61 +1,144 @@
 import obstaculos.factories.*
-import suplementarios.list.*
+import suplementarios.bucles.*
 import wollok.game.*
 
 object nivelManager{
-	const factories = [
+	
+	/*const factories = [
 		factoryObstaculos, 
 		factoryObstaculosMovedizos,
 		factoryMonedas,
 		factoryMegaMonedas,
 		factoryGases,
 		factoryGemas,
-		factorySuperEscudos
-	]
+		factorySuperEscudos,
+		factoryEnemigoOro
+	]*/
 	
-	const property niveles = [ //Es una lista de los pesos de los factories correspondientes por posicion
-		//new Nivel(weights = [8,1,3,0.5,2,1,0.5,0]), 
-		new Nivel(weights = [8,1,3,0,1,0,0]),     //Nivel Normal
-		new Nivel(weights = [0,0,3,1,0,0.5,0]),   //Nivel Bonus
-		new Nivel(weights = [8,3,0,0,0,0,3])      //Nivel Survive
+	const property niveles = [ //Es una lista de los niveles 
+		nivelNormal,     //Nivel Normal
+		nivelBonus,     //Nivel Bonus
+		nivelSurvive    //Nivel Survive
 	]
 	
 	var nivelActual = niveles.get(0)
 	
-	method aplicarWeights(nivel){
-		lista.naturalesHasta(factories.size()-1).forEach({ i =>
-			self.aplicarWeight(nivel, i)
-		})
-	}
-	
-	method aplicarWeight(nivel, i){
-		factories.get(i).spawnWeight(nivel.weight(i))
-	}
-	
 	method cambiarNivel(){
-		const nivelNuevo = niveles.copyWithout(nivelActual).anyOne()
-		self.aplicarWeights(nivelNuevo)
-		nivelActual = nivelNuevo
+		nivelActual = self.otroNivel()
+		nivelActual.aplicarWeights()
+		game.removeTickEvent("cambiar nivel")
+		game.onTick(nivelActual.duracion(), "cambiar nivel", { self.cambiarNivel() })
+	}
+	
+	method otroNivel(){
+		return niveles.copyWithout(nivelActual).anyOne()
 	}
 	
 	method iniciar(){
-		self.aplicarWeights(niveles.get(0))
-		game.onTick(10000, "cambiar nivel", { self.cambiarNivel() })
+		nivelActual.aplicarWeights()
+		game.onTick(nivelActual.duracion(), "cambiar nivel", { self.cambiarNivel() })
 	}
 	
 	method limpiar() {
-		factories.forEach(
-			{ factory => factory.spawnWeight(null) }
-		)
+		niveles.forEach({ nivel => nivel.limpiarWeights()})
 		game.removeTickEvent("cambiar nivel")
 	}
+	
+	method factoriesActual(){
+		return nivelActual.factories()
+	}
+	
 }
 
 class Nivel{
 	
-	const weights
+	method weights()
+	
+	method factories()
 	
 	method weight(i){
-		return weights.get(i)
+		return self.weights().get(i)
 	}
+	
+	method duracion(){
+		return 10000
+	}
+	
+	method factory(i){
+		return self.factories().get(i)
+	}
+	
+	method aplicarWeights(){
+		bucles.for(self.cantidadFactories()-1, { i => self.aplicarWeight(i)})
+	}
+	
+	method cantidadFactories(){
+		return self.factories().size()
+	}
+	
+	method aplicarWeight(i){
+		self.factory(i).spawnWeight(self.weight(i))
+	}
+	
+	method limpiarWeights(){
+		self.factories().forEach({ factory => factory.spawnWeight(null) })
+	}
+}
+
+object nivelNormal inherits Nivel{
+	
+	override method duracion(){
+		return 10000
+	}
+	
+	override method weights(){
+		return [8,1,3,1,1]
+	}
+	
+	override method factories(){
+		return [
+			factoryObstaculos,
+			factoryObstaculosMovedizos,
+			factoryMonedas,
+			factoryGases,
+			factoryEnemigoOro
+		]
+	}
+}
+
+object nivelBonus inherits Nivel{
+	
+	override method duracion(){
+		return 2000
+	}
+	
+	override method weights(){
+		return [3,1,0.5]
+	}
+	
+	override method factories(){
+		return [
+			factoryMonedas,
+			factoryMegaMonedas,
+			factoryGemas
+		]
+	}
+}
+
+object nivelSurvive inherits Nivel{
+	
+	override method weights(){
+		return [8,3,3,1]
+	}
+	
+	override method factories(){
+		return [
+			factoryObstaculos,
+			factoryObstaculosMovedizos,
+			factorySuperEscudos,
+			factoryEnemigoOro
+		]
+	}
+	
+	
 }
