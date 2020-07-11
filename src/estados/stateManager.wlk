@@ -22,4 +22,12 @@ object stateManager {
 	method levantarTeclas() {
 		keyboard.space().onPressDo({ estadoActual.continuar() })
 	}
+	
+	method imagenDeEstadoActual() {
+		return estadoActual.imagenDeFondo()
+	}
+	
+	method avanzarFondoDeEstadoActual() {
+		estadoActual.pasarASiguienteFondo()
+	}
 }

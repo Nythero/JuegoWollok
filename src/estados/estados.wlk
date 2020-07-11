@@ -31,6 +31,8 @@ class Estado {
 	}
 	
 	method continuar()
+	
+	method imagenDeFondo()
 }
 
 object enPausa inherits Estado {
@@ -42,9 +44,34 @@ object enPausa inherits Estado {
 	override method continuar() {
 		stateManager.cambiarEstado()
 	}
+	
+	override method imagenDeFondo() = "fondos/fondoEnPausa.png"
+	
+	method pasarASiguienteFondo() {}
+}
+
+object enLobby inherits Estado {
+	
+	override method siguienteEstado() = enJuego
+	
+	override method objetosDeEstado() = [
+		fondo,
+		scoreManager
+	]
+	
+	override method continuar() {
+		stateManager.cambiarEstado()
+	}
+	
+	override method imagenDeFondo() = "fondos/fondoEnLobby.png"
+	
+	method pasarASiguienteFondo() {}
 }
 
 object enJuego inherits Estado {
+	
+	var imagenDeFondoActual = "fondos/fondoEnJuego1.png"
+	const imagenesDeFondo = ["fondos/fondoEnJuego1.png", "fondos/fondoEnJuego2.png"]
 	
 	override method siguienteEstado() = enLobby
 	
@@ -62,18 +89,14 @@ object enJuego inherits Estado {
 	]
 	
 	override method continuar() {}
-}
-
-object enLobby inherits Estado {
 	
-	override method siguienteEstado() = enJuego
+	override method imagenDeFondo() {
+		return imagenDeFondoActual
+	}
 	
-	override method objetosDeEstado() = [
-		fondo,
-		scoreManager
-	]
-	
-	override method continuar() {
-		stateManager.cambiarEstado()
+	method pasarASiguienteFondo() {
+		imagenesDeFondo.add(imagenesDeFondo.get(0))
+		imagenesDeFondo.remove(imagenesDeFondo.get(0))
+		imagenDeFondoActual = imagenesDeFondo.get(0)
 	}
 }
