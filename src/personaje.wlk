@@ -6,15 +6,9 @@ import wollok.game.*
 
 object personaje {
 	
-	//Atributos
-	
 	var property position = game.at(2,0)
 	
-	var property tipoDeAuto = autoComun
-	
-	//Atributos
-	
-	//Metodos
+	var property tipoDeAuto = autoSinEscudo
 	
 	
 	method image() {
@@ -35,57 +29,44 @@ object personaje {
 		position = game.at((position.x() + x).max(0).min(configuracion.trackWidth() - 1) , position.y())
 	}
 	
-	method chocar(otro) {
-		tipoDeAuto.chocar(otro)
+	method chocar(enemigo) {
+		tipoDeAuto.chocar(enemigo)
 	}
 	
 	method limpiar() {
 		game.removeVisual(self)
 	}
-	//Metodos
+	
+	method ponerBuffDeEscudo(buff) {
+		tipoDeAuto = autoConEscudo
+		autoConEscudo.buffDeEscudo(buff)
+	}
+	
+	method sacarBuffDeEscudo() {
+		autoConEscudo.buffDeEscudo(null)
+		tipoDeAuto = autoSinEscudo
+	}
 }
 
 
-class Auto {
-	method chocar(otro)
-}
-
-object autoComun inherits Auto {
+object autoSinEscudo {
 	const property image = "personaje/personajeSimple.png"
 	
-	override method chocar(otro) {
+	method chocar(enemigo) {
 		stateManager.cambiarEstado()
 	}
 }
 
-class AutoConEscudo inherits Auto {
-	override method chocar(otro) {
-		otro.activarSideEffect()
-	}
-}
-
-object autoConMegaEscudo inherits AutoConEscudo {
-	const property image = "personaje/personajeConEscudoRosa.png"
-}
-
-class AutoConEscudoRemovible inherits AutoConEscudo {
-		
-	override method chocar(otro) {
-		super(otro)
-		buffTracker.forceRemoveBuff(self.buffAsociado())
+object autoConEscudo {
+	
+	var property buffDeEscudo = null
+	
+	method image() {
+		return buffDeEscudo.imagenParaPersonaje()
 	}
 	
-	method buffAsociado()
-}
-
-object autoConEscudoSimple inherits AutoConEscudoRemovible {	
-	const property image = "personaje/personajeConEscudoAzul.png"
-	
-	override method buffAsociado() = buffEscudoSimple
-}
-
-object autoConSuperEscudo inherits AutoConEscudoRemovible {
-	const property image = "personaje/personajeConEscudoVerde.png"
-	
-	override method buffAsociado() = buffSuperEscudo
+	method chocar(enemigo) {
+		enemigo.activarSideEffect()
+		buffDeEscudo.recibirChoque()
+	}
 }

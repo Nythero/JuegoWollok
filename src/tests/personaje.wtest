@@ -8,16 +8,17 @@ describe "testeo del personaje"  {
 	test "al iniciar el personaje no tiene escudo" {
 		
 		personaje.iniciar()
-		assert.equals(autoComun, personaje.tipoDeAuto())
+		assert.equals(autoSinEscudo, personaje.tipoDeAuto())
 	}
 	
 	test "cuando inicia, el personaje no tiene escudo pero si lo compra pasa a tener uno" {
 		
 		personaje.iniciar()
-		assert.equals(autoComun, personaje.tipoDeAuto())
+		assert.equals(autoSinEscudo, personaje.tipoDeAuto())
 		
 		buffEscudoSimple.activate()
-		assert.equals(autoConEscudoSimple, personaje.tipoDeAuto())
+		assert.equals(autoConEscudo, personaje.tipoDeAuto())
+		assert.equals(buffEscudoSimple, autoConEscudo.buffDeEscudo())
 	}
 	
 	test "el personaje comienza con imagen de auto_rojo2.png, si se compra escudo cambia imagen a 

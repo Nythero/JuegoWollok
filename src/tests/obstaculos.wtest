@@ -1,3 +1,4 @@
+import cronometrados.buffs.*
 import magnitudes.*
 import obstaculos.advancer.*
 import obstaculos.obstaculos.*
@@ -116,10 +117,11 @@ describe "Probando los obstaculos" {
 	}
 	
 	test "Super escudo aplica su buff"{
-		assert.equals(autoComun, personaje.tipoDeAuto())
+		assert.equals(autoSinEscudo, personaje.tipoDeAuto())
 		
 		escudo.colisionar(personaje)
 		
-		assert.equals(autoConSuperEscudo, personaje.tipoDeAuto())
+		assert.equals(autoConEscudo, personaje.tipoDeAuto())
+		assert.equals(buffSuperEscudo, autoConEscudo.buffDeEscudo())
 	}
 }

@@ -29,13 +29,13 @@ class Obstaculo {
 		
 	}
 	
-	method colisionar(otro){
+	method colisionar(elemento) {
 		spawner.despawnear(self)
-		self.activar(otro)
+		self.activar(elemento)
 	}
 	
 	
-	method activar(otro)
+	method activar(elemento)
 }
 
 class Enemigo inherits Obstaculo {
@@ -43,11 +43,11 @@ class Enemigo inherits Obstaculo {
 	override method image() = "elementos/enemigoVerde.png"
 	override method esFavorable() = false
 	
-	override method activar(otro){
-		otro.chocar(self)
+	override method activar(elemento) {
+		elemento.chocar(self)
 	}
 	
-	method activarSideEffect(){
+	method activarSideEffect() {
 		velocidad.aumentar(-5)
 	}
 }
@@ -93,7 +93,7 @@ class Gas inherits Obstaculo {
 	override method image() = "elementos/gas.png"
 	override method esFavorable() = true
 	
-	override method activar(jugador){
+	override method activar(elemento){
 		velocidad.aumentar(5)
 	}
 }
@@ -108,7 +108,7 @@ class Moneda inherits Obstaculo {
 	
 	//Metodos
 	
-	override method activar(jugador) {
+	override method activar(elemento) {
 		puntaje.aumentar(self.puntosOtorgados())
 	}
 }
@@ -124,7 +124,7 @@ class Gema inherits Obstaculo {
 	override method image() = "elementos/gema.png"
 	override method esFavorable() = true
 	
-	override method activar(otro) {
+	override method activar(elemento) {
 		buffTracker.addBuff(buffGema)
 	}
 }
@@ -134,7 +134,7 @@ class SuperEscudo inherits Obstaculo {
 	override method image() = "elementos/escudoVerde.png"
 	override method esFavorable() = true
 	
-	override method activar(otro) {
+	override method activar(elemento) {
 		buffTracker.addBuff(buffSuperEscudo)
 	}
 }
