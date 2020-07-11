@@ -45,36 +45,40 @@ object personaje {
 	//Metodos
 }
 
-object autoComun {
+
+class Auto{
+	method chocar(otro)
+}
+
+object autoComun inherits Auto{
 	const property image = "personaje/personajeSimple.png"
 	
-	method chocar(otro) {
+	override method chocar(otro) {
 		stateManager.cambiarEstado()
 	}
 }
 
-object autoConEscudoSimple {
-	const property image = "personaje/personajeConEscudoAzul.png"
-	
-	method chocar(otro) {
-		buffTracker.forceRemoveBuff(buffEscudoSimple)
+class AutoConEscudo inherits Auto{
+	override method chocar(otro){
 		otro.extraAlChocar()
 	}
 }
 
-object autoConSuperEscudo {
-	const property image = "personaje/personajeConEscudoVerde.png"
-	
-	method chocar(otro) {
+class AutoConEscudoRemovible inherits AutoConEscudo {
+	override method chocar(otro){
+		super(otro)
 		buffTracker.forceRemoveBuff(buffSuperEscudo)
-		otro.extraAlChocar()
 	}
 }
 
-object autoConMegaEscudo {
+object autoConEscudoSimple inherits AutoConEscudoRemovible {
+	const property image = "personaje/personajeConEscudoAzul.png"
+}
+
+object autoConSuperEscudo inherits AutoConEscudoRemovible {
+	const property image = "personaje/personajeConEscudoVerde.png"
+}
+
+object autoConMegaEscudo inherits AutoConEscudo {
 	const property image = "personaje/personajeConEscudoRosa.png"
-	
-	method chocar(otro) {
-		otro.extraAlChocar()
-	}
 }
