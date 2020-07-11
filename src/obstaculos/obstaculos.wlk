@@ -51,7 +51,7 @@ class Enemigo inherits Obstaculo {
 		otro.chocar(self)
 	}
 	
-	method extraAlChocar(){
+	method activarSideEffect(){
 		velocidad.aumentar(-5)
 	}
 }
@@ -87,7 +87,7 @@ class EnemigoOro inherits Enemigo {
 	
 	override method image() = "elementos/enemigoAmarillo.png"
 	
-	override method extraAlChocar(){
+	override method activarSideEffect() {
 		puntaje.aumentar(25)
 	}
 }

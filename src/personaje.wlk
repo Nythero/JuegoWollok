@@ -31,11 +31,11 @@ object personaje {
 		keyboard.d().onPressDo({ self.moverHacia(1) })
 	}
 	
-	method moverHacia(x){
+	method moverHacia(x) {
 		position = game.at((position.x() + x).max(0).min(configuracion.trackWidth() - 1) , position.y())
 	}
 	
-	method chocar(otro){
+	method chocar(otro) {
 		tipoDeAuto.chocar(otro)
 	}
 	
@@ -46,11 +46,11 @@ object personaje {
 }
 
 
-class Auto{
+class Auto {
 	method chocar(otro)
 }
 
-object autoComun inherits Auto{
+object autoComun inherits Auto {
 	const property image = "personaje/personajeSimple.png"
 	
 	override method chocar(otro) {
@@ -58,27 +58,34 @@ object autoComun inherits Auto{
 	}
 }
 
-class AutoConEscudo inherits Auto{
-	override method chocar(otro){
-		otro.extraAlChocar()
+class AutoConEscudo inherits Auto {
+	override method chocar(otro) {
+		otro.activarSideEffect()
 	}
-}
-
-class AutoConEscudoRemovible inherits AutoConEscudo {
-	override method chocar(otro){
-		super(otro)
-		buffTracker.forceRemoveBuff(buffSuperEscudo)
-	}
-}
-
-object autoConEscudoSimple inherits AutoConEscudoRemovible {
-	const property image = "personaje/personajeConEscudoAzul.png"
-}
-
-object autoConSuperEscudo inherits AutoConEscudoRemovible {
-	const property image = "personaje/personajeConEscudoVerde.png"
 }
 
 object autoConMegaEscudo inherits AutoConEscudo {
 	const property image = "personaje/personajeConEscudoRosa.png"
+}
+
+class AutoConEscudoRemovible inherits AutoConEscudo {
+		
+	override method chocar(otro) {
+		super(otro)
+		buffTracker.forceRemoveBuff(self.buffAsociado())
+	}
+	
+	method buffAsociado()
+}
+
+object autoConEscudoSimple inherits AutoConEscudoRemovible {	
+	const property image = "personaje/personajeConEscudoAzul.png"
+	
+	override method buffAsociado() = buffEscudoSimple
+}
+
+object autoConSuperEscudo inherits AutoConEscudoRemovible {
+	const property image = "personaje/personajeConEscudoVerde.png"
+	
+	override method buffAsociado() = buffSuperEscudo
 }
