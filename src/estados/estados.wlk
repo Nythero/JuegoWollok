@@ -32,7 +32,9 @@ class Estado {
 	
 	method continuar()
 	
+	method pasarASiguienteFondo() {}
 	method imagenDeFondo()
+	method usoDeScoreManager()
 }
 
 object enPausa inherits Estado {
@@ -47,7 +49,9 @@ object enPausa inherits Estado {
 	
 	override method imagenDeFondo() = "fondos/fondoEnPausa.png"
 	
-	method pasarASiguienteFondo() {}
+	override method pasarASiguienteFondo() {}
+	
+	override method usoDeScoreManager() = null
 }
 
 object enLobby inherits Estado {
@@ -65,7 +69,8 @@ object enLobby inherits Estado {
 	
 	override method imagenDeFondo() = "fondos/fondoEnLobby.png"
 	
-	method pasarASiguienteFondo() {}
+	override method pasarASiguienteFondo() {}
+	override method usoDeScoreManager() = displayDeScore
 }
 
 object enJuego inherits Estado {
@@ -94,9 +99,11 @@ object enJuego inherits Estado {
 		return imagenDeFondoActual
 	}
 	
-	method pasarASiguienteFondo() {
+	override method pasarASiguienteFondo() {
 		imagenesDeFondo.add(imagenesDeFondo.get(0))
 		imagenesDeFondo.remove(imagenesDeFondo.get(0))
 		imagenDeFondoActual = imagenesDeFondo.get(0)
 	}
+	
+	override method usoDeScoreManager() = registroDeScore
 }

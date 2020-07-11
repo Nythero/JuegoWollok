@@ -23,11 +23,15 @@ object stateManager {
 		keyboard.space().onPressDo({ estadoActual.continuar() })
 	}
 	
-	method imagenDeEstadoActual() {
+	method fondoEstadoActual() {
 		return estadoActual.imagenDeFondo()
 	}
 	
 	method avanzarFondoDeEstadoActual() {
 		estadoActual.pasarASiguienteFondo()
+	}
+	
+	method usoScoreManagerEstadoActual() {
+		return estadoActual.usoDeScoreManager()
 	}
 }

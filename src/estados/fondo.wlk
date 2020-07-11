@@ -11,7 +11,7 @@ object fondo {
 	}
 	
 	method image() {
-		return stateManager.imagenDeEstadoActual()
+		return stateManager.fondoEstadoActual()
 	}
 	
 	method colisionar(personaje) {}

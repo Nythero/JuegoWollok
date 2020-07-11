@@ -1,17 +1,19 @@
+import estados.stateManager.*
 import magnitudes.*
 import suplementarios.writer.*
 import wollok.game.*
 
 object scoreManager {
-	var property estadoDeScoreManager = scoreManagerEnJuego
+	var property usoDeScoreManager
 	const property scores = []
 	
 	method iniciar() {
-		estadoDeScoreManager.iniciar()
+		usoDeScoreManager = stateManager.usoScoreManagerEstadoActual()
+		usoDeScoreManager.iniciar()
 	}
 	
 	method limpiar() {
-		estadoDeScoreManager.limpiar()
+		usoDeScoreManager.limpiar()
 	}
 	
 	method registrarScore(valor) {
@@ -29,17 +31,17 @@ object scoreManager {
 	}
 }
 
-object scoreManagerEnJuego {
+object registroDeScore {
 	
 	method iniciar() {}
 	
 	method limpiar() {
 		scoreManager.registrarScore(puntaje.valor())
-		scoreManager.estadoDeScoreManager(scoreManagerEnLobby)
+		scoreManager.usoDeScoreManager(self)
 	}
 }
 
-object scoreManagerEnLobby {
+object displayDeScore {
 	const property height = game.height() - 4
 	const scoresEnDisplay = []
 	
@@ -50,7 +52,7 @@ object scoreManagerEnLobby {
 				self.displayScoreAt(score, n)
 				n++
 			}
-		) 
+		)
 	}
 	
 	method displayScoreAt(score, n) {
@@ -67,7 +69,7 @@ object scoreManagerEnLobby {
 				scoresEnDisplay.remove(scoreDisp)
 			}
 		)
-		scoreManager.estadoDeScoreManager(scoreManagerEnJuego)
+		scoreManager.usoDeScoreManager(self)
 	}
 }
 
@@ -85,7 +87,7 @@ class ScoreDisplay {
 	method iniciarDisplayRank() {
 		displayRank = new Writing(
 			writing = slot + 1,
-			position = game.at(0, scoreManagerEnLobby.height() - slot)
+			position = game.at(0, displayDeScore.height() - slot)
 		)
 		displayRank.displayWriting()
 	}
@@ -93,7 +95,7 @@ class ScoreDisplay {
 	method iniciarDisplayScore() {
 		displayValor = new Writing(
 			writing = valor,
-			position = game.at(5, scoreManagerEnLobby.height() - slot)
+			position = game.at(5, displayDeScore.height() - slot)
 		)
 		displayValor.displayWriting()
 	}
