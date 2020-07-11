@@ -11,8 +11,16 @@ import scoreManager.*
 
 class Estado {
 	
+	method objetosDeEstado() = [fondo]
 	method siguienteEstado()
-	method objetosDeEstado()
+	
+	method continuar()
+	
+	method imagenDeFondo()
+	
+	method usoDeScoreManager()
+	
+	method pasarASiguienteFondo()
 	
 	method iniciar() {
 		self.objetosDeEstado().forEach(
@@ -26,54 +34,64 @@ class Estado {
 		)
 	}
 	
+	
 	method cambiar() {
 		stateManager.estadoActual(self.siguienteEstado())
-	}
-	
-	method continuar()
-}
-
-object enPausa inherits Estado {
-	
-	override method siguienteEstado() = enJuego
-	
-	override method objetosDeEstado() = [fondo]
-	
-	override method continuar() {
-		stateManager.cambiarEstado()
 	}
 }
 
 object enJuego inherits Estado {
 	
+	var imagenDeFondoActual = "fondos/fondoEnJuego1.png"
+	const imagenesDeFondo = ["fondos/fondoEnJuego1.png", "fondos/fondoEnJuego2.png"]
+	
 	override method siguienteEstado() = enLobby
-	
-	override method objetosDeEstado() = [
-		fondo,
-		personaje,
-		velocidad,
-		puntaje,
-		nivelManager,
-		advancer,
-		timer,
-		tienda,
-		scoreManager,
-		buffTracker
-	]
-	
+	override method usoDeScoreManager() = registroDeScore
 	override method continuar() {}
+	
+	override method objetosDeEstado() {
+		return super() + [
+			personaje,
+			velocidad,
+			puntaje,
+			nivelManager,
+			advancer,
+			timer,
+			tienda,
+			scoreManager,
+			buffTracker
+		]
+	}
+	
+	override method imagenDeFondo() {
+		return imagenDeFondoActual
+	}
+	
+	override method pasarASiguienteFondo() {
+		imagenesDeFondo.add(imagenesDeFondo.get(0))
+		imagenesDeFondo.remove(imagenesDeFondo.get(0))
+		imagenDeFondoActual = imagenesDeFondo.get(0)
+	}
+	
 }
 
-object enLobby inherits Estado {
+
+class EstadoPausado inherits Estado {
 	
 	override method siguienteEstado() = enJuego
+	override method continuar() { stateManager.cambiarEstado() }
+	override method pasarASiguienteFondo() {}
+}
+
+object enInicio inherits EstadoPausado {
 	
-	override method objetosDeEstado() = [
-		fondo,
-		scoreManager
-	]
+	override method imagenDeFondo() = "fondos/fondoEnPausa.png"
+	override method usoDeScoreManager() = null
+}
+
+object enLobby inherits EstadoPausado {
 	
-	override method continuar() {
-		stateManager.cambiarEstado()
-	}
+	override method objetosDeEstado() = super() + [scoreManager]
+	override method imagenDeFondo() = "fondos/fondoEnLobby.png"
+	override method usoDeScoreManager() = displayDeScore
 }

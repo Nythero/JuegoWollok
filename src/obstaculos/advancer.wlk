@@ -30,22 +30,22 @@ object advancer {
 	}
 	
 	method eliminarEnemigos() {
-		self.enemigos().forEach(
+		self.desfavorables().forEach(
 			{ enemigo => spawner.despawnear(enemigo) }
 		)
 	}
 	
-	method enemigos() {
+	method desfavorables() {
 		return
 			obstaculos.filter(
-				{ elemento => elemento.esDesfavorable() }
+				{ elemento => not elemento.esFavorable() }
 			)
 	}
 	
 	method procesarAvance(){
 		spawner.spawnearElementoQueAvanza()
 		self.avanzarObstaculos()
-		fondoEnJuego.avanzar()
+		fondo.avanzar()
 	}
 	
 	method iniciar() {
