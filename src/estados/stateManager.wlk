@@ -3,7 +3,7 @@ import wollok.game.*
 
 object stateManager {
 	
-	var property estadoActual = enPausa
+	var property estadoActual = enInicio
 		
 	method cambiarEstado() {
 		estadoActual.limpiar()
