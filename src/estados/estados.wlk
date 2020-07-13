@@ -3,11 +3,11 @@ import cronometrados.tienda.*
 import cronometrados.timer.*
 import estados.fondo.*
 import estados.stateManager.*
+import estados.scoreManager.*
 import magnitudes.*
 import obstaculos.advancer.*
 import obstaculos.nivelManager.*
 import personaje.*
-import scoreManager.*
 
 class Estado {
 	

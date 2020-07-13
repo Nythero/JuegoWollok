@@ -21,7 +21,7 @@ object nivelManager{
 		nivelSurvive    //Nivel Survive
 	]
 	
-	var nivelActual = niveles.get(0)
+	var nivelActual
 	
 	method cambiarNivel(){
 		nivelActual = self.otroNivel()
@@ -35,11 +35,13 @@ object nivelManager{
 	}
 	
 	method iniciar(){
+		nivelActual = niveles.get(0)
 		nivelActual.aplicarWeights()
 		game.onTick(nivelActual.duracion(), "cambiar nivel", { self.cambiarNivel() })
 	}
 	
 	method limpiar() {
+		nivelActual = null
 		niveles.forEach({ nivel => nivel.limpiarWeights()})
 		game.removeTickEvent("cambiar nivel")
 	}
