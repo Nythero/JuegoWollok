@@ -14,6 +14,7 @@ describe "Probando los obstaculos" {
 	var movedizo
 	var gema
 	var escudo
+	var autoAmarillo
 	
 	fixture {
 		
@@ -24,6 +25,7 @@ describe "Probando los obstaculos" {
 		movedizo = new EnemigoMovedizo()
 		gema = new Gema()
 		escudo = new SuperEscudo()
+		autoAmarillo = new EnemigoOro()
 		
 		game.addVisual(unAutoVerde)
 		game.addVisual(tanqueDeGasolina)
@@ -32,6 +34,7 @@ describe "Probando los obstaculos" {
 		game.addVisual(movedizo)
 		game.addVisual(gema)
 		game.addVisual(escudo)
+		game.addVisual(autoAmarillo)
 		
 		velocidad.iniciar()
 		
@@ -104,6 +107,17 @@ describe "Probando los obstaculos" {
 	    assert.equals(game.at(0,1), movedizo.position())
 		movedizo.avanzar()
 	    assert.equals(game.at(1,0), movedizo.position())
+	}
+	
+	test "Obstaculo oro aumenta el puntaje al chocar con escudo y sin escudo cambia el estado"{
+		
+		assert.equals(0, puntaje.valor())
+		
+		escudo.colisionar(personaje)
+		
+		autoAmarillo.colisionar(personaje)
+		
+		assert.equals(25, puntaje.valor())
 	}
 	
 	test "Gema aplica su buff"{
